@@ -16,7 +16,7 @@ export const meta: MetaFunction = () => ({
   viewport: 'width=device-width,initial-scale=1',
 });
 
-export default function App() {
+const App = () => {
   return (
     <html lang='en'>
       <head>
@@ -31,7 +31,9 @@ export default function App() {
       </body>
     </html>
   );
-}
+};
+
+export default App;
 
 export const links: LinksFunction = () => {
   return [

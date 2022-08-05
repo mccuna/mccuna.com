@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["miniflare", "pnpm", "tailwindcss"],
+  "cSpell.words": ["miniflare", "pnpm", "tailwindcss", "typecheck"],
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
@@ -11,7 +11,8 @@
     "*.jsx": "${capture}.js",
     "*.tsx": "${capture}.ts, ${capture}.specs.md, ${capture}.action.ts, ${capture}.loader.ts, ${capture}.meta.ts, ${capture}.error-boundary.tsx, ${capture}.decision.md",
     "tsconfig.json": "tsconfig.*.json",
-    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml"
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
+    ".eslintrc": ".eslintrc, .eslintignore, .eslintcache"
   },
   "files.exclude": {
     ".cache": true,

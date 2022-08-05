@@ -1,4 +1,4 @@
-export default function Index() {
+const Index = () => {
   return (
     <div>
       <h1 className='text-red-500'>Welcome to Remix</h1>
@@ -27,4 +27,6 @@ export default function Index() {
       </ul>
     </div>
   );
-}
+};
+
+export default Index;

@@ -1,3 +1,35 @@
 {
-  "extends": ["@remix-run/eslint-config"]
+  "$schema": "https://json.schemastore.org/eslintrc.json",
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["airbnb", "airbnb/hooks", "airbnb-typescript", "prettier"],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "import/prefer-default-export": "off",
+    "arrow-body-style": "off",
+    "import/extensions": "off",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/return-await": "off",
+    "react/no-unescaped-entities": "off",
+    // turned off because remix allows throwing responses
+    "@typescript-eslint/no-throw-literal": "off",
+    "radix": "off",
+    "import/no-absolute-path": "off",
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/jsx-props-no-spreading": "off"
+  },
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+  "ignorePatterns": ["**/build/", "**/dist/"]
 }
