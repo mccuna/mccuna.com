@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/cloudflare";
+import type { LinksFunction, MetaFunction } from "@remix-run/cloudflare";
 import {
   Links,
   LiveReload,
@@ -7,6 +7,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import globalStyles from "~/styles/global.css";
+import tailwindStyles from "~/styles/tailwind.css";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -30,3 +32,23 @@ export default function App() {
     </html>
   );
 }
+
+export const links: LinksFunction = () => {
+  return [
+    {
+      rel: "preload",
+      as: "font",
+      href: "/fonts/ABeeZee-Regular.woff2",
+      type: "font/woff2",
+      crossOrigin: "anonymous",
+    },
+    {
+      rel: "stylesheet",
+      href: tailwindStyles,
+    },
+    {
+      rel: "stylesheet",
+      href: globalStyles,
+    },
+  ];
+};
