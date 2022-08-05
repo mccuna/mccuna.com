@@ -9,6 +9,7 @@ import {
 } from '@remix-run/react';
 import globalStyles from '~/styles/global.css';
 import tailwindStyles from '~/styles/tailwind.css';
+import Layout from './components/layout/layout';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -24,7 +25,9 @@ const App = () => {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <Layout>
+          <Outlet />
+        </Layout>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
