@@ -1,5 +1,13 @@
 {
-  "cSpell.words": ["Hrefs", "miniflare", "pnpm", "tailwindcss", "typecheck"],
+  "cSpell.words": [
+    "clsx",
+    "headlessui",
+    "Hrefs",
+    "miniflare",
+    "pnpm",
+    "tailwindcss",
+    "typecheck"
+  ],
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": true

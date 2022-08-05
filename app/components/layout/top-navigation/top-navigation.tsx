@@ -1,12 +1,13 @@
 import { Link } from '@remix-run/react';
 import { FC } from 'react';
 import { routeHrefs } from '~/utils/routes-hrefs';
-import TopNavigationLink from './top-navigation-link/top-navigation-link';
+import LargeScreenNavigation from './large-screen-navigation/large-screen-navigation';
+import SmallScreenNavigation from './small-screen-navigation/small-screen-navigation';
 
 const TopNavigation: FC = () => {
   return (
     <nav className='h-20 flex justify-center items-center'>
-      <div className='basis-1/2 flex justify-between'>
+      <div className='basis-full flex justify-between px-4 lg:basis-5/6 xl:basis-4/6'>
         <div>
           <Link to={routeHrefs.home}>
             <h1 className='text-slate-200 text-3xl underline-on-hover'>
@@ -14,17 +15,8 @@ const TopNavigation: FC = () => {
             </h1>
           </Link>
         </div>
-        <ul className='flex justify-center items-center'>
-          <TopNavigationLink to={routeHrefs.home}>Home</TopNavigationLink>
-          <TopNavigationLink to={routeHrefs.skills}>Skills</TopNavigationLink>
-          <TopNavigationLink to={routeHrefs.experience}>
-            Experience
-          </TopNavigationLink>
-          <TopNavigationLink to={routeHrefs.aboutMe}>
-            About me
-          </TopNavigationLink>
-          <TopNavigationLink to={routeHrefs.contact}>Contact</TopNavigationLink>
-        </ul>
+        <LargeScreenNavigation />
+        <SmallScreenNavigation />
       </div>
     </nav>
   );
