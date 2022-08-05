@@ -1,4 +1,4 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/cloudflare";
+import type { LinksFunction, MetaFunction } from '@remix-run/cloudflare';
 import {
   Links,
   LiveReload,
@@ -6,19 +6,19 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
-import globalStyles from "~/styles/global.css";
-import tailwindStyles from "~/styles/tailwind.css";
+} from '@remix-run/react';
+import globalStyles from '~/styles/global.css';
+import tailwindStyles from '~/styles/tailwind.css';
 
 export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "New Remix App",
-  viewport: "width=device-width,initial-scale=1",
+  charset: 'utf-8',
+  title: 'New Remix App',
+  viewport: 'width=device-width,initial-scale=1',
 });
 
 export default function App() {
   return (
-    <html lang="en">
+    <html lang='en'>
       <head>
         <Meta />
         <Links />
@@ -36,18 +36,18 @@ export default function App() {
 export const links: LinksFunction = () => {
   return [
     {
-      rel: "preload",
-      as: "font",
-      href: "/fonts/ABeeZee-Regular.woff2",
-      type: "font/woff2",
-      crossOrigin: "anonymous",
+      rel: 'preload',
+      as: 'font',
+      href: '/fonts/ABeeZee-Regular.woff2',
+      type: 'font/woff2',
+      crossOrigin: 'anonymous',
     },
     {
-      rel: "stylesheet",
+      rel: 'stylesheet',
       href: tailwindStyles,
     },
     {
-      rel: "stylesheet",
+      rel: 'stylesheet',
       href: globalStyles,
     },
   ];
