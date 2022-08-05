@@ -24,7 +24,7 @@ const App = () => {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className='bg-slate-900'>
         <Layout>
           <Outlet />
         </Layout>
