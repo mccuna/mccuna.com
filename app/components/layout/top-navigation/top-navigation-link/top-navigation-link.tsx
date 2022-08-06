@@ -26,7 +26,7 @@ const TopNavigationLink = forwardRef<
 });
 
 const sharedClassNames = 'px-6 text-xl';
-const activeClassName = `${sharedClassNames} text-sky-400 hover:text-sky-200`;
+const activeClassName = `${sharedClassNames} text-violet-500 hover:text-violet-300`;
 const inactiveClassName = `${sharedClassNames} text-slate-400 hover:text-slate-200`;
 
 export default TopNavigationLink;

@@ -7,7 +7,7 @@ const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <div className='min-h-screen flex flex-col justify-between'>
       <TopNavigation />
-      <PageBody>{children}</PageBody>
+      <PageBody className='mt-24 grow '>{children}</PageBody>
       <Footer />
     </div>
   );

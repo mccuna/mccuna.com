@@ -1,9 +1,14 @@
+import clsx from 'clsx';
 import { FC, PropsWithChildren } from 'react';
 
-const PageBody: FC<PropsWithChildren<{}>> = ({ children }) => {
+type Props = {
+  className: string;
+};
+
+const PageBody: FC<PropsWithChildren<Props>> = ({ children, className }) => {
   return (
-    <main className='flex justify-center'>
-      <div className='w-256'>{children}</div>
+    <main className={clsx('flex justify-center', className)}>
+      <div className='w-3/4'>{children}</div>
     </main>
   );
 };
