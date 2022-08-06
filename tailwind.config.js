@@ -7,6 +7,9 @@ module.exports = {
         160: '40rem',
         256: '64rem',
       },
+      height: {
+        140: '30rem',
+      },
     },
   },
   plugins: [],
