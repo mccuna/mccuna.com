@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Card from '~/components/card';
 import ProgressBar from '~/components/progress-bar/progress-bar';
 import { Skill } from '~/types/skill';
 
@@ -12,9 +13,9 @@ const CategorySkills: FC<Props> = ({ category, skills, className }) => {
   return (
     <div className={className}>
       <h2 className='text-lg text-slate-400 my-2'>{category}</h2>
-      <div className='border border-slate-700 rounded-md divide-y divide-slate-800'>
+      <Card variant='default' className='divide-y divide-slate-800'>
         {skills.map((skill) => (
-          <div key={skill.name} className='p-3 text-slate-200 bg-slate-700'>
+          <div key={skill.name} className='py-3 first:pt-0 last:pb-0'>
             <div className='flex flex-col justify-between'>
               {skill.name}
               <ProgressBar
@@ -24,7 +25,7 @@ const CategorySkills: FC<Props> = ({ category, skills, className }) => {
             </div>
           </div>
         ))}
-      </div>
+      </Card>
     </div>
   );
 };
