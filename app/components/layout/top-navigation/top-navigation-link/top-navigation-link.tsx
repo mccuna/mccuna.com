@@ -16,7 +16,13 @@ const TopNavigationLink = forwardRef<
     <NavLink
       to={to}
       className={({ isActive }) =>
-        clsx(isActive ? activeClassName : inactiveClassName, className)
+        clsx(
+          'px-6 text-xl',
+          isActive
+            ? 'text-indigo-500 hover:text-indigo-300'
+            : 'text-slate-400 hover:text-slate-200',
+          className,
+        )
       }
       ref={ref}
       {...otherProps}>
@@ -24,9 +30,4 @@ const TopNavigationLink = forwardRef<
     </NavLink>
   );
 });
-
-const sharedClassNames = 'px-6 text-xl';
-const activeClassName = `${sharedClassNames} text-violet-500 hover:text-violet-300`;
-const inactiveClassName = `${sharedClassNames} text-slate-400 hover:text-slate-200`;
-
 export default TopNavigationLink;
