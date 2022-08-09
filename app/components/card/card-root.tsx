@@ -19,7 +19,12 @@ export const CardRoot: FC<PropsWithChildren<CardProps>> = ({
 
   return (
     <CardContext.Provider value={contextValue}>
-      <div className={clsx('border-2 rounded-lg p-3', variantStyle, className)}>
+      <div
+        className={clsx(
+          'flex flex-col gap-y-5 border-2 rounded-lg p-6',
+          variantStyle,
+          className,
+        )}>
         {children}
       </div>
     </CardContext.Provider>

@@ -5,9 +5,9 @@ import TopNavigation from './top-navigation/top-navigation';
 
 const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
-    <div className='min-h-screen flex flex-col justify-between'>
+    <div className='min-h-screen flex flex-col justify-between gap-y-24'>
       <TopNavigation />
-      <PageBody className='mt-24 grow '>{children}</PageBody>
+      <PageBody className='grow '>{children}</PageBody>
       <Footer />
     </div>
   );

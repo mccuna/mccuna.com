@@ -11,9 +11,7 @@ const LargeScreenNavigationLink: FC<PropsWithChildren<Props>> = ({
 }) => {
   return (
     <li>
-      <TopNavigationLink
-        to={to}
-        className='w-full py-3 border-b-2  underline-on-hover'>
+      <TopNavigationLink to={to} className='w-full py-3 underline-on-hover'>
         {children}
       </TopNavigationLink>
     </li>
