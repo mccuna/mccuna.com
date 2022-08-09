@@ -1,6 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
-import { MenuIcon, XIcon } from '@heroicons/react/solid';
 import { FC } from 'react';
+import { MenuIcon, XIcon } from '~/components/icons';
 import { routeHrefs } from '~/utils/routes-hrefs';
 import SmallScreenNavigationLink from './small-screen-navigation-link/small-screen-navigation-link';
 

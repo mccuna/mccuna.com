@@ -621,8 +621,8 @@ html {
   display: none;
 }
 
-.h-10 {
-  height: 2.5rem;
+.h-72 {
+  height: 18rem;
 }
 
 .h-140 {
@@ -641,32 +641,12 @@ html {
   height: 5rem;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .h-8 {
   height: 2rem;
-}
-
-.h-36 {
-  height: 9rem;
-}
-
-.h-48 {
-  height: 12rem;
-}
-
-.h-64 {
-  height: 16rem;
-}
-
-.h-72 {
-  height: 18rem;
-}
-
-.h-4 {
-  height: 1rem;
-}
-
-.h-12 {
-  height: 3rem;
 }
 
 .min-h-screen {
@@ -689,24 +669,16 @@ html {
   width: 75%;
 }
 
+.w-10 {
+  width: 2.5rem;
+}
+
 .w-8 {
   width: 2rem;
 }
 
 .w-60 {
   width: 15rem;
-}
-
-.w-4 {
-  width: 1rem;
-}
-
-.w-12 {
-  width: 3rem;
-}
-
-.w-10 {
-  width: 2.5rem;
 }
 
 .max-w-lg {
@@ -767,10 +739,6 @@ html {
   justify-content: space-between;
 }
 
-.justify-items-center {
-  justify-items: center;
-}
-
 .gap-x-8 {
   -moz-column-gap: 2rem;
        column-gap: 2rem;
@@ -791,11 +759,6 @@ html {
 
 .gap-y-4 {
   row-gap: 1rem;
-}
-
-.gap-x-5 {
-  -moz-column-gap: 1.25rem;
-       column-gap: 1.25rem;
 }
 
 .gap-x-6 {
@@ -882,10 +845,6 @@ html {
   fill: #64748b;
 }
 
-.fill-indigo-500 {
-  fill: #6366f1;
-}
-
 .p-3 {
   padding: 0.75rem;
 }
@@ -900,6 +859,11 @@ html {
 
 .p-1 {
   padding: 0.25rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .py-2 {
@@ -920,11 +884,6 @@ html {
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
-
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
 }
 
 .text-3xl {
@@ -956,6 +915,16 @@ html {
   font-weight: 500;
 }
 
+.text-slate-500 {
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity));
+}
+
+.text-indigo-500 {
+  --tw-text-opacity: 1;
+  color: rgb(99 102 241 / var(--tw-text-opacity));
+}
+
 .text-slate-200 {
   --tw-text-opacity: 1;
   color: rgb(226 232 240 / var(--tw-text-opacity));
@@ -981,22 +950,16 @@ html {
   color: rgb(148 163 184 / var(--tw-text-opacity));
 }
 
-.text-indigo-500 {
-  --tw-text-opacity: 1;
-  color: rgb(99 102 241 / var(--tw-text-opacity));
-}
-
-.text-slate-500 {
-  --tw-text-opacity: 1;
-  color: rgb(100 116 139 / var(--tw-text-opacity));
-}
-
 .opacity-0 {
   opacity: 0;
 }
 
 .opacity-100 {
   opacity: 1;
+}
+
+.outline {
+  outline-style: solid;
 }
 
 .backdrop-blur-sm {
@@ -1064,10 +1027,6 @@ html {
 .hover\:bg-indigo-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(67 56 202 / var(--tw-bg-opacity));
-}
-
-.hover\:fill-indigo-300:hover {
-  fill: #a5b4fc;
 }
 
 .hover\:fill-slate-300:hover {

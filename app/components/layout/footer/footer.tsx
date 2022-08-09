@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import GithubIcon from '~/components/icons/github-icon';
-import LinkedinIcon from '~/components/icons/linkedin-icon';
+import { GithubIcon, LinkedinIcon } from '~/components/icons';
 import SocialLink from './social-link/social-link';
 
 const Footer: FC = () => {

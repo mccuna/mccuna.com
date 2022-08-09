@@ -5,7 +5,7 @@ type Props = {
   className?: string;
 };
 
-const LinkedinIcon: FC<Props> = ({ className }) => {
+export const LinkedinIcon: FC<Props> = ({ className }) => {
   // https://fontawesome.com/icons/linkedin?s=brands
   return (
     <svg
@@ -16,5 +16,3 @@ const LinkedinIcon: FC<Props> = ({ className }) => {
     </svg>
   );
 };
-
-export default LinkedinIcon;

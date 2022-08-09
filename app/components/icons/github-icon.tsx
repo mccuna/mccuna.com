@@ -5,7 +5,7 @@ type Props = {
   className?: string;
 };
 
-const GithubIcon: FC<Props> = ({ className }) => {
+export const GithubIcon: FC<Props> = ({ className }) => {
   // https://fontawesome.com/icons/github?s=brands
   return (
     <svg
@@ -16,5 +16,3 @@ const GithubIcon: FC<Props> = ({ className }) => {
     </svg>
   );
 };
-
-export default GithubIcon;
