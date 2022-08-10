@@ -1,6 +1,6 @@
 import { Link } from '@remix-run/react';
 import { FC } from 'react';
-import { routeHrefs } from '~/utils/routes-hrefs';
+import { routeHrefs } from '~/constants/routes-hrefs';
 import LargeScreenNavigation from './large-screen-navigation/large-screen-navigation';
 import SmallScreenNavigation from './small-screen-navigation/small-screen-navigation';
 

@@ -1,7 +1,7 @@
 import { Menu, Transition } from '@headlessui/react';
 import { FC } from 'react';
 import { MenuIcon, XIcon } from '~/components/icons';
-import { routeHrefs } from '~/utils/routes-hrefs';
+import { routeHrefs } from '~/constants/routes-hrefs';
 import SmallScreenNavigationLink from './small-screen-navigation-link/small-screen-navigation-link';
 
 const SmallScreenNavigation: FC = () => {

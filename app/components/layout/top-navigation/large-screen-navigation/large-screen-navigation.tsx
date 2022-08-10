@@ -1,4 +1,4 @@
-import { routeHrefs } from '~/utils/routes-hrefs';
+import { routeHrefs } from '~/constants/routes-hrefs';
 import LargeScreenNavigationLink from './large-screen-navigation-link/large-screen-navigation-link';
 
 const LargeScreenNavigation = () => {
