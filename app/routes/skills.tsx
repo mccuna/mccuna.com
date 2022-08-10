@@ -11,6 +11,7 @@ const Skills = () => {
 
   return (
     <div>
+      {/* TODO: Update to use tailwind colors */}
       <HeadingAndIllustration
         title='What technologies have I worked with?'
         subTitle='Check below my skills'
