@@ -1,4 +1,4 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/cloudflare';
+import type { LinksFunction } from '@remix-run/cloudflare';
 import {
   Links,
   LiveReload,
@@ -6,18 +6,20 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from '@remix-run/react';
 import globalStyles from '~/styles/global.css';
 import tailwindStyles from '~/styles/tailwind.css';
 import Layout from './components/layout/layout';
+import { loader } from './root.loader';
+import { AppRouteHandle } from './types/app-route-handle';
 
-export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  title: 'New Remix App',
-  viewport: 'width=device-width,initial-scale=1',
-});
+export { meta } from './root.meta';
+export { loader };
 
 const App = () => {
+  const loaderData = useLoaderData<typeof loader>();
+
   return (
     <html lang='en'>
       <head>
@@ -56,4 +58,8 @@ export const links: LinksFunction = () => {
       href: globalStyles,
     },
   ];
+};
+
+export const handle: AppRouteHandle = {
+  id: 'root',
 };
