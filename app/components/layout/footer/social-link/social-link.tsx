@@ -6,7 +6,6 @@ type Props = {
 };
 
 const SocialLink: FC<Props> = ({ icon: Icon, href }) => {
-  console.log(href);
   return (
     <a href={href} target='_blank'>
       <Icon className='h-10 w-10 fill-slate-500 hover:fill-slate-300' />

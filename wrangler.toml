@@ -8,9 +8,3 @@ compatibility_date = "2022-04-05"
 [site]
   bucket = "./public"
 
-[build]
-  command = "npm run build"
-
-[vars]
-  LINKEDIN_URL="https://www.linkedin.com/in/mccuna"
-  GITHUB_URL="https://www.github.com/mccuna"
