@@ -9,7 +9,7 @@ export type ErrorMessageProps = {
 
 const ErrorMessage: FC<ErrorMessageProps> = ({ errorMessage, className }) => {
   return (
-    <p className={clsx('text-red-500 group-hover:text-rose-700', className)}>
+    <p className={clsx('text-red-500 peer-hover:text-red-700', className)}>
       {errorMessage}
     </p>
   );

@@ -15,7 +15,7 @@ export const Label: FC<LabelProps> = ({
     <label
       className={clsx(
         'cursor-pointer text-lg',
-        hasError && 'text-red-500 group-hover:text-rose-700',
+        hasError && 'text-red-500 group-hover:text-red-700',
         !hasError && 'text-slate-200 group-hover:text-indigo-500',
         className,
       )}

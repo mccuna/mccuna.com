@@ -766,16 +766,6 @@ html {
        column-gap: 1.5rem;
 }
 
-.gap-x-10 {
-  -moz-column-gap: 2.5rem;
-       column-gap: 2.5rem;
-}
-
-.gap-x-16 {
-  -moz-column-gap: 4rem;
-       column-gap: 4rem;
-}
-
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -846,9 +836,9 @@ html {
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
 
-.bg-slate-600 {
+.bg-slate-500 {
   --tw-bg-opacity: 1;
-  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
 }
 
 .fill-slate-500 {
@@ -861,10 +851,6 @@ html {
 
 .p-6 {
   padding: 1.5rem;
-}
-
-.p-2 {
-  padding: 0.5rem;
 }
 
 .p-1 {
@@ -935,6 +921,11 @@ html {
   color: rgb(99 102 241 / var(--tw-text-opacity));
 }
 
+.text-slate-400 {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
+}
+
 .text-slate-200 {
   --tw-text-opacity: 1;
   color: rgb(226 232 240 / var(--tw-text-opacity));
@@ -953,16 +944,6 @@ html {
 .text-slate-700 {
   --tw-text-opacity: 1;
   color: rgb(51 65 85 / var(--tw-text-opacity));
-}
-
-.text-slate-400 {
-  --tw-text-opacity: 1;
-  color: rgb(148 163 184 / var(--tw-text-opacity));
-}
-
-.text-slate-300 {
-  --tw-text-opacity: 1;
-  color: rgb(203 213 225 / var(--tw-text-opacity));
 }
 
 .opacity-0 {
@@ -1025,6 +1006,10 @@ html {
   background-size: 100% 3px;
 }
 
+.test {
+  color: red;
+}
+
 .first\:pt-0:first-child {
   padding-top: 0px;
 }
@@ -1080,13 +1065,13 @@ html {
   outline-offset: 2px;
 }
 
-.group:focus-within .group-focus-within\:outline-slate-500 {
-  outline-color: #64748b;
+.group:focus-within .group-focus-within\:outline-slate-200 {
+  outline-color: #e2e8f0;
 }
 
-.group:hover .group-hover\:border-rose-700 {
+.group:hover .group-hover\:border-red-700 {
   --tw-border-opacity: 1;
-  border-color: rgb(190 18 60 / var(--tw-border-opacity));
+  border-color: rgb(185 28 28 / var(--tw-border-opacity));
 }
 
 .group:hover .group-hover\:border-indigo-500 {
@@ -1094,14 +1079,19 @@ html {
   border-color: rgb(99 102 241 / var(--tw-border-opacity));
 }
 
-.group:hover .group-hover\:text-rose-700 {
+.group:hover .group-hover\:text-red-700 {
   --tw-text-opacity: 1;
-  color: rgb(190 18 60 / var(--tw-text-opacity));
+  color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:text-indigo-500 {
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
+}
+
+.peer:hover ~ .peer-hover\:text-red-700 {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 
 @media (min-width: 1024px) {

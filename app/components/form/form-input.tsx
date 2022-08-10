@@ -39,16 +39,17 @@ export const FormInput: FC<FormInputProps> = ({
   const errorMessage = getError(inputProps.name);
 
   return (
-    <div
-      className={clsx('flex flex-col group py-2', containerProps?.className)}>
-      {labelProps && (
-        <Label id={id} hasError={!!errorMessage} {...labelProps} />
-      )}
-      <StyledInput
-        id={id}
-        hasError={!!errorMessage}
-        {...(inputProps as StyledInputProps)}
-      />
+    <div className={clsx('flex flex-col py-2', containerProps?.className)}>
+      <div className='flex flex-col group peer'>
+        {labelProps && (
+          <Label id={id} hasError={!!errorMessage} {...labelProps} />
+        )}
+        <StyledInput
+          id={id}
+          hasError={!!errorMessage}
+          {...(inputProps as StyledInputProps)}
+        />
+      </div>
       {!!errorMessage && (
         <ErrorMessage errorMessage={errorMessage} {...errorProps} />
       )}

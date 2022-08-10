@@ -38,16 +38,17 @@ export const FormTextArea: FC<FormTextAreaProps> = ({
   const errorMessage = getError(textAreaProps.name);
 
   return (
-    <div
-      className={clsx('flex flex-col group py-2', containerProps?.className)}>
-      {labelProps && (
-        <Label id={id} hasError={!!errorMessage} {...labelProps} />
-      )}
-      <StyledTextArea
-        id={id}
-        hasError={!!errorMessage}
-        {...(textAreaProps as StyledTextAreaProps)}
-      />
+    <div className={clsx('flex flex-col py-2', containerProps?.className)}>
+      <div className='flex flex-col group peer'>
+        {labelProps && (
+          <Label id={id} hasError={!!errorMessage} {...labelProps} />
+        )}
+        <StyledTextArea
+          id={id}
+          hasError={!!errorMessage}
+          {...(textAreaProps as StyledTextAreaProps)}
+        />
+      </div>
       {!!errorMessage && (
         <ErrorMessage errorMessage={errorMessage} {...errorProps} />
       )}
