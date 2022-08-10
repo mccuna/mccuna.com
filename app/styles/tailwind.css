@@ -1006,10 +1006,6 @@ html {
   background-size: 100% 3px;
 }
 
-.test {
-  color: red;
-}
-
 .first\:pt-0:first-child {
   padding-top: 0px;
 }
