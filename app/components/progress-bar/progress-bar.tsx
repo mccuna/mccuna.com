@@ -8,7 +8,7 @@ type Props = {
 const ProgressBar: FC<Props> = ({ filledPercentage, title }) => {
   return (
     <div
-      className='w-full h-3 border border-slate-700 bg-slate-600 rounded-full'
+      className='w-full h-3 border border-slate-700 bg-slate-500 rounded-full'
       title={title}>
       <div
         className={`h-full rounded-full bg-indigo-500`}
