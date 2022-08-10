@@ -21,6 +21,20 @@ export const action = async ({ request }: ActionArgs) => {
     return badRequest(actionData);
   }
 
+  const mail: MailersendMail = {
+    from: emailConstants.from,
+    to: [emailConstants.to],
+    html: actionData.fields.message,
+    reply_to: {
+      email: actionData.fields.email,
+      name: actionData.fields.name,
+    },
+    subject: actionData.fields.subject,
+  };
+
+  console.log(JSON.stringify(mail, null, 2));
+
+  await sendEmail(mail);
 
   actionData.payload = {
     hasSentMessage: true,
