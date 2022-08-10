@@ -3,6 +3,7 @@ import { PrimaryButton } from '~/components/button';
 import Card from '~/components/card';
 import { FormInput, FormTextArea } from '~/components/form';
 import HeadingAndIllustration from '~/components/heading-and-illustration/heading-and-illustration';
+import LocalTime from '~/components/local-time/local-time';
 import { action, FieldName } from './contact.action';
 import contactIllustration from '/public/images/illustrations/contact.svg';
 
@@ -18,15 +19,23 @@ const Contact = () => {
         subTitle='Send me a message'
         illustrationSrc={contactIllustration}
       />
-      <div className='flex justify-center py-10 text-slate-500'>
-        Leave me an email at &nbsp;
-        <a
-          href='mailto:cristian@mccuna.com'
-          className='text-indigo-500 hover:text-indigo-300'>
-          cristian@mccuna.com
-        </a>
-        &nbsp; or use the below form to send me a message. I'll do my best to
-        respond as soon as possible.
+      <div className='flex flex-col items-center py-10 text-slate-500'>
+        <div>
+          <p>
+            Leave me an email at{' '}
+            <a
+              href='mailto:cristian@mccuna.com'
+              className='text-indigo-500 hover:text-indigo-300'>
+              cristian@mccuna.com
+            </a>{' '}
+            or use the below form to send me a message. I'll do my best to
+            respond as soon as possible.
+          </p>
+          <p>
+            In case you were wondering, my local time is{' '}
+            <LocalTime className='text-slate-400' />
+          </p>
+        </div>
       </div>
       <div className='flex justify-center'>
         <Form>
