@@ -1,5 +1,5 @@
 import { useTransition } from '@remix-run/react';
-import * as React from 'react';
+import { FormEvent, FormEventHandler, useMemo, useState } from 'react';
 import { Errors, FieldError, ValidationStatus } from '~/types/action-data';
 import { FormValidationContextType } from './form-validation-context';
 
@@ -24,20 +24,21 @@ export const useFormValidation = <TFormFieldKey extends string>({
   errors: Errors<TFormFieldKey>;
   isSubmitted: boolean;
   formEventHandlers: {
-    onSubmit: React.FormEventHandler<HTMLFormElement>;
-    onChange: React.FormEventHandler<HTMLFormElement>;
-    onBlur: React.FormEventHandler<HTMLFormElement>;
+    onSubmit: FormEventHandler<HTMLFormElement>;
+    onChange: FormEventHandler<HTMLFormElement>;
+    onBlur: FormEventHandler<HTMLFormElement>;
   };
   formValidationContextValue: FormValidationContextType<TFormFieldKey>;
+  reset: (form: HTMLFormElement) => void;
 } => {
-  const emptyErrorsObject = React.useMemo(
+  const emptyErrorsObject = useMemo(
     () => getEmptyErrorsObj<TFormFieldKey>(validationRules),
     [validationRules],
   );
 
   const [errors, setErrors] =
-    React.useState<Errors<TFormFieldKey>>(emptyErrorsObject);
-  const [isSubmitted, setIsSubmitted] = React.useState(false);
+    useState<Errors<TFormFieldKey>>(emptyErrorsObject);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const transition = useTransition();
 
@@ -49,7 +50,7 @@ export const useFormValidation = <TFormFieldKey extends string>({
   }
 
   const validateForm = (
-    event: React.FormEvent<HTMLFormElement>,
+    event: FormEvent<HTMLFormElement>,
   ): ValidationStatus => {
     const form = event.currentTarget;
 
@@ -85,6 +86,7 @@ export const useFormValidation = <TFormFieldKey extends string>({
       {} as Errors<TFormFieldKey>,
     );
 
+
     if (!areTheSame(errors, newErrors)) {
       /* Update the errors state only if the new errors are different
        * from the current ones. Otherwise we'll just get redundant re-renders
@@ -95,7 +97,7 @@ export const useFormValidation = <TFormFieldKey extends string>({
     return 'invalid';
   };
 
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+  const onSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     setIsSubmitted(true);
 
     const validationResult = validateForm(event);
@@ -105,7 +107,7 @@ export const useFormValidation = <TFormFieldKey extends string>({
     }
   };
 
-  const onChange: React.FormEventHandler<HTMLFormElement> = (event) => {
+  const onChange: FormEventHandler<HTMLFormElement> = (event) => {
     if (!isSubmitted) {
       return;
     }
@@ -113,16 +115,21 @@ export const useFormValidation = <TFormFieldKey extends string>({
     validateForm(event);
   };
 
-  const onBlur: React.FormEventHandler<HTMLFormElement> = (event) => {
+  const onBlur: FormEventHandler<HTMLFormElement> = (event) => {
     if (!isSubmitted) {
       return;
     }
     validateForm(event);
   };
 
-  const formValidationContextValue = React.useMemo(() => {
+  const formValidationContextValue = useMemo(() => {
     return { errors };
   }, [errors]);
+
+  const reset = (form: HTMLFormElement) => {
+    form.reset();
+    setIsSubmitted(false);
+  };
 
   return {
     errors,
@@ -133,6 +140,7 @@ export const useFormValidation = <TFormFieldKey extends string>({
       onBlur,
     },
     formValidationContextValue,
+    reset,
   };
 };
 
@@ -141,6 +149,11 @@ const areTheSame = <TFormField extends string>(
   newErrors: Errors<TFormField>,
 ) => {
   const errorsFieldNames = Object.keys(errors) as TFormField[];
+  const newErrorsFieldNames = Object.keys(newErrors) as TFormField[];
+
+  if (errorsFieldNames.length !== newErrorsFieldNames.length) {
+    return false;
+  }
 
   return errorsFieldNames.every((fieldName) => {
     return errors[fieldName] === newErrors[fieldName];
