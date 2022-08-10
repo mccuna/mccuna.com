@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import { forwardRef, HTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 
 export const StyledButton = forwardRef<
   HTMLButtonElement,
-  HTMLAttributes<HTMLButtonElement>
+  ButtonHTMLAttributes<HTMLButtonElement>
 >(({ children, className, ...otherProps }, ref) => {
   return (
     <button
