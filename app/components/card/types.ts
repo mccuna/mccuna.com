@@ -1,1 +1,1 @@
-export type CardVariant = 'success' | 'default';
+export type CardVariant = 'success' | 'default' | 'primary';

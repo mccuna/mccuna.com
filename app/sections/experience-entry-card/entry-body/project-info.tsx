@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { ExperienceEntry } from '~/types/experience-entry';
-import ExperienceEntryLabel from '../experience-entry-label/experience-entry-label';
+import ExperienceEntryLabel from './experience-entry-label';
 
 type Props = {
   experienceEntry: ExperienceEntry;
@@ -9,13 +9,6 @@ type Props = {
 const ProjectInfo: FC<Props> = ({ experienceEntry }) => {
   return (
     <div className='flex flex-col gap-y-3'>
-      <div className='flex gap-2 flex-wrap'>
-        {experienceEntry.skillsNames.map((skillName) => (
-          <div key={skillName} className='bg-slate-500 rounded-lg px-2 py-1'>
-            {skillName}
-          </div>
-        ))}
-      </div>
       <div>
         <ExperienceEntryLabel>Description</ExperienceEntryLabel>:{' '}
         {experienceEntry.description}

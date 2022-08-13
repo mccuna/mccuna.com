@@ -38,6 +38,8 @@ export const getVariantStyle = (variant: CardVariant): string => {
       return 'bg-slate-700 border-slate-700 text-slate-200';
     case 'success':
       return 'bg-green-500 text-white';
+    case 'primary':
+      return 'bg-indigo-900 border-indigo-900 text-slate-200';
     default:
       throw new Error(`Unknown card variant: ${variant}`);
   }

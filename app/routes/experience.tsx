@@ -1,7 +1,7 @@
 import { useLoaderData } from '@remix-run/react';
 import { FC } from 'react';
 import HeadingAndIllustration from '~/components/heading-and-illustration/heading-and-illustration';
-import ExperienceEntryCard from '~/sections/experience-entry-card/experience-entry-card';
+import ExperienceEntryCard from '~/sections/experience-entry-card';
 import { loader } from './experience.loader';
 import experienceIllustration from '/public/images/illustrations/experience.svg';
 
@@ -17,7 +17,7 @@ const Experience: FC = () => {
         subTitle="Here are the things I've helped build"
         illustrationSrc={experienceIllustration}
       />
-      <div className='flex flex-col gap-y-10 xl:flex-row xl:flex-wrap xl:gap-x-10 xl:justify-center xl:items-center'>
+      <div className='flex gap-10 flex-wrap justify-center'>
         {experienceEntries.map((experienceEntry) => (
           <ExperienceEntryCard
             key={experienceEntry.refId}

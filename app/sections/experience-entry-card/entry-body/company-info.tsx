@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { ExperienceEntry } from '~/types/experience-entry';
-import ExperienceEntryLabel from '../experience-entry-label/experience-entry-label';
+import ExperienceEntryLabel from './experience-entry-label';
 
 type Props = {
   company: ExperienceEntry['company'];
@@ -24,7 +24,7 @@ const CompanyInfo: FC<Props> = ({ company }) => {
       {company?.websiteHref && (
         <div>
           <ExperienceEntryLabel>Website:</ExperienceEntryLabel>{' '}
-          <span className='text-indigo-500 cursor-pointer hover:text-indigo-300'>
+          <span className='text-indigo-300 cursor-pointer underline-on-hover'>
             {company?.websiteHref}
           </span>
         </div>

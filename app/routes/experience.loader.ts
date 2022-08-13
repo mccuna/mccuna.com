@@ -13,7 +13,7 @@ export const loader = ({}: LoaderArgs) => {
         description: 'One of the largest cryptocurrency exchanges in Romania',
         websiteHref: 'https://tokero.com/',
       },
-      role: 'Technical Lead & Software Architect',
+      role: 'Team Lead & Software Architect',
       projectSize: {
         numberOfUsers: 'tens of thousands',
         devTeamMembers: '5-10',

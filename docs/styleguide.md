@@ -2,11 +2,10 @@
 
 ## Primary color
 
+- light variant: <code className='text-indigo-300'>indigo-300</code>
 - base: <code className='test'>indigo-500</code>
-- hover:
-  - dark variant: <code className='text-indigo-700'>indigo-700</code>
-  - light variant: <code className='text-indigo-300'>indigo-300</code>
-- disabled: <code className='text-indigo-300'>indigo-300</code>
+- darker variant: <code className='text-indigo-700'>indigo-700</code>
+- dark variant: <code className='text-indigo-900'>indigo-900</code>
 
 ## Neutral colors
 
