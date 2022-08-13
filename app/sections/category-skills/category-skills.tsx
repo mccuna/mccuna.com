@@ -13,7 +13,7 @@ const CategorySkills: FC<Props> = ({ category, skills, className }) => {
   return (
     <div className={className}>
       <h2 className='text-lg text-slate-400 my-2'>{category}</h2>
-      <Card variant='default' className='divide-y divide-slate-800'>
+      <Card className='divide-y divide-slate-800'>
         {skills.map((skill) => (
           <div key={skill.name} className='py-3 first:pt-0 last:pb-0'>
             <div className='flex flex-col justify-between'>

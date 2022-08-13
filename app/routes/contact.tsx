@@ -69,7 +69,7 @@ const Contact: FC = () => {
       <div className='flex justify-center'>
         <Form method='post' noValidate ref={formRef} {...formEventHandlers}>
           <FormValidationContext.Provider value={formValidationContextValue}>
-            <Card variant='default' className='w-200'>
+            <Card className='w-200'>
               <Card.Title>Contact</Card.Title>
               <Card.Body>
                 <FormInput

@@ -4,15 +4,16 @@ import { CardContext } from './card-context';
 import { CardVariant } from './types';
 
 export type CardProps = {
-  variant: CardVariant;
+  variant?: CardVariant;
   className?: string;
 };
 
 export const CardRoot: FC<PropsWithChildren<CardProps>> = ({
   children,
   className,
-  variant,
+  variant: customVariant,
 }) => {
+  const variant = customVariant ?? 'default';
   const variantStyle = getVariantStyle(variant);
 
   const contextValue = useMemo(() => ({ variant }), [variant]);
