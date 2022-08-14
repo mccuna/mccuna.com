@@ -1,20 +1,21 @@
 import { NavLink } from '@remix-run/react';
 import clsx from 'clsx';
-import { forwardRef, PropsWithChildren } from 'react';
+import { forwardRef, MouseEventHandler, PropsWithChildren } from 'react';
 
 type Props = {
   to: string;
   className?: string;
-  // The Headless UI dropdown adds its own props to the NavLink component.
-} & Record<string, unknown>;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
+};
 
 const TopNavigationLink = forwardRef<
   HTMLAnchorElement,
   PropsWithChildren<Props>
->(({ to, className, children, ...otherProps }, ref) => {
+>(({ to, className, onClick, children, ...otherProps }, ref) => {
   return (
     <NavLink
       to={to}
+      onClick={onClick}
       className={({ isActive }) =>
         clsx(
           'px-6 text-xl',

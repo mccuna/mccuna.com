@@ -1,7 +1,7 @@
 export const routeHrefs = {
   home: '/',
   skills: '/skills',
-  experience: '/experience',
   aboutMe: '/about-me',
+  experience: '/experience',
   contact: '/contact',
 };

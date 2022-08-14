@@ -1,11 +1,11 @@
 import { FC, PropsWithChildren } from 'react';
-import TopNavigationLink from '../../top-navigation-link/top-navigation-link';
+import TopNavigationLink from '../top-navigation-link';
 
 type Props = {
   to: string;
 };
 
-const LargeScreenNavigationLink: FC<PropsWithChildren<Props>> = ({
+const LgScreenNavigationLink: FC<PropsWithChildren<Props>> = ({
   to,
   children,
 }) => {
@@ -18,4 +18,4 @@ const LargeScreenNavigationLink: FC<PropsWithChildren<Props>> = ({
   );
 };
 
-export default LargeScreenNavigationLink;
+export default LgScreenNavigationLink;
