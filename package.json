@@ -6,10 +6,10 @@
     "build:remix": "remix build",
     "build:css": "tailwindcss -m -i ./app/styles/global.css -o ./app/styles/tailwind.css",
     "deploy": "wrangler publish",
+    "dev": "pnpm build:remix && pnpm concurrently pnpm:dev:* --kill-others-on-fail",
     "dev:css": "tailwindcss -w -i ./app/styles/global.css -o ./app/styles/tailwind.css",
     "dev:remix": "remix watch",
     "dev:miniflare": "cross-env NODE_ENV=development miniflare ./build/index.js --watch",
-    "dev": "pnpm build && pnpm concurrently pnpm:dev:* --kill-others-on-fail",
     "lint": "eslint --cache . --ext .ts,.tsx,.js,.jsx",
     "start": "cross-env NODE_ENV=production miniflare ./build/index.js",
     "typecheck": " tsc -b"
