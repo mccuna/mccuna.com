@@ -6,7 +6,6 @@ export const loader = ({}: LoaderArgs) => {
     {
       refId: '1',
       name: 'Tokero Crypto Exchange',
-      imageName: 'tokero.webp',
       company: {
         key: 'tokero',
         name: 'Tokero Crypto Exchange',
@@ -44,7 +43,7 @@ export const loader = ({}: LoaderArgs) => {
     {
       refId: '2',
       name: 'Client via Digitall',
-      imageName: 'digitall.webp',
+      nda: true,
       company: {
         key: 'digitall',
         name: 'Digitall',
@@ -79,7 +78,6 @@ export const loader = ({}: LoaderArgs) => {
     {
       refId: '3',
       name: 'Libra Internet Bank',
-      imageName: 'libra-internet-bank.svg',
       company: {
         key: 'libra-internet-bank',
         name: 'Libra Internet Bank',
@@ -113,11 +111,11 @@ export const loader = ({}: LoaderArgs) => {
     },
     {
       refId: '4',
-      name: 'Client via NetRom Software',
-      imageName: 'netrom-software.webp',
+      name: 'Client via Netrom',
+      nda: true,
       company: {
-        key: 'netrom-software',
-        name: 'NetRom Software',
+        key: 'netrom',
+        name: 'Netrom',
         description:
           'A nearshore software developer company with more than 400 employees',
         websiteHref: 'https://www.netrom.nl/en/',
@@ -149,11 +147,11 @@ export const loader = ({}: LoaderArgs) => {
     },
     {
       refId: '5',
-      name: 'Client via NetRom Software',
-      imageName: 'netrom-software.webp',
+      name: 'Client via Netrom',
+      nda: true,
       company: {
-        key: 'netrom-software',
-        name: 'NetRom Software',
+        key: 'netrom',
+        name: 'Netrom',
         description:
           'A nearshore software developer company with more than 400 employees',
         websiteHref: 'https://www.netrom.nl/en/',
@@ -186,11 +184,11 @@ export const loader = ({}: LoaderArgs) => {
     },
     {
       refId: '6',
-      name: 'Client via NetRom Software',
-      imageName: 'netrom-software.webp',
+      name: 'Client via Netrom',
+      nda: true,
       company: {
-        key: 'netrom-software',
-        name: 'NetRom Software',
+        key: 'netrom',
+        name: 'Netrom',
         description:
           'A nearshore software developer company with more than 400 employees',
         websiteHref: 'https://www.netrom.nl/en/',

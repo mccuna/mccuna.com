@@ -1,7 +1,9 @@
 export type ExperienceEntry = {
   refId: string;
   name: string;
-  imageName: string;
+  /* The outsourcing companies I've worked for have a NDA agreement by default when it comes to the clients' names
+   */
+  nda?: boolean;
   description: string;
   role: string;
   company?: {
