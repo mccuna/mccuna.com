@@ -1,5 +1,5 @@
 import { Form, useActionData } from '@remix-run/react';
-import { FC, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { PrimaryButton } from '~/components/button';
 import Card from '~/components/card';
 import { FormInput, FormTextArea } from '~/components/form';
@@ -37,9 +37,17 @@ const Contact: FC = () => {
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  if (actionData?.payload?.hasSentMessage && isSubmitted) {
+  if (actionData?.payload?.messageSentSuccessfullyTs && isSubmitted) {
     formRef?.current && reset(formRef.current);
   }
+
+  const messageSentCardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    messageSentCardRef.current?.scrollIntoView({
+      behavior: 'smooth',
+    });
+  }, [actionData?.payload?.messageSentSuccessfullyTs]);
 
   return (
     <div>
@@ -67,58 +75,66 @@ const Contact: FC = () => {
         </div>
       </div>
       <div className='flex justify-center'>
-        <Form
-          method='post'
-          noValidate
-          ref={formRef}
-          {...formEventHandlers}
-          className='w-full lg:w-160 xl:w-200'>
-          <FormValidationContext.Provider value={formValidationContextValue}>
-            <Card>
-              <Card.Title>Contact</Card.Title>
+        <div className='w-full flex flex-col gap-y-7 lg:w-160 xl:w-200'>
+          {actionData?.payload?.messageSentSuccessfullyTs && (
+            <Card
+              variant='success'
+              ref={messageSentCardRef}
+              className='scroll-mt-16'>
+              <Card.Title>Message sent!</Card.Title>
               <Card.Body>
-                <FormInput
-                  inputProps={{
-                    name: FieldName.name,
-                  }}
-                  labelProps={{
-                    children: 'Name',
-                  }}
-                />
-                <FormInput
-                  inputProps={{
-                    type: 'email',
-                    name: FieldName.email,
-                  }}
-                  labelProps={{
-                    children: 'Email',
-                  }}
-                />
-                <FormInput
-                  inputProps={{
-                    name: FieldName.subject,
-                    autoComplete: 'off',
-                  }}
-                  labelProps={{
-                    children: 'Subject',
-                  }}
-                />
-
-                <FormTextArea
-                  textAreaProps={{
-                    name: FieldName.message,
-                  }}
-                  labelProps={{
-                    children: 'Message',
-                  }}
-                />
+                I've got your message and I'll get back to you shortly!
               </Card.Body>
-              <Card.Actions>
-                <PrimaryButton type='submit'>Send message</PrimaryButton>
-              </Card.Actions>
             </Card>
-          </FormValidationContext.Provider>
-        </Form>
+          )}
+          <Form method='post' noValidate ref={formRef} {...formEventHandlers}>
+            <FormValidationContext.Provider value={formValidationContextValue}>
+              <Card>
+                <Card.Title>Contact</Card.Title>
+                <Card.Body>
+                  <FormInput
+                    inputProps={{
+                      name: FieldName.name,
+                    }}
+                    labelProps={{
+                      children: 'Name',
+                    }}
+                  />
+                  <FormInput
+                    inputProps={{
+                      type: 'email',
+                      name: FieldName.email,
+                    }}
+                    labelProps={{
+                      children: 'Email',
+                    }}
+                  />
+                  <FormInput
+                    inputProps={{
+                      name: FieldName.subject,
+                      autoComplete: 'off',
+                    }}
+                    labelProps={{
+                      children: 'Subject',
+                    }}
+                  />
+
+                  <FormTextArea
+                    textAreaProps={{
+                      name: FieldName.message,
+                    }}
+                    labelProps={{
+                      children: 'Message',
+                    }}
+                  />
+                </Card.Body>
+                <Card.Actions>
+                  <PrimaryButton type='submit'>Send message</PrimaryButton>
+                </Card.Actions>
+              </Card>
+            </FormValidationContext.Provider>
+          </Form>
+        </div>
       </div>
     </div>
   );

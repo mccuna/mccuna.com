@@ -21,7 +21,7 @@ const App = () => {
   const loaderData = useLoaderData<typeof loader>();
 
   return (
-    <html lang='en'>
+    <html lang='en' className='scroll-smooth'>
       <head>
         <Meta />
         <Links />

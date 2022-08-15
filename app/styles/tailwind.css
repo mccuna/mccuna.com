@@ -736,6 +736,10 @@ html {
   cursor: pointer;
 }
 
+.scroll-mt-16 {
+  scroll-margin-top: 4rem;
+}
+
 .list-disc {
   list-style-type: disc;
 }
@@ -819,6 +823,10 @@ html {
 .divide-slate-800 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(30 41 59 / var(--tw-divide-opacity));
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
 }
 
 .rounded-xl {
@@ -1338,10 +1346,6 @@ html {
 }
 
 @media (min-width: 1536px) {
-  .\32xl\:h-80 {
-    height: 20rem;
-  }
-
   .\32xl\:h-76 {
     height: 19rem;
   }

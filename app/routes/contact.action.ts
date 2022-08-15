@@ -32,12 +32,10 @@ export const action = async ({ request }: ActionArgs) => {
     subject: actionData.fields.subject,
   };
 
-  console.log(JSON.stringify(mail, null, 2));
-
   await sendEmail(mail);
 
   actionData.payload = {
-    hasSentMessage: true,
+    messageSentSuccessfullyTs: Date.now(),
   };
 
   return json(actionData);
@@ -122,5 +120,5 @@ type FormFields = {
 export type FormActionData = ActionData<FieldName, Payload>;
 
 type Payload = {
-  hasSentMessage: boolean;
+  messageSentSuccessfullyTs: number;
 };
