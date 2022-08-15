@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
-import { ButtonSize } from './button-size';
+import { ButtonSize } from './types';
 
 export type StyledButtonProps = {
   size?: ButtonSize;

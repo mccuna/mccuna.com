@@ -9,4 +9,6 @@ const Card = Object.assign(CardRoot, {
   Actions: CardActions,
 });
 
+export * from './types';
+
 export default Card;

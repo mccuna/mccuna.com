@@ -1,7 +1,7 @@
 import { Link, LinkProps } from '@remix-run/react';
 import clsx from 'clsx';
 import { forwardRef } from 'react';
-import { LinkSize } from './link-size';
+import { LinkSize } from './types';
 
 export type ButtonLinkProps = {
   size?: LinkSize;
