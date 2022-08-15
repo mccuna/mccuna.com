@@ -17,7 +17,7 @@ const Experience: FC = () => {
         subTitle="Here are the things I've helped build"
         illustrationSrc={experienceIllustration}
       />
-      <div className='flex gap-10 flex-wrap justify-center'>
+      <div className='grid grid-cols-1 gap-10 xl:grid-cols-2'>
         {experienceEntries.map((experienceEntry) => (
           <ExperienceEntryCard
             key={experienceEntry.refId}

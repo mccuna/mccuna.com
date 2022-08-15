@@ -19,7 +19,7 @@ const ExperienceEntryCard: FC<Props> = ({ experienceEntry }) => {
 
   return (
     <ExperienceEntryContext.Provider value={contextValue}>
-      <div className='group w-full xl:w-5/12 '>
+      <div className='group'>
         <Disclosure>
           <EntrySummary />
           <EntryBody />
