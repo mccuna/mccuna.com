@@ -7,7 +7,7 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, StyledButtonProps>(
     return (
       <StyledButton
         className={clsx(
-          'bg-indigo-500 text-slate-200 hover:bg-indigo-700 disabled:bg-indigo-300',
+          'bg-indigo-500 text-slate-200 hover:bg-indigo-700 disabled:bg-indigo-300 disabled:pointer-events-none',
           className,
         )}
         ref={ref}

@@ -10,6 +10,7 @@ const TopNavigation: FC = () => {
     <nav className='h-20 flex justify-center items-center'>
       <div className='basis-full flex justify-between items-center  px-4 lg:basis-5/6 xl:basis-4/6'>
         <Link to={routeHrefs.home} className='flex gap-x-3 items-center'>
+          {/* TODO: Convert logo to webp when final */}
           <img src={logo} className='h-10 w-10' />
           <h1 className='text-slate-200 text-4xl underline-on-hover'>
             mc cuna

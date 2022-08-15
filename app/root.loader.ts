@@ -3,7 +3,9 @@ import { UseDataFunctionReturn } from '@remix-run/react/dist/components';
 
 export const loader = ({}: LoaderArgs) => {
   return json({
-    ENV: {},
+    ENV: {
+      HCAPTCHA_SITE_KEY,
+    },
   });
 };
 

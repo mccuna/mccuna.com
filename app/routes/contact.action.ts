@@ -1,8 +1,8 @@
 import { ActionArgs, json } from '@remix-run/cloudflare';
 import { emailConstants } from '~/constants/email-constants';
-import { sendEmail } from '~/helpers/email/send-email';
 import { MailersendMail } from '~/helpers/email/types/mailersend-mail';
-import { getEmailError } from '~/helpers/form-validation/fields-validation';
+import { getEmailError } from '~/helpers/form-validation/fields-validation/email-validation.server';
+import { getHCaptchaError } from '~/helpers/form-validation/fields-validation/hcaptcha-validation.server';
 import { areFieldsValid, getActionDataFields } from '~/helpers/form/form-utils';
 import { ActionData, FieldError, GetFieldsErrors } from '~/types/action-data';
 import { badRequest } from '~/utils/server-response-shorthand';
@@ -22,8 +22,8 @@ export const action = async ({ request }: ActionArgs) => {
   }
 
   const mail: MailersendMail = {
-    from: emailConstants.from,
-    to: [emailConstants.to],
+    from: emailConstants.contactMessage.from,
+    to: [emailConstants.contactMessage.to],
     html: actionData.fields.message,
     reply_to: {
       email: actionData.fields.email,
@@ -32,7 +32,7 @@ export const action = async ({ request }: ActionArgs) => {
     subject: actionData.fields.subject,
   };
 
-  await sendEmail(mail);
+  // await sendEmail(mail);
 
   actionData.payload = {
     messageSentSuccessfullyTs: Date.now(),
@@ -46,6 +46,7 @@ export enum FieldName {
   email = 'email',
   subject = 'subject',
   message = 'message',
+  hCaptchaResponse = 'h-captcha-response',
 }
 
 const getFieldsErrors: GetFieldsErrors<FieldName> = async (fields) => {
@@ -59,6 +60,7 @@ const getFieldsErrors: GetFieldsErrors<FieldName> = async (fields) => {
     name: getNameError(fields.name),
     subject: getSubjectError(fields.subject),
     message: getMessageError(fields.message),
+    'h-captcha-response': await getHCaptchaError(fields['h-captcha-response']),
   };
 };
 
@@ -115,6 +117,7 @@ type FormFields = {
   [FieldName.email]: string;
   [FieldName.subject]: string;
   [FieldName.message]: string;
+  [FieldName.hCaptchaResponse]: string;
 };
 
 export type FormActionData = ActionData<FieldName, Payload>;

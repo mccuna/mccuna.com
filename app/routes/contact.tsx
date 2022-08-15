@@ -1,13 +1,19 @@
-import { Form, useActionData } from '@remix-run/react';
-import { FC, useEffect, useRef } from 'react';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
+import { Form, useActionData, useTransition } from '@remix-run/react';
+import clsx from 'clsx';
+import { FC, useEffect, useRef, useState } from 'react';
 import { PrimaryButton } from '~/components/button';
 import Card from '~/components/card';
+import ErrorMessage from '~/components/error-message/error-message';
 import { FormInput, FormTextArea } from '~/components/form';
 import HeadingAndIllustration from '~/components/heading-and-illustration/heading-and-illustration';
 import LocalTime from '~/components/local-time/local-time';
+import { emailConstants } from '~/constants/email-constants';
 import { getEmailClientSideError } from '~/helpers/form-validation/fields-validation';
+import { getHCaptchaClientSideError } from '~/helpers/form-validation/fields-validation/hcaptcha-validation';
 import { FormValidationContext } from '~/helpers/form-validation/form-validation-context';
 import { useFormValidation } from '~/helpers/form-validation/use-form-validation';
+import { useRootLoaderData } from '~/utils/use-match-loader-data';
 import {
   action,
   FieldName,
@@ -23,31 +29,60 @@ export { action };
 // TODO: Add captcha
 const Contact: FC = () => {
   const actionData = useActionData<typeof action>();
+  const { ENV } = useRootLoaderData();
+  const [
+    previousMessageSentSuccessfullyTs,
+    setPreviousMessageSentSuccessfullyTs,
+  ] = useState(actionData?.payload?.messageSentSuccessfullyTs);
 
-  const { formValidationContextValue, formEventHandlers, reset, isSubmitted } =
-    useFormValidation<FieldName>({
-      serverSideErrors: actionData?.fieldErrors,
-      validationRules: {
-        email: getEmailClientSideError,
-        name: getNameError,
-        subject: getSubjectError,
-        message: getMessageError,
-      },
-    });
+  const {
+    formValidationContextValue,
+    formEventHandlers,
+    reset,
+    isSubmitted,
+    errors,
+    clearError,
+  } = useFormValidation<FieldName>({
+    serverSideErrors: actionData?.fieldErrors,
+    validationRules: {
+      email: getEmailClientSideError,
+      name: getNameError,
+      subject: getSubjectError,
+      message: getMessageError,
+      'h-captcha-response': getHCaptchaClientSideError,
+    },
+  });
 
   const formRef = useRef<HTMLFormElement>(null);
-
-  if (actionData?.payload?.messageSentSuccessfullyTs && isSubmitted) {
-    formRef?.current && reset(formRef.current);
-  }
-
+  const captchaRef = useRef<HCaptcha>(null);
   const messageSentCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    messageSentCardRef.current?.scrollIntoView({
-      behavior: 'smooth',
-    });
+    if (!actionData?.payload?.messageSentSuccessfullyTs) {
+      return () => {};
+    }
+
+    const timeout = setTimeout(() => {
+      messageSentCardRef.current?.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }, 200);
+
+    return () => clearTimeout(timeout);
   }, [actionData?.payload?.messageSentSuccessfullyTs]);
+
+  const transition = useTransition();
+
+  if (
+    actionData?.payload?.messageSentSuccessfullyTs !==
+    previousMessageSentSuccessfullyTs
+  ) {
+    formRef.current && reset(formRef.current);
+    captchaRef.current?.resetCaptcha();
+    setPreviousMessageSentSuccessfullyTs(
+      actionData?.payload?.messageSentSuccessfullyTs,
+    );
+  }
 
   return (
     <div>
@@ -63,7 +98,7 @@ const Contact: FC = () => {
             <a
               href='mailto:cristian@mccuna.com'
               className='text-indigo-500 hover:text-indigo-300'>
-              cristian@mccuna.com
+              {emailConstants.myEmail}
             </a>{' '}
             or use the below form to send me a message. I'll do my best to
             respond as soon as possible.
@@ -127,9 +162,29 @@ const Contact: FC = () => {
                       children: 'Message',
                     }}
                   />
+                  <div
+                    className={clsx(
+                      errors['h-captcha-response'] &&
+                        'border-2 border-red-500 rounded-md w-fit',
+                    )}>
+                    <HCaptcha
+                      sitekey={ENV.HCAPTCHA_SITE_KEY}
+                      onVerify={() => {
+                        clearError(FieldName.hCaptchaResponse);
+                      }}
+                      ref={captchaRef}
+                    />
+                  </div>
+                  {errors['h-captcha-response'] && (
+                    <ErrorMessage errorMessage={errors['h-captcha-response']} />
+                  )}
                 </Card.Body>
                 <Card.Actions>
-                  <PrimaryButton type='submit'>Send message</PrimaryButton>
+                  <PrimaryButton
+                    type='submit'
+                    disabled={transition.state === 'submitting'}>
+                    Send message
+                  </PrimaryButton>
                 </Card.Actions>
               </Card>
             </FormValidationContext.Provider>

@@ -30,6 +30,7 @@ export const useFormValidation = <TFormFieldKey extends string>({
   };
   formValidationContextValue: FormValidationContextType<TFormFieldKey>;
   reset: (form: HTMLFormElement) => void;
+  clearError: (field: keyof typeof validationRules) => void;
 } => {
   const emptyErrorsObject = useMemo(
     () => getEmptyErrorsObj<TFormFieldKey>(validationRules),
@@ -86,7 +87,6 @@ export const useFormValidation = <TFormFieldKey extends string>({
       {} as Errors<TFormFieldKey>,
     );
 
-
     if (!areTheSame(errors, newErrors)) {
       /* Update the errors state only if the new errors are different
        * from the current ones. Otherwise we'll just get redundant re-renders
@@ -131,6 +131,17 @@ export const useFormValidation = <TFormFieldKey extends string>({
     setIsSubmitted(false);
   };
 
+  const clearError = (field: keyof typeof validationRules): void => {
+    const otherErrors = Object.entries(errors).reduce((acc, [key, value]) => {
+      if (key !== field) {
+        acc[key as TFormFieldKey] = value as string;
+      }
+      return acc;
+    }, {} as Errors<TFormFieldKey>);
+
+    setErrors(otherErrors);
+  };
+
   return {
     errors,
     isSubmitted,
@@ -141,6 +152,7 @@ export const useFormValidation = <TFormFieldKey extends string>({
     },
     formValidationContextValue,
     reset,
+    clearError,
   };
 };
 
