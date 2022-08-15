@@ -5,7 +5,7 @@ import SocialLink from './social-link/social-link';
 
 const Footer: FC = () => {
   return (
-    <footer className='flex flex-col items-center gap-y-4 my-7 text-md text-slate-400'>
+    <footer className='flex flex-col items-center gap-y-4 mb-7 text-md text-slate-400'>
       <div className='flex gap-x-6'>
         <SocialLink icon={LinkedinIcon} href={externalLinks.linkedinProfile} />
         <SocialLink icon={GithubIcon} href={externalLinks.githubProfile} />
