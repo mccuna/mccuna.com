@@ -7,14 +7,12 @@ import XsScreenNavigation from './xs-screen-navigation';
 const TopNavigation: FC = () => {
   return (
     <nav className='h-20 flex justify-center items-center'>
-      <div className='basis-full flex justify-between px-4 lg:basis-5/6 xl:basis-4/6'>
-        <div className='flex items-center'>
-          <Link to={routeHrefs.home}>
-            <h1 className='text-slate-200 text-4xl underline-on-hover'>
-              mc cuna
-            </h1>
-          </Link>
-        </div>
+      <div className='basis-full flex justify-between items-center  px-4 lg:basis-5/6 xl:basis-4/6'>
+        <Link to={routeHrefs.home}>
+          <h1 className='text-slate-200 text-4xl underline-on-hover'>
+            mc cuna
+          </h1>
+        </Link>
         <LgScreenNavigation />
         <XsScreenNavigation />
       </div>

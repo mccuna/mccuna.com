@@ -10,7 +10,7 @@ const XsScreenNavigation: FC = () => {
   const closeDialog = () => setIsOpen(false);
 
   return (
-    <div className='lg:hidden'>
+    <div className='flex items-center lg:hidden'>
       {!isOpen && (
         <button type='button' onClick={() => setIsOpen(true)} className='px-2'>
           <MenuIcon className='h-8 w-8 text-slate-200' />
@@ -21,7 +21,7 @@ const XsScreenNavigation: FC = () => {
         <button
           type='button'
           onClick={closeDialog}
-          className='relative z-10 right-0  px-2'>
+          className='relative z-10 right-0 px-2'>
           <XIcon className='h-8 w-8 text-slate-200' />
         </button>
       )}
