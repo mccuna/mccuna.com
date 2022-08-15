@@ -1,3 +1,7 @@
+# Font
+
+Font used app wide: [ABeeZee](https://www.fontsquirrel.com/fonts/abeezee)
+
 # Colors
 
 ## Primary color
