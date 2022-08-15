@@ -1165,17 +1165,9 @@ html {
   pointer-events: none;
 }
 
-.disabled\:cursor-default:disabled {
-  cursor: default;
-}
-
 .disabled\:bg-indigo-300:disabled {
   --tw-bg-opacity: 1;
   background-color: rgb(165 180 252 / var(--tw-bg-opacity));
-}
-
-.disabled\:transition-none:disabled {
-  transition-property: none;
 }
 
 .group:focus-within .group-focus-within\:outline {
