@@ -1,5 +1,6 @@
+import { NavLink } from '@remix-run/react';
+import clsx from 'clsx';
 import { FC, PropsWithChildren } from 'react';
-import TopNavigationLink from '../top-navigation-link';
 
 type Props = {
   to: string;
@@ -11,9 +12,18 @@ const LgScreenNavigationLink: FC<PropsWithChildren<Props>> = ({
 }) => {
   return (
     <li>
-      <TopNavigationLink to={to} className='w-full py-3 underline-on-hover'>
+      <NavLink
+        to={to}
+        className={({ isActive }) =>
+          clsx(
+            'w-full px-6 py-3 text-xl underline-on-hover',
+            isActive
+              ? 'text-indigo-500 hover:text-indigo-300'
+              : 'text-slate-400 hover:text-slate-200',
+          )
+        }>
         {children}
-      </TopNavigationLink>
+      </NavLink>
     </li>
   );
 };
