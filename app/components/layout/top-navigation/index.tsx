@@ -12,7 +12,7 @@ const TopNavigation: FC = () => {
         <Link to={routeHrefs.home} className='flex gap-x-3 items-center'>
           {/* TODO: Convert logo to webp when final */}
           <img src={logo} className='h-10 w-10' />
-          <h1 className='text-slate-200 text-4xl underline-on-hover'>
+          <h1 className='text-slate-200 text-4xl underline-on-hover hover:text-slate-50'>
             mc cuna
           </h1>
         </Link>

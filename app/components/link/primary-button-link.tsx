@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { ButtonLink, ButtonLinkProps } from './button-link';
 
 export const PrimaryButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
-  ({ className, children, ...otherProps }, ref) => {
+  ({ className, ...otherProps }, ref) => {
     return (
       <ButtonLink
         className={clsx(
@@ -11,9 +11,8 @@ export const PrimaryButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
           className,
         )}
         ref={ref}
-        {...otherProps}>
-        {children}
-      </ButtonLink>
+        {...otherProps}
+      />
     );
   },
 );

@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { StyledButton, StyledButtonProps } from './styled-button';
 
 export const PrimaryButton = forwardRef<HTMLButtonElement, StyledButtonProps>(
-  ({ children, className, ...otherProps }, ref) => {
+  ({ className, ...otherProps }, ref) => {
     return (
       <StyledButton
         className={clsx(
@@ -11,9 +11,8 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, StyledButtonProps>(
           className,
         )}
         ref={ref}
-        {...otherProps}>
-        {children}
-      </StyledButton>
+        {...otherProps}
+      />
     );
   },
 );

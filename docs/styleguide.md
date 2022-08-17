@@ -13,10 +13,11 @@ Font used app wide: [ABeeZee](https://www.fontsquirrel.com/fonts/abeezee)
 
 ## Neutral colors
 
-- lightest: <code className='text-slate-200'>slate-200</code>
-- lighter: <code className='text-slate-400'>slate-400</code>
-- neutral: <code className='bg-slate-500'>slate-500</code>
-- darker: <code className='text-slate-700'>slate-700</code>
+- <code className='text-slate-50'>slate-50</code>
+- <code className='text-slate-200'>slate-200</code>
+- <code className='text-slate-400'>slate-400</code>
+- <code className='bg-slate-500'>slate-500</code>
+- <code className='text-slate-700'>slate-700</code>
 
 # Error color
 

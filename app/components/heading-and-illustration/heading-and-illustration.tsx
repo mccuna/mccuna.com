@@ -3,7 +3,7 @@ import { FC, ImgHTMLAttributes, ReactNode } from 'react';
 type Props = {
   title: string;
   subTitle: string;
-  altText?: string;
+  altText?: ReactNode;
   callToActionContent?: ReactNode;
   illustrationSrc: ImgHTMLAttributes<HTMLImageElement>['src'];
 };
@@ -22,7 +22,7 @@ const HeadingAndIllustration: FC<Props> = ({
         <h2 className='text-4xl text-slate-400'>{subTitle}</h2>
         {altText && <p className='text-xl text-slate-500'>{altText}</p>}
         {!!callToActionContent && (
-          <div className='flex justify-center mt-4 lg:justify-start'>
+          <div className='flex justify-center mt-4 gap-x-4 lg:justify-start'>
             {callToActionContent}
           </div>
         )}
