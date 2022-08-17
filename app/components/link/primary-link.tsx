@@ -6,7 +6,7 @@ export type PrimaryLinkProps = {
   hasLightBackground?: boolean;
 } & StyledLinkProps;
 
-const PrimaryLink = forwardRef<HTMLAnchorElement, PrimaryLinkProps>(
+export const PrimaryLink = forwardRef<HTMLAnchorElement, PrimaryLinkProps>(
   ({ className, hasLightBackground, ...otherProps }, ref) => {
     return (
       <StyledLink
@@ -23,4 +23,4 @@ const PrimaryLink = forwardRef<HTMLAnchorElement, PrimaryLinkProps>(
   },
 );
 
-export default PrimaryLink;
+PrimaryLink.displayName = 'PrimaryLink';

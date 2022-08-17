@@ -1,18 +1,54 @@
 import { Link, LinkProps } from '@remix-run/react';
 import clsx from 'clsx';
-import { forwardRef } from 'react';
+import { AnchorHTMLAttributes, forwardRef } from 'react';
 
-export type StyledLinkProps = {} & LinkProps;
+export type ExternalStyledLinkProps = {
+  isExternalLink: true;
+} & AnchorHTMLAttributes<HTMLAnchorElement>;
+
+export type InternalStyledLinkProps = {
+  isExternalLink?: undefined;
+} & LinkProps;
+
+export type StyledLinkProps = ExternalStyledLinkProps | InternalStyledLinkProps;
 
 export const StyledLink = forwardRef<HTMLAnchorElement, StyledLinkProps>(
-  ({ className, children, ...otherProps }, ref) => {
+  (props, ref) => {
+    const className = clsx(props.className, 'underline-on-hover');
+
+    if (areExternalLinkProps(props)) {
+      const {
+        className: _, // ignore, already set above
+        children,
+        target: customTarget,
+        ...otherProps
+      } = props;
+      return (
+        <a
+          className={className}
+          ref={ref}
+          target={customTarget || '_blank'}
+          {...otherProps}>
+          {children}
+        </a>
+      );
+    }
+    const {
+      className: _, // ignore, already set above
+      children,
+      ...otherProps
+    } = props;
+
     return (
-      <Link
-        className={clsx('underline-on-hover', className)}
-        ref={ref}
-        {...otherProps}>
+      <Link className={className} ref={ref} {...otherProps}>
         {children}
       </Link>
     );
   },
 );
+
+const areExternalLinkProps = (
+  props: StyledLinkProps,
+): props is ExternalStyledLinkProps => {
+  return props.isExternalLink === true;
+};

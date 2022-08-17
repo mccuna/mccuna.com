@@ -12,8 +12,7 @@ import {
 import { FC, PropsWithChildren, StrictMode, useEffect } from 'react';
 import HeadingAndIllustration from './components/heading-and-illustration/heading-and-illustration';
 import Layout from './components/layout/layout';
-import { PrimaryButtonLink } from './components/link';
-import PrimaryLink from './components/link/primary-link';
+import { PrimaryButtonLink, PrimaryLink } from './components/link';
 import { externalLinks } from './constants/external-links';
 import { routeHrefs } from './constants/routes-hrefs';
 import { loader } from './root.loader';
