@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { SecondaryLink } from '~/components/link';
 import { ExperienceEntry } from '~/types/experience-entry';
 import ExperienceEntryLabel from './experience-entry-label';
 
@@ -24,9 +25,9 @@ const CompanyInfo: FC<Props> = ({ company }) => {
       {company?.websiteHref && (
         <div>
           <ExperienceEntryLabel>Website:</ExperienceEntryLabel>{' '}
-          <span className='text-indigo-300 cursor-pointer underline-on-hover'>
-            {company?.websiteHref}
-          </span>
+          <SecondaryLink isExternalLink href={company.websiteHref}>
+            {company.websiteHref}
+          </SecondaryLink>
         </div>
       )}
     </div>
