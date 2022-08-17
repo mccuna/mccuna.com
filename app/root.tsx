@@ -9,11 +9,12 @@ import {
   useLoaderData,
   useLocation,
 } from '@remix-run/react';
-import { FC, PropsWithChildren, StrictMode } from 'react';
+import { FC, PropsWithChildren, StrictMode, useEffect } from 'react';
 import HeadingAndIllustration from './components/heading-and-illustration/heading-and-illustration';
 import Layout from './components/layout/layout';
 import { PrimaryButtonLink } from './components/link';
 import PrimaryLink from './components/link/primary-link';
+import { externalLinks } from './constants/external-links';
 import { routeHrefs } from './constants/routes-hrefs';
 import { loader } from './root.loader';
 import { ErrorBoundaryProps } from './types/error-boundary-props';
@@ -47,6 +48,13 @@ const Document: FC<PropsWithChildren> = ({ children }) => {
 export default function App() {
   const loaderData = useLoaderData<typeof loader>();
 
+  useEffect(() => {
+    console.log(
+      `%cHey, if you're curious about how the site is built, it's open-source. 
+Check it here: ${externalLinks.githubRepo}`,
+      'color:#6366f1;font-size:1.2rem;font-family:ABeeZee',
+    );
+  }, []);
   return (
     <Document>
       <Layout>
