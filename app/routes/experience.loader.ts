@@ -6,6 +6,7 @@ export const loader = ({}: LoaderArgs) => {
     {
       refId: '1',
       name: 'Tokero Crypto Exchange',
+      image: 'tokero-logo.png',
       company: {
         key: 'tokero',
         name: 'Tokero Crypto Exchange',
@@ -43,6 +44,7 @@ export const loader = ({}: LoaderArgs) => {
     {
       refId: '2',
       name: 'Client via Digitall',
+      image: 'digitall-logo.svg',
       nda: true,
       company: {
         key: 'digitall',
@@ -78,6 +80,7 @@ export const loader = ({}: LoaderArgs) => {
     {
       refId: '3',
       name: 'Libra Internet Bank',
+      image: 'libra-internet-bank-logo.svg',
       company: {
         key: 'libra-internet-bank',
         name: 'Libra Internet Bank',
@@ -112,6 +115,7 @@ export const loader = ({}: LoaderArgs) => {
     {
       refId: '4',
       name: 'Client via Netrom',
+      image: 'netrom-logo.png',
       nda: true,
       company: {
         key: 'netrom',
@@ -148,6 +152,7 @@ export const loader = ({}: LoaderArgs) => {
     {
       refId: '5',
       name: 'Client via Netrom',
+      image: 'netrom-logo.png',
       nda: true,
       company: {
         key: 'netrom',
@@ -185,6 +190,7 @@ export const loader = ({}: LoaderArgs) => {
     {
       refId: '6',
       name: 'Client via Netrom',
+      image: 'netrom-logo.png',
       nda: true,
       company: {
         key: 'netrom',

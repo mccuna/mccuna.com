@@ -11,7 +11,7 @@ const EntrySummary: FC = () => {
   const experienceEntry = useExperienceEntry();
 
   return (
-    <Disclosure.Button className='text-left w-full xl:h-96 2xl:h-76'>
+    <Disclosure.Button className='text-left w-full'>
       {({ open }) => (
         <Card
           variant='primary'
