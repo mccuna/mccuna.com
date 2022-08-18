@@ -1,5 +1,4 @@
 export const emailConstants = {
-  myEmail: 'cristian@mccuna.com',
   contactMessage: {
     from: {
       email: 'noreply@mccuna.com',

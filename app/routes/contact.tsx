@@ -8,7 +8,7 @@ import ErrorMessage from '~/components/error-message/error-message';
 import { FormInput, FormTextArea } from '~/components/form';
 import HeadingAndIllustration from '~/components/heading-and-illustration/heading-and-illustration';
 import LocalTime from '~/components/local-time/local-time';
-import { emailConstants } from '~/constants/email-constants';
+import { personalConstants } from '~/constants/personal-constants';
 import { getEmailClientSideError } from '~/helpers/form-validation/fields-validation';
 import { getHCaptchaClientSideError } from '~/helpers/form-validation/fields-validation/hcaptcha-validation';
 import { FormValidationContext } from '~/helpers/form-validation/form-validation-context';
@@ -98,7 +98,7 @@ const Contact: FC = () => {
             <a
               href='mailto:cristian@mccuna.com'
               className='text-indigo-500 hover:text-indigo-300'>
-              {emailConstants.myEmail}
+              {personalConstants.myEmail}
             </a>{' '}
             or use the below form to send me a message. I'll do my best to
             respond as soon as possible.
