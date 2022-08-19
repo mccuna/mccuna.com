@@ -14,41 +14,32 @@ export type StyledLinkProps = ExternalStyledLinkProps | InternalStyledLinkProps;
 
 export const StyledLink = forwardRef<HTMLAnchorElement, StyledLinkProps>(
   (props, ref) => {
-    const className = clsx(props.className, 'underline-on-hover');
+    const { isExternalLink, className: customClassName, ...otherProps } = props;
 
-    if (areExternalLinkProps(props)) {
+    const className = clsx(customClassName, 'underline-on-hover');
+
+    if (isExternalLink) {
       const {
-        className: _, // ignore, already set above
         children,
         target: customTarget,
-        ...otherProps
-      } = props;
+        ...otherExternalLinkProps
+      } = otherProps;
       return (
         <a
           className={className}
           ref={ref}
           target={customTarget || '_blank'}
-          {...otherProps}>
+          {...otherExternalLinkProps}>
           {children}
         </a>
       );
     }
-    const {
-      className: _, // ignore, already set above
-      children,
-      ...otherProps
-    } = props;
+    const { children, ...otherInternalProps } = props;
 
     return (
-      <Link className={className} ref={ref} {...otherProps}>
+      <Link className={className} ref={ref} {...otherInternalProps}>
         {children}
       </Link>
     );
   },
 );
-
-const areExternalLinkProps = (
-  props: StyledLinkProps,
-): props is ExternalStyledLinkProps => {
-  return props.isExternalLink === true;
-};
