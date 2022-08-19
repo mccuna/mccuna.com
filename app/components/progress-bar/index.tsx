@@ -1,12 +1,14 @@
 import { Transition } from '@headlessui/react';
+import clsx from 'clsx';
 import { FC, Fragment, useEffect, useState } from 'react';
 
 type Props = {
   percentage: number;
   title?: string;
+  className?: string;
 };
 
-const ProgressBar: FC<Props> = ({ percentage, title }) => {
+const ProgressBar: FC<Props> = ({ percentage, title, className }) => {
   const [showAnimation, setShowAnimation] = useState(false);
   /* By default, without triggering a re-render, the animation will
    * fire only when navigating to the page. If the page is accessed
@@ -20,7 +22,10 @@ const ProgressBar: FC<Props> = ({ percentage, title }) => {
 
   return (
     <div
-      className='w-full h-3 border border-slate-700 bg-slate-500 rounded-full'
+      className={clsx(
+        className,
+        'w-full h-3 border border-slate-700 bg-slate-500 rounded-full',
+      )}
       title={title}>
       <Transition
         show={showAnimation}
