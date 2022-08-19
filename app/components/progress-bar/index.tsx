@@ -1,19 +1,38 @@
-import { FC } from 'react';
+import { Transition } from '@headlessui/react';
+import { FC, Fragment, useEffect, useState } from 'react';
 
 type Props = {
-  filledPercentage: number;
+  percentage: number;
   title?: string;
 };
 
-const ProgressBar: FC<Props> = ({ filledPercentage, title }) => {
+const ProgressBar: FC<Props> = ({ percentage, title }) => {
+  const [showAnimation, setShowAnimation] = useState(false);
+  /* By default, without triggering a re-render, the animation will
+   * fire only when navigating to the page. If the page is accessed
+   * directly by entering the URL in the browser address bar, the
+   * animation will not fire.
+   * Using an intermediary state solves this problem.
+   */
+  useEffect(() => {
+    setShowAnimation(true);
+  }, []);
+
   return (
     <div
       className='w-full h-3 border border-slate-700 bg-slate-500 rounded-full'
       title={title}>
-      <div
-        className={`h-full rounded-full bg-indigo-500`}
-        style={{ width: `${filledPercentage}%` }}
-      />
+      <Transition
+        show={showAnimation}
+        as={Fragment}
+        enter='transition-transform origin-left duration-1000 ease-in-out'
+        enterFrom='scale-x-0'
+        enterTo='scale-x-100'>
+        <div
+          className='h-full rounded-full bg-indigo-500'
+          style={{ width: `${percentage}%` }}
+        />
+      </Transition>
     </div>
   );
 };

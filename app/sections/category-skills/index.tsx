@@ -19,7 +19,7 @@ const CategorySkills: FC<Props> = ({ category, skills, className }) => {
             <div className='flex flex-col justify-between'>
               {skill.name}
               <ProgressBar
-                filledPercentage={getProgressBarFillForLevel(skill.level)}
+                percentage={getProgressBarFillForLevel(skill.level)}
                 title={skill.level}
               />
             </div>
