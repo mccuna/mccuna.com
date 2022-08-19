@@ -21,12 +21,11 @@ const Experience: FC = () => {
       />
       <div className='flex flex-col gap-y-10'>
         {experienceEntries.map((experienceEntry) => (
-          <div className='group flex gap-x-10 odd:flex-row even:flex-row-reverse'>
+          <div
+            key={experienceEntry.refId}
+            className='group flex gap-x-10 odd:flex-row even:flex-row-reverse'>
             <div className='xl:w-1/2'>
-              <ExperienceEntryCard
-                key={experienceEntry.refId}
-                experienceEntry={experienceEntry}
-              />
+              <ExperienceEntryCard experienceEntry={experienceEntry} />
             </div>
             <div className='hidden group-last:!hidden group-odd:xl:flex w-1/2 flex-col xl:justify-end xl:items-start'>
               <ExperienceArrowLeft />
