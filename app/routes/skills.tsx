@@ -16,14 +16,9 @@ const Skills = () => {
         subTitle='Check below my skills'
         illustrationSrc={skillsIllustration}
       />
-      <div className='flex justify-between grow gap-x-8'>
+      <div className='grid grid-cols-2 gap-x-8'>
         {Object.entries(skillsPerCategory).map(([category, skills]) => (
-          <CategorySkills
-            key={category}
-            category={category}
-            skills={skills}
-            className='basis-1/3'
-          />
+          <CategorySkills key={category} category={category} skills={skills} />
         ))}
       </div>
       {/* TODO: Add favorite tech stack*/}

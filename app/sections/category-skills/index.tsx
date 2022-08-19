@@ -6,25 +6,26 @@ import { Skill } from '~/types/skill';
 type Props = {
   category: string;
   skills: Skill[];
-  className: string;
 };
 
-const CategorySkills: FC<Props> = ({ category, skills, className }) => {
+const CategorySkills: FC<Props> = ({ category, skills }) => {
   return (
-    <div className={className}>
+    <div>
       <h2 className='text-lg text-slate-400 my-2'>{category}</h2>
       <Card className='divide-y divide-slate-800'>
-        {skills.map((skill) => (
-          <div key={skill.name} className='py-3 first:pt-0 last:pb-0'>
-            <div className='flex flex-col justify-between'>
-              {skill.name}
-              <ProgressBar
-                percentage={getProgressBarFillForLevel(skill.level)}
-                title={skill.level}
-              />
+        {skills
+          .sort((firstEl, secondEl) => firstEl.orderIndex - secondEl.orderIndex)
+          .map((skill) => (
+            <div key={skill.name} className='py-3 first:pt-0 last:pb-0'>
+              <div className='flex flex-col justify-between'>
+                {skill.name}
+                <ProgressBar
+                  percentage={getProgressBarFillForLevel(skill.level)}
+                  title={skill.level}
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </Card>
     </div>
   );
