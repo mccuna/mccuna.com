@@ -31,6 +31,5 @@
 }
 
 .underline-on-hover:hover {
-  /* border-bottom: 0; */
   background-size: 100% 3px;
 }
