@@ -1,4 +1,4 @@
-import { MailersendMail } from './types/mailersend-mail';
+import { MailersendMail } from './mailersend-mail';
 
 export const sendEmail = async (mail: MailersendMail) => {
   const response = await fetch('https://api.mailersend.com/v1/email', {

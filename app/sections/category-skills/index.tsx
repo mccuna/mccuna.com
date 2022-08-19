@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Card from '~/components/card';
-import ProgressBar from '~/components/progress-bar/progress-bar';
+import ProgressBar from '~/components/progress-bar';
 import { Skill } from '~/types/skill';
 
 type Props = {

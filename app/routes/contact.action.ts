@@ -1,9 +1,12 @@
 import { ActionArgs, json } from '@remix-run/cloudflare';
 import { emailConstants } from '~/constants/email-constants';
-import { MailersendMail } from '~/helpers/email/types/mailersend-mail';
+import { MailersendMail } from '~/helpers/email/mailersend-mail';
 import { getEmailError } from '~/helpers/form-validation/fields-validation/email-validation.server';
 import { getHCaptchaError } from '~/helpers/form-validation/fields-validation/hcaptcha-validation.server';
-import { areFieldsValid, getActionDataFields } from '~/helpers/form/form-utils';
+import {
+  areFieldsValid,
+  getActionDataFields,
+} from '~/helpers/form-validation/form-utils';
 import { ActionData, FieldError, GetFieldsErrors } from '~/types/action-data';
 import { badRequest } from '~/utils/server-response-shorthand';
 

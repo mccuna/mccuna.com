@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
-import Footer from './footer/footer';
-import PageBody from './page-body/page-body';
+import Footer from './footer';
+import PageBody from './page-body';
 import TopNavigation from './top-navigation';
 
 const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {

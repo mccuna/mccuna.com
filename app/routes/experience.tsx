@@ -1,8 +1,8 @@
 import { useLoaderData } from '@remix-run/react';
 import { FC } from 'react';
-import HeadingAndIllustration from '~/components/heading-and-illustration/heading-and-illustration';
-import ExperienceArrowLeft from '~/sections/experience/experience-arrow-left/experience-arrow-left';
-import ExperienceArrowRight from '~/sections/experience/experience-arrow-right/experience-arrow-right';
+import HeadingAndIllustration from '~/components/heading-and-illustration';
+import ExperienceArrowLeft from '~/sections/experience/experience-arrow-left';
+import ExperienceArrowRight from '~/sections/experience/experience-arrow-right';
 import ExperienceEntryCard from '~/sections/experience/experience-entry-card';
 import { loader } from './experience.loader';
 import experienceIllustration from '/public/images/illustrations/experience.svg';

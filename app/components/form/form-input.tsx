@@ -1,9 +1,7 @@
 import clsx from 'clsx';
 import { FC, useId } from 'react';
 import { useFormValidationContext } from '~/helpers/form-validation/form-validation-context';
-import ErrorMessage, {
-  ErrorMessageProps,
-} from '../error-message/error-message';
+import ErrorMessage, { ErrorMessageProps } from '../error-message';
 
 import { Label, LabelProps } from './label';
 import { StyledInput, StyledInputProps } from './styled-input';

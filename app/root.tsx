@@ -10,8 +10,8 @@ import {
   useLocation,
 } from '@remix-run/react';
 import { FC, PropsWithChildren, StrictMode, useEffect } from 'react';
-import HeadingAndIllustration from './components/heading-and-illustration/heading-and-illustration';
-import Layout from './components/layout/layout';
+import HeadingAndIllustration from './components/heading-and-illustration';
+import Layout from './components/layout';
 import { PrimaryButtonLink, PrimaryLink } from './components/link';
 import { externalLinks } from './constants/external-links';
 import { routeHrefs } from './constants/routes-hrefs';

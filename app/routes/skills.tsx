@@ -1,6 +1,6 @@
 import { useLoaderData } from '@remix-run/react';
-import HeadingAndIllustration from '~/components/heading-and-illustration/heading-and-illustration';
-import CategorySkills from '~/sections/category-skills/category-skills';
+import HeadingAndIllustration from '~/components/heading-and-illustration';
+import CategorySkills from '~/sections/category-skills';
 import { loader } from './skills.loader';
 import skillsIllustration from '/public/images/illustrations/skills.svg';
 

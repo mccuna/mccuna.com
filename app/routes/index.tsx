@@ -1,4 +1,4 @@
-import HeadingAndIllustration from '~/components/heading-and-illustration/heading-and-illustration';
+import HeadingAndIllustration from '~/components/heading-and-illustration';
 import { PrimaryButtonLink } from '~/components/link';
 import { routeHrefs } from '~/constants/routes-hrefs';
 import homeIllustration from '/public/images/illustrations/home.svg';
