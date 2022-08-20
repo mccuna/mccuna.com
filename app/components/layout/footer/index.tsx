@@ -4,6 +4,7 @@ import { externalLinks } from '~/constants/external-links';
 import SocialLink from './social-link';
 
 const Footer: FC = () => {
+  // TODO: Add build version
   return (
     <footer className='flex flex-col items-center gap-y-4 mb-7 text-md text-slate-400'>
       <div className='flex gap-x-6'>
