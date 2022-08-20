@@ -5,4 +5,5 @@ export * from './chevron-right-icon';
 export * from './github-icon';
 export * from './linkedin-icon';
 export * from './menu-icon';
+export * from './question-mark-circle-icon';
 export * from './x-icon';
