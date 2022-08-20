@@ -9,6 +9,7 @@ export const links: LinksFunction = () => {
       as: 'font',
       href: '/fonts/ABeeZee-Regular.woff2',
       type: 'font/woff2',
+      crossOrigin: 'anonymous',
     },
     {
       rel: 'stylesheet',
