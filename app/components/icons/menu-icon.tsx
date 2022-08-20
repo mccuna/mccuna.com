@@ -6,7 +6,7 @@ type Props = {
 };
 
 export const MenuIcon: FC<Props> = ({ className }) => {
-  // hero icon outline menu
+  // heroicons/outline/menu
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

@@ -4,8 +4,8 @@ type Props = {
   className?: string;
 };
 
-const ChevronRight: FC<Props> = ({ className }) => {
-  // heroicons/solid/chevron-left
+export const ChevronRightIcon: FC<Props> = ({ className }) => {
+  // heroicons/outline/chevron-left
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -18,5 +18,3 @@ const ChevronRight: FC<Props> = ({ className }) => {
     </svg>
   );
 };
-
-export default ChevronRight;

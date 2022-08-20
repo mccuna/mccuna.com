@@ -2,8 +2,7 @@ import { Disclosure } from '@headlessui/react';
 import clsx from 'clsx';
 import { FC } from 'react';
 import Card from '~/components/card';
-import ChevronDoubleDown from '~/components/icons/chevron-double-down';
-import ChevronDoubleUp from '~/components/icons/chevron-double-up';
+import { ChevronDoubleDownIcon, ChevronDoubleUpIcon } from '~/components/icons';
 import { useExperienceEntry } from '../experience-entry-context';
 import NameRoleAndPeriod from './name-role-and-period';
 
@@ -34,9 +33,9 @@ const EntrySummary: FC = () => {
           </div>
           <div className='flex justify-center text-slate-200  group-hover:animate-bounce'>
             {!open ? (
-              <ChevronDoubleDown className='h-6 w-6' />
+              <ChevronDoubleDownIcon className='h-6 w-6' />
             ) : (
-              <ChevronDoubleUp className='h-6 w-6' />
+              <ChevronDoubleUpIcon className='h-6 w-6' />
             )}
           </div>
         </Card>

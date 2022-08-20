@@ -4,7 +4,7 @@ type Props = {
   className?: string;
 };
 
-const ChevronDoubleUp: FC<Props> = ({ className }) => {
+export const ChevronDoubleUpIcon: FC<Props> = ({ className }) => {
   // heroicons/solid/chevron-double-up
   return (
     <svg
@@ -20,5 +20,3 @@ const ChevronDoubleUp: FC<Props> = ({ className }) => {
     </svg>
   );
 };
-
-export default ChevronDoubleUp;
