@@ -24,7 +24,7 @@ const ProgressBar: FC<Props> = ({ percentage, title, className }) => {
     <div
       className={clsx(
         className,
-        'w-full h-3 border border-slate-700 bg-slate-500 rounded-full',
+        'w-full h-3 border border-slate-700 bg-slate-200 rounded-full',
       )}
       title={title}>
       <Transition
