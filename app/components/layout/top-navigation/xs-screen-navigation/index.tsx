@@ -2,6 +2,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { FC, Fragment, useState } from 'react';
 import { MenuIcon, XIcon } from '~/components/icons';
 import { routeHrefs } from '~/constants/routes-hrefs';
+import XsScreenLinksMenu from './xs-screen-links-menu';
 import XsScreenNavigationLink from './xs-screen-navigation-link';
 
 const XsScreenNavigation: FC = () => {
@@ -48,7 +49,7 @@ const XsScreenNavigation: FC = () => {
               leaveFrom='opacity-100 scale-100'
               leaveTo='opacity-0 scale-95'>
               <Dialog.Panel>
-                <div className='flex flex-col'>
+                <ul className='flex flex-col'>
                   <XsScreenNavigationLink
                     to={routeHrefs.home}
                     onClick={closeDialog}>
@@ -74,7 +75,7 @@ const XsScreenNavigation: FC = () => {
                     onClick={closeDialog}>
                     Contact
                   </XsScreenNavigationLink>
-                </div>
+                </ul>
               </Dialog.Panel>
             </Transition.Child>
           </div>

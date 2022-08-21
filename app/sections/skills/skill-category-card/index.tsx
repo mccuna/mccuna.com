@@ -25,7 +25,6 @@ const SkillCategoryCard: FC<PropsWithChildren<Props>> = ({
         <Card.Body className='flex flex-col gap-y-4'>
           <p>{description}</p>
           <hr className='w-full h border-slate-900' />
-
           {children}
         </Card.Body>
       </Card>
