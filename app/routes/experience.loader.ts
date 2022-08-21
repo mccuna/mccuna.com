@@ -26,6 +26,7 @@ export const loader = () => {
         'Architected and led the implementation of NextJS app that acted as both, the frontend app and the gateway to the backend API.',
         'Designed from scratch and led the development of a loosely coupled .Net Core back-end using Nuget packages and multiple APIs',
         'Introduced React and NextJS to the other teammates',
+        'Held technical interviews for new team members',
       ],
       skillsNames: [
         'NextJS',

@@ -28,7 +28,7 @@ export { loader };
 const Document: FC<PropsWithChildren> = ({ children }) => {
   return (
     <StrictMode>
-      <html lang='en' className='scroll-smooth'>
+      <html lang='en' className='scroll-smooth antialiased'>
         <head>
           <Meta />
           <Links />
