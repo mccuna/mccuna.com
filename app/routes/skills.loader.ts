@@ -88,9 +88,21 @@ export const loader = ({}: LoaderArgs) => {
     }
     acc[skill.category].push(skill);
     return acc;
-  }, {} as { [category: string]: Skill[] });
+  }, {} as Record<Skill['category'], Skill[]>);
 
-  return json(skillsPerCategory, {
+  const sortedSkillsPerCategoryEntries = Object.entries(skillsPerCategory).map(
+    ([category, skills]) => {
+      return [
+        category as Skill['category'],
+        skills.sort((a, b) => a.orderIndex - b.orderIndex),
+      ];
+    },
+  );
+
+  const sortedSkillsPerCategory: Record<Skill['category'], Skill[]> =
+    Object.fromEntries(sortedSkillsPerCategoryEntries);
+
+  return json(sortedSkillsPerCategory, {
     status: 200,
   });
 };
