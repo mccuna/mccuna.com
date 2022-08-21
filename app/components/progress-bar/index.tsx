@@ -1,6 +1,7 @@
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { FC, Fragment, useEffect, useState } from 'react';
+import { FC, Fragment, useEffect, useRef, useState } from 'react';
+import { useIsInViewport } from '~/utils/use-is-in-viewport';
 
 type Props = {
   percentage: number;
@@ -10,6 +11,8 @@ type Props = {
 
 const ProgressBar: FC<Props> = ({ percentage, title, className }) => {
   const [showAnimation, setShowAnimation] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const { isInViewport, observer } = useIsInViewport(ref);
   /* By default, without triggering a re-render, the animation will
    * fire only when navigating to the page. If the page is accessed
    * directly by entering the URL in the browser address bar, the
@@ -17,8 +20,14 @@ const ProgressBar: FC<Props> = ({ percentage, title, className }) => {
    * Using an intermediary state solves this problem.
    */
   useEffect(() => {
-    setShowAnimation(true);
-  }, []);
+    if (isInViewport) {
+      setShowAnimation(true);
+      /* We only care about the moment the progress
+       * bar enter the viewport.
+       */
+      observer?.disconnect();
+    }
+  }, [isInViewport]);
 
   return (
     <div
@@ -26,7 +35,8 @@ const ProgressBar: FC<Props> = ({ percentage, title, className }) => {
         className,
         'w-full h-3 border border-slate-700 bg-slate-200 rounded-full',
       )}
-      title={title}>
+      title={title}
+      ref={ref}>
       <Transition
         show={showAnimation}
         as={Fragment}
