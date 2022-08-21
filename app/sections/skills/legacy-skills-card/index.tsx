@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import Card from '~/components/card';
 import { Skill } from '~/types';
 import SkillCategoryCard from '../skill-category-card';
 import SkillLevel from '../skill-level';
@@ -12,14 +11,14 @@ const LegacySkillsCard: FC<Props> = ({ skills }) => {
   const category: Skill['category'] = 'legacy';
 
   return (
-    <SkillCategoryCard category={category}>
-      <Card>
-        <Card.Body className='flex flex-col divide-y divide-slate-900'>
-          {skills.map((skill) => (
-            <SkillLevel key={skill.name} skill={skill} />
-          ))}
-        </Card.Body>
-      </Card>
+    <SkillCategoryCard
+      category={category}
+      description="Skills that I've accumulated over the years and I'm not looking to further improve or work with in the future">
+      <div className='flex flex-col divide-y divide-slate-900'>
+        {skills.map((skill) => (
+          <SkillLevel key={skill.name} skill={skill} />
+        ))}
+      </div>
     </SkillCategoryCard>
   );
 };

@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import Card from '~/components/card';
 import { Skill } from '~/types';
 import SkillCategoryCard from '../skill-category-card';
 import SkillLevel from '../skill-level';
@@ -27,20 +26,21 @@ const PrimarySkillsCard: FC<Props> = ({ skills, className }) => {
   }, [] as Skill[][]);
 
   return (
-    <SkillCategoryCard category={category} className={className}>
-      <Card>
-        <Card.Body className='flex flex-col divide-slate-900 lg:flex-row lg:divide-x'>
-          {skillsChunks.map((skillChunk, index) => (
-            <div
-              key={index}
-              className='grow divide-y divide-slate-900 lg:px-4 lg:first:pl-0 lg:last:pr-0'>
-              {skillChunk.map((skill) => (
-                <SkillLevel key={skill.name} skill={skill} />
-              ))}
-            </div>
-          ))}
-        </Card.Body>
-      </Card>
+    <SkillCategoryCard
+      category={category}
+      description="Skills that I'm further improving and I'm looking forward to working with in the future"
+      className={className}>
+      <div className='flex flex-col divide-slate-900 lg:flex-row lg:divide-x'>
+        {skillsChunks.map((skillChunk, index) => (
+          <div
+            key={index}
+            className='grow divide-y divide-slate-900 lg:px-4 lg:first:pl-0 lg:last:pr-0'>
+            {skillChunk.map((skill) => (
+              <SkillLevel key={skill.name} skill={skill} />
+            ))}
+          </div>
+        ))}
+      </div>
     </SkillCategoryCard>
   );
 };

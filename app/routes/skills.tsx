@@ -1,7 +1,7 @@
 import { useLoaderData } from '@remix-run/react';
 import HeadingAndIllustration from '~/components/heading-and-illustration';
 import LegacySkillsCard from '~/sections/skills/legacy-skills-card';
-import PrimarySkillsCard from '~/sections/skills/priamry-skills-card';
+import PrimarySkillsCard from '~/sections/skills/primary-skills-card';
 import { loader } from './skills.loader';
 import skillsIllustration from '/public/images/illustrations/skills.svg';
 

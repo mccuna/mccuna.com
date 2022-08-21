@@ -1,39 +1,36 @@
 import clsx from 'clsx';
 import { FC, PropsWithChildren } from 'react';
-import { HelpTooltip } from '~/components/tooltip';
+import Card from '~/components/card';
 
 import { Skill } from '~/types/skill';
 
 type Props = {
   category: Skill['category'];
+  description: string;
   className?: string;
 };
 
 const SkillCategoryCard: FC<PropsWithChildren<Props>> = ({
   category,
+  description,
   children,
   className,
 }) => {
   return (
     <div className={clsx(className)}>
-      <div className='flex items-center gap-x-1'>
-        <h2 className='text-lg text-slate-400'>{category}</h2>
-        <HelpTooltip
-          iconClassName='w-6 h-6'
-          titleClassName='w-56 '
-          title={categoryTooltips[category]}
-        />
-      </div>
-      {children}
+      <Card>
+        <Card.Title className='text-2xl text-slate-200 capitalize'>
+          {category}
+        </Card.Title>
+        <Card.Body className='flex flex-col gap-y-4'>
+          <p>{description}</p>
+          <hr className='w-full h border-slate-900' />
+
+          {children}
+        </Card.Body>
+      </Card>
     </div>
   );
-};
-
-const categoryTooltips: Record<Skill['category'], string> = {
-  primary:
-    "Skills that I'm further improving and I'm looking forward to working with in the future",
-  legacy:
-    "Skills that I've accumulated over the years and I'm not looking to further improve or work with in the future",
 };
 
 export default SkillCategoryCard;
