@@ -30,9 +30,9 @@ const getProgressBarFillForLevel = (level: Skill['level']): number => {
     case 'novice':
       return 30;
     case 'intermediate':
-      return 60;
+      return 70;
     case 'expert':
-      return 90;
+      return 95;
     default:
       throw new Error(`Invalid level: ${level}`);
   }
