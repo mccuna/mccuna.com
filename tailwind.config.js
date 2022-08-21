@@ -15,6 +15,9 @@ module.exports = {
         108: '27rem',
         140: '30rem',
       },
+      translate: {
+        '1/8': '12.5%',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],

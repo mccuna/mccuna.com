@@ -166,6 +166,7 @@ const Contact: FC = () => {
                     className={clsx(
                       errors['h-captcha-response'] &&
                         'border-2 border-red-500 rounded-md w-fit',
+                      'scale-75 -translate-x-1/8 sm:scale-100 sm:translate-x-0',
                     )}>
                     <HCaptcha
                       sitekey={ENV.HCAPTCHA_SITE_KEY}
