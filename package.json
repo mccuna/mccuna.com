@@ -6,7 +6,7 @@
     "build:remix": "remix build",
     "build:css": "tailwindcss -m -i ./app/styles/global.css -o ./app/styles/tailwind.css",
     "clean": "rimraf build",
-    "deploy": "wrangler publish",
+    "deploy": "pnpm build && wrangler publish",
     "dev": "pnpm build:remix && pnpm concurrently pnpm:dev:* --kill-others-on-fail",
     "dev:css": "tailwindcss -w -i ./app/styles/global.css -o ./app/styles/tailwind.css",
     "dev:remix": "remix watch",
