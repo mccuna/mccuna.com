@@ -6,7 +6,6 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
-  useLoaderData,
   useLocation,
 } from '@remix-run/react';
 import { FC, PropsWithChildren, StrictMode, useEffect } from 'react';
@@ -45,8 +44,6 @@ const Document: FC<PropsWithChildren> = ({ children }) => {
 };
 
 export default function App() {
-  const loaderData = useLoaderData<typeof loader>();
-
   useEffect(() => {
     console.log(
       `%cHey, if you're curious about how the site is built, it's open-source. 
