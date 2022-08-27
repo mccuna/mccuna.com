@@ -8,6 +8,7 @@ import {
   useCatch,
   useLocation,
 } from '@remix-run/react';
+import * as Sentry from '@sentry/browser';
 import { FC, PropsWithChildren, StrictMode, useEffect } from 'react';
 import HeadingAndIllustration from './components/heading-and-illustration';
 import Layout from './components/layout';
@@ -43,7 +44,7 @@ const Document: FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-export default function App() {
+const App = () => {
   useEffect(() => {
     console.log(
       `%cHey, if you're curious about how the site is built, it's open-source. 
@@ -58,10 +59,15 @@ Check it here: ${externalLinks.githubRepo}`,
       </Layout>
     </Document>
   );
-}
+};
+
+export default App;
 
 export const ErrorBoundary: FC<ErrorBoundaryProps> = ({ error }) => {
-  // TODO: log the error
+  useEffect(() => {
+    Sentry.captureException(error);
+  }, [error]);
+
   return (
     <Document>
       <div className='min-h-screen flex justify-center items-center'>

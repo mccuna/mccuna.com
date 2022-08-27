@@ -1,6 +1,8 @@
 import HeadingAndIllustration from '~/components/heading-and-illustration';
 import aboutMeIllustration from '/public/images/illustrations/about-me.svg';
 
+export const loader = () => {};
+
 const AboutMe = () => {
   return (
     <div>
