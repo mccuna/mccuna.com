@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { ComponentPropsWithoutRef, forwardRef } from 'react';
 import { ButtonSize } from './types';
 
-export type StyledButtonProps = {
+export type StyledButtonProps = ComponentPropsWithoutRef<'button'> & {
   size?: ButtonSize;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+};
 
 export const StyledButton = forwardRef<HTMLButtonElement, StyledButtonProps>(
   ({ children, className, size: customSize, ...otherProps }, ref) => {

@@ -1,6 +1,6 @@
 import { Link, LinkProps } from '@remix-run/react';
 import clsx from 'clsx';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { LinkSize } from '../types';
 
 export type StyledButtonLinkProps = {

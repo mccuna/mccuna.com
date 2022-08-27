@@ -1,10 +1,10 @@
 import { Link, LinkProps } from '@remix-run/react';
 import clsx from 'clsx';
-import { AnchorHTMLAttributes, forwardRef } from 'react';
+import { ComponentPropsWithoutRef, forwardRef } from 'react';
 
-export type ExternalStyledLinkProps = {
+export type ExternalStyledLinkProps = ComponentPropsWithoutRef<'a'> & {
   isExternalLink: true;
-} & AnchorHTMLAttributes<HTMLAnchorElement>;
+};
 
 export type InternalStyledLinkProps = {
   isExternalLink?: undefined;
