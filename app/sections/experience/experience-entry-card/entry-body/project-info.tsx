@@ -33,6 +33,7 @@ const ProjectInfo: FC<Props> = ({ experienceEntry }) => {
         <ul className='list-disc'>
           {experienceEntry.accomplishments.map((accomplishment, index) => (
             //  The list items don't change so it's safe to use the index as a key
+            // eslint-disable-next-line react/no-array-index-key
             <li key={index} className='ml-5 py-1'>
               {accomplishment}
             </li>

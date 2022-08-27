@@ -5,9 +5,11 @@ import { hydrate } from 'react-dom';
 
 hydrate(<RemixBrowser />, document);
 
-Sentry.init({
-  dsn: DSN_URL,
-  integrations: [new BrowserTracing()],
-  tracesSampleRate: 1.0,
-  tunnel: '/logs',
-});
+if (process.env.NODE_ENV === 'production') {
+  Sentry.init({
+    dsn: DSN_URL,
+    integrations: [new BrowserTracing()],
+    tracesSampleRate: 1.0,
+    tunnel: '/logs',
+  });
+}

@@ -46,6 +46,7 @@ const Document: FC<PropsWithChildren> = ({ children }) => {
 
 const App = () => {
   useEffect(() => {
+    // eslint-disable-next-line no-console
     console.log(
       `%cHey, if you're curious about how the site is built, it's open-source. 
 Check it here: ${externalLinks.githubRepo}`,
@@ -65,7 +66,9 @@ export default App;
 
 export const ErrorBoundary: FC<ErrorBoundaryProps> = ({ error }) => {
   useEffect(() => {
-    Sentry.captureException(error);
+    if (process.env.NODE_ENV === 'production') {
+      Sentry.captureException(error);
+    }
   }, [error]);
 
   return (

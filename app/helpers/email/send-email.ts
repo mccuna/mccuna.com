@@ -11,9 +11,7 @@ export const sendEmail = async (mail: MailersendMail) => {
   });
 
   if (response.status !== 202) {
-    // TODO: log error
+    // TODO: test if this gets logged
     throw new Error('Email failed to send');
   }
-
-  return;
 };

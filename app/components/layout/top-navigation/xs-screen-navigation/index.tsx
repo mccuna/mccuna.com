@@ -2,7 +2,6 @@ import { Dialog, Transition } from '@headlessui/react';
 import { FC, Fragment, useState } from 'react';
 import { MenuIcon, XIcon } from '~/components/icons';
 import { routeHrefs } from '~/constants/routes-hrefs';
-import XsScreenLinksMenu from './xs-screen-links-menu';
 import XsScreenNavigationLink from './xs-screen-navigation-link';
 
 const XsScreenNavigation: FC = () => {

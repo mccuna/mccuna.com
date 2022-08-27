@@ -1,7 +1,6 @@
-import { json, LoaderArgs } from '@remix-run/cloudflare';
-import { UseDataFunctionReturn } from '@remix-run/react/dist/components';
+import { json } from '@remix-run/cloudflare';
 
-export const loader = ({}: LoaderArgs) => {
+export const loader = () => {
   return json({
     ENV: {
       HCAPTCHA_SITE_KEY,
@@ -9,4 +8,6 @@ export const loader = ({}: LoaderArgs) => {
   });
 };
 
-export type RootLoaderData = UseDataFunctionReturn<typeof loader>;
+export type RootLoaderData = Awaited<
+  ReturnType<ReturnType<typeof loader>['json']>
+>;

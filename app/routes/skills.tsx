@@ -28,7 +28,6 @@ const Skills = () => {
           </div>
         </div>
       </div>
-      {/* TODO: Add favorite tech stack*/}
     </div>
   );
 };

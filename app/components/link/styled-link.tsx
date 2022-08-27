@@ -22,6 +22,7 @@ export const StyledLink = forwardRef<HTMLAnchorElement, StyledLinkProps>(
       const {
         children,
         target: customTarget,
+        rel: customRel,
         ...otherExternalLinkProps
       } = otherProps;
       return (
@@ -29,6 +30,7 @@ export const StyledLink = forwardRef<HTMLAnchorElement, StyledLinkProps>(
           className={className}
           ref={ref}
           target={customTarget || '_blank'}
+          rel={customRel || 'noreferrer'}
           {...otherExternalLinkProps}>
           {children}
         </a>

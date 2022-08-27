@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { SecondaryLink } from '~/components/link';
 
 type Props = {
   icon: FC<{ className?: string }>;
@@ -7,9 +8,9 @@ type Props = {
 
 const SocialLink: FC<Props> = ({ icon: Icon, href }) => {
   return (
-    <a href={href} target='_blank'>
+    <SecondaryLink href={href} isExternalLink>
       <Icon className='h-10 w-10 fill-indigo-500 hover:fill-indigo-300' />
-    </a>
+    </SecondaryLink>
   );
 };
 

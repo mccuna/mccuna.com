@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
-import { StyledLink, StyledLinkProps } from '.';
+import { StyledLink, StyledLinkProps } from './styled-link';
 
 export type SecondaryLinkProps = {
   hasLightBackground?: boolean;

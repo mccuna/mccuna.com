@@ -21,11 +21,14 @@ const EntryBody: FC = () => {
           <Card
             variant='primary'
             className='cursor-pointer rounded-t-none pt-0 group-hover:bg-indigo-700 group-hover:border-indigo-700'>
-            <div className='flex flex-col gap-y-5' onClick={() => close()}>
+            <button
+              type='button'
+              className='flex flex-col gap-y-5 text-left'
+              onClick={() => close()}>
               <ProjectInfo experienceEntry={experienceEntry} />
               <hr className='text-slate-200' />
               <CompanyInfo company={experienceEntry.company} />
-            </div>
+            </button>
           </Card>
         )}
       </Disclosure.Panel>

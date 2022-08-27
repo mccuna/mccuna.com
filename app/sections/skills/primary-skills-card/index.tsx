@@ -17,6 +17,7 @@ const PrimarySkillsCard: FC<Props> = ({ skills, className }) => {
     const chunkIndex = Math.floor(index / chunkSize);
 
     if (!resultArray[chunkIndex]) {
+      // eslint-disable-next-line no-param-reassign
       resultArray[chunkIndex] = []; // start a new chunk
     }
 
@@ -33,6 +34,7 @@ const PrimarySkillsCard: FC<Props> = ({ skills, className }) => {
       <div className='flex flex-col divide-slate-900 lg:flex-row lg:divide-x'>
         {skillsChunks.map((skillChunk, index) => (
           <div
+            // eslint-disable-next-line react/no-array-index-key
             key={index}
             className='grow divide-y divide-slate-900 lg:px-4 lg:first:pl-0 lg:last:pr-0'>
             {skillChunk.map((skill) => (

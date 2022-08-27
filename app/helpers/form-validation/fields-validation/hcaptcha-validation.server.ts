@@ -6,7 +6,7 @@ export const getHCaptchaError = async (
   hcaptchaResponse: string,
 ): Promise<FieldError> => {
   const clientSideError = getHCaptchaClientSideError(hcaptchaResponse);
-  if (!!clientSideError) {
+  if (clientSideError) {
     return clientSideError;
   }
 

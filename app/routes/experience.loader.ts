@@ -1,7 +1,7 @@
-import { json, LoaderArgs } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import { ExperienceEntry } from '~/types/experience-entry';
 
-export const loader = ({}: LoaderArgs) => {
+export const loader = () => {
   const experienceEntries: ExperienceEntry[] = [
     {
       refId: '1',

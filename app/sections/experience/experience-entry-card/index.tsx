@@ -1,9 +1,6 @@
 import { Disclosure } from '@headlessui/react';
 import { FC, useMemo } from 'react';
-import {
-  ExperienceEntry,
-  ExperienceEntry as ExperienceEntryCard,
-} from '~/types/experience-entry';
+import { ExperienceEntry } from '~/types/experience-entry';
 import EntryBody from './entry-body';
 import EntrySummary from './entry-summary';
 import { ExperienceEntryContext } from './experience-entry-context';

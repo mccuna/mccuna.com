@@ -1,5 +1,6 @@
 import { ActionArgs, json } from '@remix-run/cloudflare';
 import { emailConstants } from '~/constants/email-constants';
+import { sendEmail } from '~/helpers/email';
 import { MailersendMail } from '~/helpers/email/mailersend-mail';
 import { getEmailError } from '~/helpers/form-validation/fields-validation/email-validation.server';
 import { getHCaptchaError } from '~/helpers/form-validation/fields-validation/hcaptcha-validation.server';
@@ -35,7 +36,7 @@ export const action = async ({ request }: ActionArgs) => {
     subject: actionData.fields.subject,
   };
 
-  // await sendEmail(mail);
+  await sendEmail(mail);
 
   actionData.payload = {
     messageSentSuccessfullyTs: Date.now(),

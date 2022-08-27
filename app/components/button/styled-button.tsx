@@ -1,9 +1,17 @@
 import clsx from 'clsx';
-import { ComponentPropsWithoutRef, forwardRef } from 'react';
+import {
+  ButtonHTMLAttributes,
+  ComponentPropsWithoutRef,
+  forwardRef,
+} from 'react';
 import { ButtonSize } from './types';
 
-export type StyledButtonProps = ComponentPropsWithoutRef<'button'> & {
+export type StyledButtonProps = Omit<
+  ComponentPropsWithoutRef<'button'>,
+  'type'
+> & {
   size?: ButtonSize;
+  type: Required<ButtonHTMLAttributes<HTMLButtonElement>['type']>;
 };
 
 export const StyledButton = forwardRef<HTMLButtonElement, StyledButtonProps>(
@@ -11,6 +19,8 @@ export const StyledButton = forwardRef<HTMLButtonElement, StyledButtonProps>(
     const size = customSize ?? 'default';
 
     return (
+      // The type prop is a required prop so it cannot be omitted
+      // eslint-disable-next-line react/button-has-type
       <button
         className={clsx(
           'cursor-pointer rounded-xl transition ease-in-out hover:scale-105',

@@ -1,7 +1,7 @@
-import { json, LoaderArgs } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import { Skill } from '~/types/skill';
 
-export const loader = ({}: LoaderArgs) => {
+export const loader = () => {
   const skills: Skill[] = [
     {
       name: 'Javascript',
@@ -91,10 +91,10 @@ export const loader = ({}: LoaderArgs) => {
   }, {} as Record<Skill['category'], Skill[]>);
 
   const sortedSkillsPerCategoryEntries = Object.entries(skillsPerCategory).map(
-    ([category, skills]) => {
+    ([category, categorySkills]) => {
       return [
         category as Skill['category'],
-        skills.sort((a, b) => a.orderIndex - b.orderIndex),
+        categorySkills.sort((a, b) => a.orderIndex - b.orderIndex),
       ];
     },
   );

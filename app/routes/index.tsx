@@ -12,7 +12,7 @@ const Index = () => {
     <div>
       <HeadingAndIllustration
         title='Mihai Cristian Cuna'
-        subTitle={`Software Developer`}
+        subTitle='Software Developer'
         altText={`For more than ${experienceYears} years I've been working on improving web applications and developing new ones from scratch using the latest technologies.`}
         callToActionContent={
           <PrimaryButtonLink to={routeHrefs.contact} size='large'>

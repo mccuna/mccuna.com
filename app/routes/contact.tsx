@@ -26,7 +26,6 @@ import contactIllustration from '/public/images/illustrations/contact.svg';
 export { action };
 
 // TODO: Add cypress test for happy flow
-// TODO: Add captcha
 const Contact: FC = () => {
   const actionData = useActionData<typeof action>();
   const { ENV } = useRootLoaderData();
@@ -39,7 +38,6 @@ const Contact: FC = () => {
     formValidationContextValue,
     formEventHandlers,
     reset,
-    isSubmitted,
     errors,
     clearError,
   } = useFormValidation<FieldName>({
@@ -77,7 +75,10 @@ const Contact: FC = () => {
     actionData?.payload?.messageSentSuccessfullyTs !==
     previousMessageSentSuccessfullyTs
   ) {
-    formRef.current && reset(formRef.current);
+    if (formRef.current) {
+      reset(formRef.current);
+    }
+
     captchaRef.current?.resetCaptcha();
     setPreviousMessageSentSuccessfullyTs(
       actionData?.payload?.messageSentSuccessfullyTs,

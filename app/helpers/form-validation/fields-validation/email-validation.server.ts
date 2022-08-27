@@ -13,11 +13,11 @@ export const getEmailError = async ({
   domainVerificationConfig,
 }: GetEmailErrorArgs): Promise<FieldError> => {
   const clientSideError = getEmailClientSideError(email);
-  if (!!clientSideError) {
+  if (clientSideError) {
     return clientSideError;
   }
 
-  if (!!domainVerificationConfig) {
+  if (domainVerificationConfig) {
     const verificationResult = await verifyEmail({
       email,
       apiKey: domainVerificationConfig.apiKey,

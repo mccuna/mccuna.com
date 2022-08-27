@@ -27,7 +27,7 @@ const ProgressBar: FC<Props> = ({ percentage, title, className }) => {
        */
       observer?.disconnect();
     }
-  }, [isInViewport]);
+  }, [isInViewport, observer]);
 
   return (
     <div
