@@ -23,6 +23,7 @@ import {
 } from './contact.action';
 import contactIllustration from '/public/images/illustrations/contact.svg';
 
+export { meta } from './contact.meta';
 export { action };
 
 // TODO: Add cypress test for happy flow

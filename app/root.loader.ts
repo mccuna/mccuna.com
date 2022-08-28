@@ -1,7 +1,11 @@
-import { json } from '@remix-run/cloudflare';
+import { json, LoaderArgs } from '@remix-run/cloudflare';
+import { getRequestOrigin } from './utils/request-utils';
 
-export const loader = () => {
+export const loader = ({ request }: LoaderArgs) => {
   return json({
+    requestDetails: {
+      origin: getRequestOrigin(request),
+    },
     ENV: {
       HCAPTCHA_SITE_KEY,
     },

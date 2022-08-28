@@ -3,6 +3,8 @@ import MyJourney from '~/sections/about-me/my-journey';
 import aboutMeIllustration from '/public/images/illustrations/about-me.svg';
 import meImg from '/public/images/me.webp';
 
+export { meta } from './about-me.meta';
+
 const AboutMe = () => {
   return (
     <div>

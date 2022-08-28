@@ -7,6 +7,7 @@ import ExperienceEntryCard from '~/sections/experience/experience-entry-card';
 import { loader } from './experience.loader';
 import experienceIllustration from '/public/images/illustrations/experience.svg';
 
+export { meta } from './experience.meta';
 export { loader };
 
 const Experience: FC = () => {

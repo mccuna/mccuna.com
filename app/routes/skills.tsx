@@ -5,6 +5,7 @@ import PrimarySkillsCard from '~/sections/skills/primary-skills-card';
 import { loader } from './skills.loader';
 import skillsIllustration from '/public/images/illustrations/skills.svg';
 
+export { meta } from './skills.meta';
 export { loader };
 
 const Skills = () => {
