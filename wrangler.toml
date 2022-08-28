@@ -9,7 +9,9 @@ compatibility_date = "2022-08-22"
 [site]
   bucket = "./public"
 
+[[rules]]
+  type = "ESModule"
+  globs = [ "**/*.js" ]
+
 [env.production]
 name = "mccuna-com"
-[env.production.vars]
-DSN_URL = "https://d0a8c8d83d0f431eba3183105694384e@o1322298.ingest.sentry.io/6685598"

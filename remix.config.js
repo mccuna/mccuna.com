@@ -14,6 +14,7 @@ module.exports = {
     '**/*.links.ts',
     '**/*.handle.ts',
   ],
+  serverDependenciesToBundle: ['faunadb'],
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // serverBuildPath: "build/index.js",

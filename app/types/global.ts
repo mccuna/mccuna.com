@@ -4,7 +4,8 @@ declare global {
   const MAILERSEND_API_KEY: string;
   const HCAPTCHA_SITE_KEY: string;
   const HCAPTCHA_SITE_SECRET: string;
-  const DSN_URL: string;
+  const FAUNA_SECRET: string;
+  const FAUNA_DOMAIN: string;
 }
 
 // workaround for "Augmentations for the global scope can only be directly nested in external modules or ambient module declarations"

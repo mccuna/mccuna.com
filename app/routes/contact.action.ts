@@ -13,6 +13,7 @@ import { badRequest } from '~/utils/server-response-shorthand';
 
 export const action = async ({ request }: ActionArgs) => {
   const fields = await getActionDataFields<FieldName>(request);
+
   const fieldErrors = await getFieldsErrors(fields);
 
   const actionData: FormActionData = {

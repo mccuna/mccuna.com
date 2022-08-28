@@ -1,3 +1,4 @@
+import { logError } from '~/utils/log-error.server';
 import { MailersendMail } from './mailersend-mail';
 
 export const sendEmail = async (mail: MailersendMail) => {
@@ -11,7 +12,9 @@ export const sendEmail = async (mail: MailersendMail) => {
   });
 
   if (response.status !== 202) {
-    // TODO: test if this gets logged
-    throw new Error('Email failed to send');
+    await logError({
+      statusCode: response.status,
+      message: await response.text(),
+    });
   }
 };

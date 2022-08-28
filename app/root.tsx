@@ -8,7 +8,6 @@ import {
   useCatch,
   useLocation,
 } from '@remix-run/react';
-import * as Sentry from '@sentry/browser';
 import { FC, PropsWithChildren, StrictMode, useEffect } from 'react';
 import HeadingAndIllustration from './components/heading-and-illustration';
 import Layout from './components/layout';
@@ -16,7 +15,7 @@ import { PrimaryButtonLink, PrimaryLink } from './components/link';
 import { externalLinks } from './constants/external-links';
 import { routeHrefs } from './constants/routes-hrefs';
 import { loader } from './root.loader';
-import { ErrorBoundaryProps } from './types/error-boundary-props';
+import { ErrorBoundaryProps, ErrorLog } from './types/error-related';
 import notFoundIllustration from '/public/images/illustrations/404.svg';
 import errorIllustration from '/public/images/illustrations/generic-error.svg';
 
@@ -65,11 +64,22 @@ Check it here: ${externalLinks.githubRepo}`,
 export default App;
 
 export const ErrorBoundary: FC<ErrorBoundaryProps> = ({ error }) => {
+  const { pathname, hash, search } = useLocation();
+
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
-      Sentry.captureException(error);
+      fetch('/logs', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: error.name,
+          message: error.message,
+          pathname,
+          hash,
+          search,
+        } as ErrorLog),
+      });
     }
-  }, [error]);
+  }, [error, hash, pathname, search]);
 
   return (
     <Document>

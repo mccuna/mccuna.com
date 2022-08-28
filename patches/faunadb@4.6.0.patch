@@ -1,0 +1,21 @@
+diff --git a/src/_http/index.js b/src/_http/index.js
+index e6eb86391ec879b361c4c074105dea1cfc790197..ee936559d223f810535e99e39a51fcf0f4dcbdf9 100644
+--- a/src/_http/index.js
++++ b/src/_http/index.js
+@@ -19,15 +19,7 @@ function HttpClient(options) {
+     options.port = isHttps ? 443 : 80
+   }
+ 
+-  // HTTP2 adapter is applicable only if it's NodeJS env and
+-  // no fetch API override provided (to preserve backward-compatibility).
+-  var useHttp2Adapter = !options.fetch && util.isNodeEnv() && isHttp2Supported()
+-
+-  this._adapter = useHttp2Adapter
+-    ? new (require('./http2Adapter'))({
+-        http2SessionIdleTime: options.http2SessionIdleTime,
+-      })
+-    : new (require('./fetchAdapter'))({
++  this._adapter = new (require('./fetchAdapter'))({
+         isHttps: isHttps,
+         fetch: options.fetch,
+         keepAlive: options.keepAlive,
