@@ -11,7 +11,7 @@ const Footer: FC = () => {
         <SocialLink icon={LinkedinIcon} href={externalLinks.linkedinProfile} />
         <SocialLink icon={GithubIcon} href={externalLinks.githubProfile} />
       </div>
-      <p>All rights reserved © mc cuna 2022</p>
+      <p>All rights reserved © mc cună 2022</p>
     </footer>
   );
 };

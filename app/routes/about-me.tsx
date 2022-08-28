@@ -7,14 +7,14 @@ const AboutMe = () => {
   return (
     <div>
       <HeadingAndIllustration
-        title="Hey, I'm Cristian Cuna"
+        title="Hey, I'm Cristian Cună"
         subTitle="I'm a full stack developer passionate about building and developing stuff always eager to learn new stuff."
         illustrationSrc={aboutMeIllustration}
       />
       <div className='flex gap-10'>
         <MyJourney />
         <div>
-          <img src={meImg} alt='Cristian Cuna' className='rounded-full' />
+          <img src={meImg} alt='Cristian Cună' className='rounded-full' />
         </div>
       </div>
     </div>

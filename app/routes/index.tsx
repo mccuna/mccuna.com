@@ -11,7 +11,7 @@ const Index = () => {
   return (
     <div>
       <HeadingAndIllustration
-        title='Mihai Cristian Cuna'
+        title='Mihai Cristian Cună'
         subTitle='Software Developer'
         altText={`For more than ${experienceYears} years I've been working on improving web applications and developing new ones from scratch using the latest technologies.`}
         callToActionContent={

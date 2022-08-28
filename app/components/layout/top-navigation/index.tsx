@@ -12,7 +12,7 @@ const TopNavigation: FC = () => {
         <Link to={routeHrefs.home} className='flex gap-x-3 items-center'>
           <img src={logo} alt='logo' className='h-10 w-10' />
           <h1 className='text-slate-200 text-4xl underline-on-hover hover:text-slate-50'>
-            mc cuna
+            mc cună
           </h1>
         </Link>
         <LgScreenNavigation />

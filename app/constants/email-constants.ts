@@ -5,7 +5,7 @@ export const emailConstants = {
     },
     to: {
       email: 'cristian@mccuna.com',
-      name: 'Cristian Cuna',
+      name: 'Cristian Cună',
     },
   },
 };

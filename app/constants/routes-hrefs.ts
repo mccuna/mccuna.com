@@ -4,5 +4,4 @@ export const routeHrefs = {
   aboutMe: '/about-me',
   experience: '/experience',
   contact: '/contact',
-  mcCunaComArchitecture: '/mc-cuna-com-architecture',
 };
