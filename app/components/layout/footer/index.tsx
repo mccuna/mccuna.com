@@ -8,8 +8,16 @@ const Footer: FC = () => {
   return (
     <footer className='flex flex-col items-center gap-y-4 mb-7 text-md text-slate-400'>
       <div className='flex gap-x-6'>
-        <SocialLink icon={LinkedinIcon} href={externalLinks.linkedinProfile} />
-        <SocialLink icon={GithubIcon} href={externalLinks.githubProfile} />
+        <SocialLink
+          icon={LinkedinIcon}
+          href={externalLinks.linkedinProfile}
+          ariaLabel='Linkedin profile'
+        />
+        <SocialLink
+          icon={GithubIcon}
+          href={externalLinks.githubProfile}
+          ariaLabel='Github profile'
+        />
       </div>
       <p>All rights reserved © mc cună 2022</p>
     </footer>

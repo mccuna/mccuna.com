@@ -12,7 +12,11 @@ const XsScreenNavigation: FC = () => {
   return (
     <div className='flex items-center lg:hidden'>
       {!isOpen && (
-        <button type='button' onClick={() => setIsOpen(true)} className='px-2'>
+        <button
+          type='button'
+          aria-label='Burger menu'
+          onClick={() => setIsOpen(true)}
+          className='px-2'>
           <MenuIcon className='h-8 w-8 text-slate-200' />
         </button>
       )}
