@@ -1,7 +1,9 @@
-import type { EntryContext } from '@remix-run/cloudflare';
+import { EntryContext } from '@remix-run/cloudflare';
 import { RemixServer } from '@remix-run/react';
 import { renderToString } from 'react-dom/server';
 import { customRoutes } from './custom-routes';
+import { removeTrailingSlash } from './utils/meta-utils';
+import { permanentRedirect } from './utils/server-response-shorthand';
 
 export default function handleRequest(
   request: Request,
@@ -9,8 +11,17 @@ export default function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext,
 ) {
+  /* The app doesn't use a trailing slash for URLs.
+   * If the request url contains a trailing slash
+   * permanently redirect to the version without it.
+   */
+  const requestUrl = new URL(request.url);
+  if (requestUrl.pathname !== '/' && requestUrl.pathname.endsWith('/')) {
+    return permanentRedirect(removeTrailingSlash(requestUrl.pathname));
+  }
+
   const customRoute = customRoutes.find(
-    (route) => route.pathname === new URL(request.url).pathname,
+    (route) => route.pathname === requestUrl.pathname,
   );
 
   if (customRoute) {
