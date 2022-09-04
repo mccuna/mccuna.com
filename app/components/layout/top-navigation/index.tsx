@@ -1,9 +1,9 @@
 import { Link } from '@remix-run/react';
 import { FC } from 'react';
 import { routeHrefs } from '~/constants/routes-hrefs';
+import { getImageCdnUrl } from '~/utils/cdn';
 import LgScreenNavigation from './lg-screen-navigation';
 import XsScreenNavigation from './xs-screen-navigation';
-import logo from '/public/images/logo.webp';
 
 const TopNavigation: FC = () => {
   return (
@@ -11,7 +11,10 @@ const TopNavigation: FC = () => {
       <div className='basis-full flex justify-between items-center  px-4 lg:basis-5/6 xl:basis-4/6'>
         <Link to={routeHrefs.home} className='flex gap-x-3 items-center'>
           <img
-            src={logo}
+            src={getImageCdnUrl({
+              imagePath: 'logo.webp',
+              variant: 'public',
+            })}
             alt='logo'
             className='h-10 w-10'
             height={40}

@@ -1,15 +1,15 @@
-import { FC, ImgHTMLAttributes, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 type Props = {
   title: string;
   subTitle: string;
   altText?: ReactNode;
   callToActionContent?: ReactNode;
-  illustrationSrc: ImgHTMLAttributes<HTMLImageElement>['src'];
+  illustrationCdnPath: string;
 };
 
 const HeadingAndIllustration: FC<Props> = ({
-  illustrationSrc,
+  illustrationCdnPath,
   title,
   subTitle,
   altText,
@@ -28,7 +28,7 @@ const HeadingAndIllustration: FC<Props> = ({
         )}
       </div>
       <img
-        src={illustrationSrc}
+        src={illustrationCdnPath}
         alt='Skills illustration'
         className='-order-1 w-full h-96 sm:w-11/12 md:h-140 lg:order-1 lg:w-1/2 xl:w-7/12'
       />

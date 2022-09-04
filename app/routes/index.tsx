@@ -1,7 +1,7 @@
 import HeadingAndIllustration from '~/components/heading-and-illustration';
 import { PrimaryButtonLink } from '~/components/link';
 import { routeHrefs } from '~/constants/routes-hrefs';
-import homeIllustration from '/public/images/illustrations/home.svg';
+import { getImageCdnUrl } from '~/utils/cdn';
 
 const Index = () => {
   const careerStartYear = 2016;
@@ -19,7 +19,10 @@ const Index = () => {
             Message me
           </PrimaryButtonLink>
         }
-        illustrationSrc={homeIllustration}
+        illustrationCdnPath={getImageCdnUrl({
+          imagePath: `illustrations/home.svg`,
+          variant: 'public',
+        })}
       />
     </div>
   );

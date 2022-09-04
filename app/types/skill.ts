@@ -3,5 +3,5 @@ export type Skill = {
   level: 'novice' | 'intermediate' | 'expert';
   category: 'primary' | 'legacy';
   orderIndex: number;
-  imageHref: string;
+  imagePath: string;
 };

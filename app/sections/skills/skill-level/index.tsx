@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import ProgressBar from '~/components/progress-bar';
 import { Skill } from '~/types';
+import { getImageCdnUrl } from '~/utils/cdn';
 
 type Props = {
   skill: Skill;
@@ -11,7 +12,10 @@ const SkillLevel: FC<Props> = ({ skill }) => {
     <div className='flex flex-col gap-y-2 p-3'>
       <div className='flex gap-x-3 items-center'>
         <img
-          src={`/images/skills/${skill.imageHref}`}
+          src={getImageCdnUrl({
+            imagePath: `skills/${skill.imagePath}`,
+            variant: 'public',
+          })}
           alt={`${skill.name} logo`}
         />
         {skill.name}

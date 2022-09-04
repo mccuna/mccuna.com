@@ -6,6 +6,13 @@ declare global {
   const HCAPTCHA_SITE_SECRET: string;
   const FAUNA_SECRET: string;
   const FAUNA_DOMAIN: string;
+
+  namespace NodeJS {
+    interface ProcessEnv {
+      [key: string]: string | undefined;
+      NODE_ENV?: 'development' | 'production' | 'test';
+    }
+  }
 }
 
 // workaround for "Augmentations for the global scope can only be directly nested in external modules or ambient module declarations"

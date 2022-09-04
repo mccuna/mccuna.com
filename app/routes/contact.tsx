@@ -13,6 +13,7 @@ import { getEmailClientSideError } from '~/helpers/form-validation/fields-valida
 import { getHCaptchaClientSideError } from '~/helpers/form-validation/fields-validation/hcaptcha-validation';
 import { FormValidationContext } from '~/helpers/form-validation/form-validation-context';
 import { useFormValidation } from '~/helpers/form-validation/use-form-validation';
+import { getImageCdnUrl } from '~/utils/cdn';
 import { useRootLoaderData } from '~/utils/use-match-loader-data';
 import {
   action,
@@ -21,7 +22,6 @@ import {
   getNameError,
   getSubjectError,
 } from './contact.action';
-import contactIllustration from '/public/images/illustrations/contact.svg';
 
 export { meta } from './contact.meta';
 export { action };
@@ -91,7 +91,10 @@ const Contact: FC = () => {
       <HeadingAndIllustration
         title='Want to get in touch?'
         subTitle='Send me a message'
-        illustrationSrc={contactIllustration}
+        illustrationCdnPath={getImageCdnUrl({
+          imagePath: `illustrations/contact.svg`,
+          variant: 'public',
+        })}
       />
       <div className='flex flex-col items-center py-10 text-slate-500'>
         <div>

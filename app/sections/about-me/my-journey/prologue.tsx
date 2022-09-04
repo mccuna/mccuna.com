@@ -1,6 +1,6 @@
 import { SecondaryLink } from '~/components/link';
 import { externalLinks, personalConstants } from '~/constants';
-import meImg from '/public/images/me.webp';
+import { getImageCdnUrl } from '~/utils/cdn';
 
 const Prologue = () => {
   const today = new Date();
@@ -13,7 +13,10 @@ const Prologue = () => {
     <div className='w-full flex flex-col items-center gap-12 2xl:flex-row 2xl:justify-center 2xl:gap-28'>
       <div>
         <img
-          src={meImg}
+          src={getImageCdnUrl({
+            imagePath: 'me.webp',
+            variant: 'public',
+          })}
           alt='Cristian Cună'
           className='rounded-full md:h-140 md:w-140'
         />

@@ -1,17 +1,26 @@
-name = "dev-mccuna-com"
-
-workers_dev = true
 main = "./build/index.js"
-
-# https://developers.cloudflare.com/workers/platform/compatibility-dates
-compatibility_date = "2022-08-22"
+compatibility_date = "2022-09-01"
 
 [site]
   bucket = "./public"
 
-[[rules]]
-  type = "ESModule"
-  globs = [ "**/*.js" ]
+[env.development]
+workers_dev = true
+name = "dev-mccuna-com"
+
+[env.development.vars]
+HCAPTCHA_SITE_KEY = "10000000-ffff-ffff-ffff-000000000001"
+
+[env.staging]
+workers_dev = true
+name = "staging-mccuna-com"
+
+[env.staging.vars]
+HCAPTCHA_SITE_KEY = "d1d7c3a9-ad03-470c-bc99-0ba9656f5cc0"
 
 [env.production]
 name = "mccuna-com"
+route = { pattern = 'https://mccuna.com/*', zone_id = "0c71b410fbbb650642aa7a7c251aa380" }
+
+[env.production.vars]
+HCAPTCHA_SITE_KEY = "d1d7c3a9-ad03-470c-bc99-0ba9656f5cc0"

@@ -16,8 +16,7 @@ import { externalLinks } from './constants/external-links';
 import { routeHrefs } from './constants/routes-hrefs';
 import { loader } from './root.loader';
 import { ErrorBoundaryProps, ErrorLog } from './types/error-related';
-import notFoundIllustration from '/public/images/illustrations/404.svg';
-import errorIllustration from '/public/images/illustrations/generic-error.svg';
+import { getImageCdnUrl } from './utils/cdn';
 
 export { handle } from './root.handle';
 export { links } from './root.links';
@@ -89,7 +88,10 @@ export const ErrorBoundary: FC<ErrorBoundaryProps> = ({ error }) => {
             title='Oops!'
             subTitle='A wild bug appears!'
             altText="This little guy got logged and I'm looking into it as soon as possible."
-            illustrationSrc={errorIllustration}
+            illustrationCdnPath={getImageCdnUrl({
+              imagePath: 'illustrations/generic-error.svg',
+              variant: 'public',
+            })}
             callToActionContent={
               <PrimaryButtonLink to={routeHrefs.home} size='large'>
                 Go home
@@ -126,7 +128,10 @@ export const CatchBoundary: FC = () => {
               might be that the content is the lost one...
             </>
           }
-          illustrationSrc={notFoundIllustration}
+          illustrationCdnPath={getImageCdnUrl({
+            imagePath: 'illustrations/404.svg',
+            variant: 'public',
+          })}
           callToActionContent={
             <PrimaryButtonLink to={routeHrefs.home} size='large'>
               Go home

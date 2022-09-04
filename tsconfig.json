@@ -13,8 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"],
-      "/public/*": ["./public/*"]
+      "~/*": ["./app/*"]
     },
     // There are multiple errors in the node_modules
     "skipLibCheck": true,

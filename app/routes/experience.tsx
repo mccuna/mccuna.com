@@ -4,8 +4,8 @@ import HeadingAndIllustration from '~/components/heading-and-illustration';
 import ExperienceArrowLeft from '~/sections/experience/experience-arrow-left';
 import ExperienceArrowRight from '~/sections/experience/experience-arrow-right';
 import ExperienceEntryCard from '~/sections/experience/experience-entry-card';
+import { getImageCdnUrl } from '~/utils/cdn';
 import { loader } from './experience.loader';
-import experienceIllustration from '/public/images/illustrations/experience.svg';
 
 export { meta } from './experience.meta';
 export { loader };
@@ -18,7 +18,10 @@ const Experience: FC = () => {
       <HeadingAndIllustration
         title='To what cool projects have I contributed?'
         subTitle="Here are the companies I've worked for"
-        illustrationSrc={experienceIllustration}
+        illustrationCdnPath={getImageCdnUrl({
+          imagePath: `illustrations/experience.svg`,
+          variant: 'public',
+        })}
       />
       <div className='flex flex-col gap-y-10'>
         {experienceEntries.map((experienceEntry) => (

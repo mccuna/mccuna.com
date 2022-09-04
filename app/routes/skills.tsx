@@ -2,8 +2,8 @@ import { useLoaderData } from '@remix-run/react';
 import HeadingAndIllustration from '~/components/heading-and-illustration';
 import LegacySkillsCard from '~/sections/skills/legacy-skills-card';
 import PrimarySkillsCard from '~/sections/skills/primary-skills-card';
+import { getImageCdnUrl } from '~/utils/cdn';
 import { loader } from './skills.loader';
-import skillsIllustration from '/public/images/illustrations/skills.svg';
 
 export { meta } from './skills.meta';
 export { loader };
@@ -16,7 +16,10 @@ const Skills = () => {
       <HeadingAndIllustration
         title='What technologies have I worked with?'
         subTitle='Check below my skills'
-        illustrationSrc={skillsIllustration}
+        illustrationCdnPath={getImageCdnUrl({
+          imagePath: `illustrations/skills.svg`,
+          variant: 'public',
+        })}
       />
       <div className='flex flex-col items-center gap-y-10'>
         <div className='flex flex-col w-full gap-y-10 md:w-2/3 lg:w-full  2xl:w-2/3'>

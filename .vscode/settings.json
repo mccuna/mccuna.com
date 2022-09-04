@@ -17,17 +17,21 @@
     "Kubernetes",
     "Mailersend",
     "maxage",
+    "mccună",
     "MEETCHOPRA",
     "microservices",
     "Mihai",
     "miniflare",
     "netrom",
+    "nextjs",
     "passcode",
     "pnpm",
     "sitekey",
     "tailwindcss",
     "Tokero",
-    "typecheck"
+    "typecheck",
+    "urlset",
+    "webp"
   ],
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
