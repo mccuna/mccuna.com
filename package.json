@@ -67,7 +67,7 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "pnpm@7.9.5",
+  "packageManager": "pnpm@7.10.0",
   "pnpm": {
     "patchedDependencies": {
       "faunadb@4.6.0": "patches/faunadb@4.6.0.patch"
