@@ -104,5 +104,12 @@ export const loader = () => {
 
   return json(sortedSkillsPerCategory, {
     status: 200,
+    headers: {
+      'Cache-Control': `public, max-age=${maxAge}, s-maxage=${sMaxAge}, stale-while-revalidate=${staleWhileRevalidate}`,
+    },
   });
 };
+
+const maxAge = 60 * 60; // 60 minutes
+const sMaxAge = 90 * 24 * 60 * 60; // 90 days
+const staleWhileRevalidate = 60; // 1 minute

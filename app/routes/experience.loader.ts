@@ -228,7 +228,7 @@ export const loader = () => {
 
   return json(experienceEntries, {
     headers: {
-      cacheControl: `public, max-age=${maxAge}, s-maxage=${sMaxAge}, stale-while-revalidate=${staleWhileRevalidate}`,
+      'Cache-Control': `public, max-age=${maxAge}, s-maxage=${sMaxAge}, stale-while-revalidate=${staleWhileRevalidate}`,
     },
   });
 };
