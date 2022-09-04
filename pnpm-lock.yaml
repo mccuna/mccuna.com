@@ -7,6 +7,7 @@ patchedDependencies:
 
 specifiers:
   '@cloudflare/workers-types': ^3.15.0
+  '@fontsource/abeezee': ^4.5.9
   '@hcaptcha/react-hcaptcha': ^1.4.4
   '@headlessui/react': ^1.6.6
   '@remix-run/cloudflare': ^1.7.0
@@ -49,6 +50,7 @@ specifiers:
   wrangler: ^2.0.28
 
 dependencies:
+  '@fontsource/abeezee': 4.5.9
   '@hcaptcha/react-hcaptcha': 1.4.4_biqbaboplfbrettd7655fr4n2y
   '@headlessui/react': 1.6.6_biqbaboplfbrettd7655fr4n2y
   '@remix-run/cloudflare': 1.7.0_dqh5lv4aaod3oif77qr566wpny
@@ -1476,6 +1478,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@fontsource/abeezee/4.5.9:
+    resolution: {integrity: sha512-J//IhGnZnKyCc3YHAxo3xIAgQunX4FXce4EWpsFKeip+vzhcXOeLRysfh/cd7rUfgPWhkkCx7fFBnfncfIGF7g==}
+    dev: false
 
   /@gar/promisify/1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
