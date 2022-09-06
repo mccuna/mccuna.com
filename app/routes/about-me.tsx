@@ -10,7 +10,7 @@ const AboutMe = () => {
     <div>
       <HeadingAndIllustration
         title="Hey, I'm Cristian Cună"
-        subTitle="I'm a full stack developer passionate about building and developing stuff always eager to learn new stuff."
+        subTitle="I'm a full stack developer passionate about building and developing stuff, always eager to learn new things."
         illustrationCdnPath={getImageCdnUrl({
           imagePath: `illustrations/about-me.svg`,
           variant: 'public',
