@@ -26,7 +26,8 @@
         "unnamedComponents": "arrow-function"
       }
     ],
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "no-restricted-syntax": "off"
   },
   "parserOptions": {
     "project": "tsconfig.json"

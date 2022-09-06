@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import fs, { Dirent } from 'fs';
 import fsPromises from 'fs/promises';
 import path from 'path';
@@ -54,6 +55,9 @@ export const syncImagesDirWithCloudflare = async ({
   );
 
   for (const directory of directories) {
+    /* Go through each folder 1 at a time to prevent sending too 
+    many requests to cloudflare */
+    // eslint-disable-next-line no-await-in-loop
     await syncImagesDirWithCloudflare({
       dirName: directory.name,
       parentPath: dirPath,
