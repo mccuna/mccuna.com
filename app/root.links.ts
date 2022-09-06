@@ -7,8 +7,10 @@ export const links: LinksFunction = () => {
   return [
     {
       rel: 'preload',
-      as: 'stylesheet',
+      as: 'style',
       href: abeezeeFontCss,
+      type: 'text/css',
+      crossOrigin: 'anonymous',
     },
     {
       rel: 'stylesheet',
