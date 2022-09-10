@@ -1,6 +1,8 @@
+import ChapterContainer from './chapter-container';
+
 const NetromSoftwareAcademy = () => {
   return (
-    <div className='prose prose-slate dark:prose-invert lg:prose-xl'>
+    <ChapterContainer>
       <h3>NetRom Software Academy</h3>
       <p>
         This changed in my 2nd year of faculty when I found out about Netrom's
@@ -49,7 +51,7 @@ const NetromSoftwareAcademy = () => {
         (both, professional experience & a salary were veeery welcomed by the 20
         years old me).
       </p>
-    </div>
+    </ChapterContainer>
   );
 };
 

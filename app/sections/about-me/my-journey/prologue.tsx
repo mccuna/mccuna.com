@@ -1,6 +1,7 @@
 import { SecondaryLink } from '~/components/link';
 import { externalLinks, personalConstants } from '~/constants';
 import { getImageCdnUrl } from '~/utils/cdn';
+import ChapterContainer from './chapter-container';
 
 const Prologue = () => {
   const today = new Date();
@@ -21,7 +22,7 @@ const Prologue = () => {
           className='rounded-full md:h-140 md:w-140'
         />
       </div>
-      <div className='prose prose-slate dark:prose-invert lg:prose-xl 2xl:max-w-xl'>
+      <ChapterContainer className='2xl:max-w-xl'>
         <h3>Prologue</h3>
         <p>
           I'm a {age} years old web developer born and living in Craiova Romania
@@ -41,7 +42,7 @@ const Prologue = () => {
           My programming journey started in high school with C++ algorithms.
           Back then I would have rather built fancy apps, but, in hindsight,
           this might have created a foundation for an upcoming software
-          developer career
+          developer career.
         </p>
         <p>
           The technology spectrum started expanding farther than C++ when I
@@ -49,7 +50,7 @@ const Prologue = () => {
           "click" for me (I wasn't much of a fan of C++). I've gone from Java to
           php and even to Python but none of them felt like "the one".
         </p>
-      </div>
+      </ChapterContainer>
     </div>
   );
 };

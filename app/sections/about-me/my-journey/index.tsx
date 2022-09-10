@@ -1,5 +1,6 @@
 import Digitall from './digitall';
 import LibraInternetBank from './libra-internet-bank';
+import LookingForward from './looking-forward';
 import Netrom from './netrom';
 import NetromSoftwareAcademy from './netrom-software-academy';
 import Prologue from './prologue';
@@ -14,6 +15,7 @@ const MyJourney = () => {
       <LibraInternetBank />
       <Digitall />
       <Tokero />
+      <LookingForward />
     </div>
   );
 };

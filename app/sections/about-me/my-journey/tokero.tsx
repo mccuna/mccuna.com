@@ -1,6 +1,8 @@
+import ChapterContainer from './chapter-container';
+
 const Tokero = () => {
   return (
-    <div className='prose prose-slate dark:prose-invert lg:prose-xl'>
+    <ChapterContainer>
       <h3>Tokero Crypto Exchange</h3>
       <p>
         I joined the Tokero team in the earliest stages of the rewrite and
@@ -23,14 +25,7 @@ const Tokero = () => {
         chance to be involved in many areas like marketing and accounting
         besides the development itself.
       </p>
-      <h3>Looking forward</h3>
-      <p>
-        In terms of frameworks and technologies, recently I've discovered Remix
-        and fell in love with it. Besides Remix, I've decided to also focus on
-        my Javascript-related skills from now on, "archiving" the .Net ones. So
-        yeah, this is my journey so far. Who knows what the future will bring?
-      </p>
-    </div>
+    </ChapterContainer>
   );
 };
 

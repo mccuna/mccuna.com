@@ -1,6 +1,8 @@
+import ChapterContainer from './chapter-container';
+
 const Digitall = () => {
   return (
-    <div className='prose prose-slate dark:prose-invert lg:prose-xl'>
+    <ChapterContainer>
       <h3>Digitall (ex Bulpros Consulting)</h3>
       <p>
         Being determined to build frontend apps I've made a job change once
@@ -38,7 +40,7 @@ const Digitall = () => {
         number of customers. Previously, the developer team consisted of only 1
         man, one of the co-founders.
       </p>
-    </div>
+    </ChapterContainer>
   );
 };
 

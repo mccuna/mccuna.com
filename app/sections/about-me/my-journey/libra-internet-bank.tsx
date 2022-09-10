@@ -1,9 +1,10 @@
 import { SecondaryLink } from '~/components/link';
 import { externalLinks } from '~/constants';
+import ChapterContainer from './chapter-container';
 
 const LibraInternetBank = () => {
   return (
-    <div className='prose prose-slate dark:prose-invert lg:prose-xl'>
+    <ChapterContainer>
       <h3>Libra Internet Bank</h3>
       <p>
         After 4 years of working on the same project, I felt I need to switch
@@ -32,7 +33,7 @@ const LibraInternetBank = () => {
         more so I've decided to make a job change that would allow me to focus
         on React.
       </p>
-    </div>
+    </ChapterContainer>
   );
 };
 

@@ -1,6 +1,8 @@
+import ChapterContainer from './chapter-container';
+
 const Netrom = () => {
   return (
-    <div className='prose prose-slate dark:prose-invert lg:prose-xl'>
+    <ChapterContainer>
       <h3>NetRom</h3>
       <p>
         For the first 3 months, I worked on some short-term projects within the
@@ -15,7 +17,7 @@ const Netrom = () => {
         The nearly 4 years that I've worked on this project saw me evolve from a
         junior developer that accidentally landed a job to a team leader.
       </p>
-    </div>
+    </ChapterContainer>
   );
 };
 
