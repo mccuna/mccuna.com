@@ -1,15 +1,20 @@
 import { FC, ReactNode } from 'react';
+import { CdnImage } from '../image/cdn-image';
 
 type Props = {
   title: string;
   subTitle: string;
   altText?: ReactNode;
   callToActionContent?: ReactNode;
-  illustrationCdnPath: string;
+  illustration: {
+    cdnPath: string;
+    width: number;
+    height: number;
+  };
 };
 
 const HeadingAndIllustration: FC<Props> = ({
-  illustrationCdnPath,
+  illustration,
   title,
   subTitle,
   altText,
@@ -17,7 +22,7 @@ const HeadingAndIllustration: FC<Props> = ({
 }) => {
   return (
     <div className='w-full flex-col flex items-center justify-center gap-y-12  mb-20 lg:flex-row lg:gap-x-20 xl:gap-x-24'>
-      <div className='flex flex-col gap-y-5 max-w-3xl'>
+      <div className='flex flex-col gap-y-5 lg:max-w-2xl'>
         <h1 className='text-5xl text-slate-200'>{title}</h1>
         <h2 className='text-4xl text-slate-400'>{subTitle}</h2>
         {altText && <p className='text-xl text-slate-500'>{altText}</p>}
@@ -27,10 +32,12 @@ const HeadingAndIllustration: FC<Props> = ({
           </div>
         )}
       </div>
-      <img
-        src={illustrationCdnPath}
+      <CdnImage
+        cdnPath={illustration.cdnPath}
         alt='Skills illustration'
-        className='-order-1 w-full h-96 sm:w-11/12 md:h-140 lg:order-1 lg:w-1/2 xl:w-7/12'
+        className='-order-1 w-full sm:w-auto sm:h-88 lg:order-1 2xl:h-108'
+        width={illustration.width}
+        height={illustration.height}
       />
     </div>
   );

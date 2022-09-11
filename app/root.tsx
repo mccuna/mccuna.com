@@ -16,7 +16,6 @@ import { externalLinks } from './constants/external-links';
 import { routeHrefs } from './constants/routes-hrefs';
 import { loader } from './root.loader';
 import { ErrorBoundaryProps, ErrorLog } from './types/error-related';
-import { getImageCdnUrl } from './utils/cdn';
 
 export { handle } from './root.handle';
 export { links } from './root.links';
@@ -88,10 +87,11 @@ export const ErrorBoundary: FC<ErrorBoundaryProps> = ({ error }) => {
             title='Oops!'
             subTitle='A wild bug appears!'
             altText="This little guy got logged and I'm looking into it as soon as possible."
-            illustrationCdnPath={getImageCdnUrl({
-              imagePath: 'illustrations/generic-error.svg',
-              variant: 'public',
-            })}
+            illustration={{
+              cdnPath: 'illustrations/generic-error.svg',
+              width: 1119,
+              height: 699,
+            }}
             callToActionContent={
               <PrimaryButtonLink to={routeHrefs.home} size='large'>
                 Go home
@@ -119,6 +119,11 @@ export const CatchBoundary: FC = () => {
         <HeadingAndIllustration
           title='404 - Nothing here'
           subTitle="It seems that you're lost. Go home!"
+          illustration={{
+            cdnPath: 'illustrations/404.svg',
+            width: 851,
+            height: 818,
+          }}
           altText={
             <>
               If you think that "{pathname}
@@ -128,10 +133,6 @@ export const CatchBoundary: FC = () => {
               might be that the content is the lost one...
             </>
           }
-          illustrationCdnPath={getImageCdnUrl({
-            imagePath: 'illustrations/404.svg',
-            variant: 'public',
-          })}
           callToActionContent={
             <PrimaryButtonLink to={routeHrefs.home} size='large'>
               Go home

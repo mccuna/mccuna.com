@@ -1,6 +1,6 @@
+import { CdnImage } from '~/components/image/cdn-image';
 import { SecondaryLink } from '~/components/link';
 import { externalLinks, personalConstants } from '~/constants';
-import { getImageCdnUrl } from '~/utils/cdn';
 import ChapterContainer from './chapter-container';
 
 const Prologue = () => {
@@ -13,13 +13,12 @@ const Prologue = () => {
   return (
     <div className='w-full flex flex-col items-center gap-12 2xl:flex-row 2xl:justify-center 2xl:gap-28'>
       <div>
-        <img
-          src={getImageCdnUrl({
-            imagePath: 'me.webp',
-            variant: 'public',
-          })}
+        <CdnImage
+          cdnPath='me.webp'
           alt='Cristian Cună'
           className='rounded-full md:h-140 md:w-140'
+          width={1378}
+          height={1486}
         />
       </div>
       <ChapterContainer className='2xl:max-w-xl'>

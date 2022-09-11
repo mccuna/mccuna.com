@@ -1,13 +1,22 @@
+import { ImageVariant } from '~/components/image/image-variant';
+import { useRootLoaderData } from './use-match-loader-data';
+
 type GetImageCdnUrlArgs = {
-  imagePath: string;
-  variant: string;
+  cdnPath: string;
+  variant: ImageVariant;
 };
 
-export const getImageCdnUrl = ({ imagePath, variant }: GetImageCdnUrlArgs) => {
-  // In production serve the images from the same domain
-  if (process.env.NODE_ENV === 'production') {
-    return `/cdn-cgi/imagedelivery/0uj9SUnHui6vrXgyuOODuw/${imagePath}/${variant}`;
-  }
+export const useImageCdn = () => {
+  const { ENV } = useRootLoaderData();
 
-  return `https://imagedelivery.net/0uj9SUnHui6vrXgyuOODuw/${imagePath}/${variant}`;
+  const getImageCdnUrl = ({ cdnPath, variant }: GetImageCdnUrlArgs) => {
+    // In production serve the images from the same domain
+    if (process.env.NODE_ENV === 'production') {
+      return `/cdn-cgi/imagedelivery/${ENV.CLOUDFLARE_ACCOUNT_HASH}/${cdnPath}/${variant}`;
+    }
+
+    return `https://imagedelivery.net/${ENV.CLOUDFLARE_ACCOUNT_HASH}/${cdnPath}/${variant}`;
+  };
+
+  return { getImageCdnUrl };
 };

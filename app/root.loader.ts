@@ -8,6 +8,7 @@ export const loader = ({ request }: LoaderArgs) => {
     },
     ENV: {
       HCAPTCHA_SITE_KEY,
+      CLOUDFLARE_ACCOUNT_HASH,
     },
   });
 };

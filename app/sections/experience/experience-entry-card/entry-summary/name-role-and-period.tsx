@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { FC } from 'react';
-import { getImageCdnUrl } from '~/utils/cdn';
+import { CdnImage } from '~/components/image/cdn-image';
 import { useExperienceEntry } from '../experience-entry-context';
 
 const NameRoleAndPeriod: FC = () => {
@@ -32,13 +32,12 @@ const NameRoleAndPeriod: FC = () => {
         </p>
       </div>
       <div className='flex justify-center items-center'>
-        <img
-          src={getImageCdnUrl({
-            imagePath: `experience/${experienceEntry.image}`,
-            variant: 'public',
-          })}
-          className='brightness-0 invert hue-rotate-60 py-6 w-fit max-h-20 sm:max-h-24 lg:py-0 lg:max-h-12 xl:py-4 xl:max-h-20'
+        <CdnImage
+          cdnPath={`experience/${experienceEntry.image.cdnPath}`}
+          className='brightness-0 invert py-6 w-min lg:py-0 lg:max-h-12 xl:py-4 xl:max-h-16'
           alt={`${experienceEntry.name} logo`}
+          width={experienceEntry.image.width}
+          height={experienceEntry.image.height}
         />
       </div>
     </div>

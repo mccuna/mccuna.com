@@ -6,6 +6,7 @@ declare global {
   const HCAPTCHA_SITE_SECRET: string;
   const FAUNA_SECRET: string;
   const FAUNA_DOMAIN: string;
+  const CLOUDFLARE_ACCOUNT_HASH: string;
 
   namespace NodeJS {
     interface ProcessEnv {

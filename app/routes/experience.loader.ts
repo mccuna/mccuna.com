@@ -6,7 +6,11 @@ export const loader = () => {
     {
       refId: '1',
       name: 'Tokero Crypto Exchange',
-      image: 'tokero-logo.png',
+      image: {
+        cdnPath: 'tokero-logo.webp',
+        width: 345,
+        height: 86,
+      },
       company: {
         key: 'tokero',
         name: 'Tokero Crypto Exchange',
@@ -45,7 +49,11 @@ export const loader = () => {
     {
       refId: '2',
       name: 'Client via Digitall',
-      image: 'digitall-logo.svg',
+      image: {
+        cdnPath: 'digitall-logo.svg',
+        width: 397,
+        height: 55,
+      },
       nda: true,
       company: {
         key: 'digitall',
@@ -81,7 +89,11 @@ export const loader = () => {
     {
       refId: '3',
       name: 'Libra Internet Bank',
-      image: 'libra-internet-bank-logo.svg',
+      image: {
+        cdnPath: 'libra-internet-bank-logo.svg',
+        width: 300,
+        height: 52,
+      },
       company: {
         key: 'libra-internet-bank',
         name: 'Libra Internet Bank',
@@ -116,7 +128,11 @@ export const loader = () => {
     {
       refId: '4',
       name: 'Client via Netrom',
-      image: 'netrom-logo.png',
+      image: {
+        cdnPath: 'netrom-logo.webp',
+        width: 279,
+        height: 50,
+      },
       nda: true,
       company: {
         key: 'netrom',
@@ -153,7 +169,11 @@ export const loader = () => {
     {
       refId: '5',
       name: 'Client via Netrom',
-      image: 'netrom-logo.png',
+      image: {
+        cdnPath: 'netrom-logo.webp',
+        width: 279,
+        height: 50,
+      },
       nda: true,
       company: {
         key: 'netrom',
@@ -191,7 +211,11 @@ export const loader = () => {
     {
       refId: '6',
       name: 'Client via Netrom',
-      image: 'netrom-logo.png',
+      image: {
+        cdnPath: 'netrom-logo.webp',
+        width: 279,
+        height: 50,
+      },
       nda: true,
       company: {
         key: 'netrom',
