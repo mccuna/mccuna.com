@@ -1,5 +1,6 @@
 import { EntryContext } from '@remix-run/cloudflare';
 import { EntryRoute } from '@remix-run/react/dist/routes';
+import { AppRouteHandle } from '~/types';
 import { getRequestOrigin } from '~/utils/request-utils';
 import { CustomRoute } from './types';
 
@@ -26,7 +27,10 @@ const getSitemapXML = (
         route.path &&
         // ignore dynamic routes for now
         // TODO: Handle dynamic routes
-        !route.path?.includes(':'),
+        !route.path?.includes(':') &&
+        // ignore actionOnly routes
+        !(remixContext.routeModules[route.id]?.handle as AppRouteHandle)
+          ?.isActionOnly,
     )
     .map((route) =>
       getSitemapEntry({
