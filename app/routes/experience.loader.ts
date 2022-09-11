@@ -27,10 +27,10 @@ export const loader = () => {
       description:
         'Rewritten a legacy ASP.NET MVC application towards a modern tech stack using .NET Core and NextJS.',
       accomplishments: [
-        'Architected and led the implementation of NextJS app that acted as both, the frontend app and the gateway to the backend API.',
-        'Designed from scratch and led the development of a loosely coupled .Net Core back-end using Nuget packages and multiple APIs',
+        'Architected and led the implementation of the NextJS app that acted as both, the frontend app and the gateway to the backend API.',
+        'Designed from scratch and led the development of a loosely coupled .Net Core back-end using Nuget packages and multiple APIs.',
         'Introduced React and NextJS to the other teammates',
-        'Held technical interviews for new team members',
+        'Held technical interviews for new team members.',
       ],
       skillsNames: [
         'NextJS',
@@ -72,9 +72,9 @@ export const loader = () => {
       description:
         'Lead the development of an internal application for managing various cloud services.',
       accomplishments: [
-        'Designed and implemented features able to handle very large amounts of data',
-        'Created and updated unit tests in order to maintain a coverage rate of at least 90%.',
-        'Greatly improved the accessibility of the application',
+        'Designed and implemented features able to handle very large amounts of data.',
+        'Created and updated unit tests to maintain a coverage rate of at least 90%',
+        'Improved the accessibility of the application.',
       ],
       skillsNames: [
         'TypeScript',
@@ -109,7 +109,7 @@ export const loader = () => {
         'Designed and oversaw the migration from a monolithic architecture to a domain-driven-design microservices architecture.',
       accomplishments: [
         'Designed, from scratch, a new microservices architecture for a Win Forms application with all the domain logic in SQL Stored Procedures.',
-        'Kick-started the pilot migration of existing application modules to the newly created architecture.',
+        'Kick-started the pilot migration of existing application modules to the created architecture.',
         'Held knowledge-sharing sessions with other team members.',
       ],
       skillsNames: [
@@ -138,7 +138,7 @@ export const loader = () => {
         key: 'netrom',
         name: 'Netrom',
         description:
-          'A nearshore software developer company with more than 400 employees',
+          'A nearshore software development company with more than 400 employees',
         websiteHref: 'https://www.netrom.nl/en/',
       },
       role: 'Technical Lead',
@@ -149,10 +149,10 @@ export const loader = () => {
       fromYear: 2018,
       toYear: 2019,
       description:
-        'Extended an application to manage private pension and insurance contracts for business owners and independent workers',
+        'Extended an application to manage private pension and insurance contracts for business owners and independent workers.',
       accomplishments: [
-        'Designed and implemented the back-end component for a decision matrix aimed to help users identify the best solution for their private pension',
-        'Designed and implemented a customers import mechanism processing data of hundreds of thousands of customers',
+        'Designed and implemented the back-end component for a decision matrix aimed to help users identify the best solution for their private pension.',
+        'Designed and implemented a mechanism for importing customers that was processing hundreds of MB of data in only a couple of hours.',
       ],
       skillsNames: [
         'Asp.Net MVC',
@@ -179,7 +179,7 @@ export const loader = () => {
         key: 'netrom',
         name: 'Netrom',
         description:
-          'A nearshore software developer company with more than 400 employees',
+          'A nearshore software development company with more than 400 employees',
         websiteHref: 'https://www.netrom.nl/en/',
       },
       role: 'Software Engineer',
@@ -190,11 +190,11 @@ export const loader = () => {
       fromYear: 2016,
       toYear: 2018,
       description:
-        'Extended and refactored an application to manage private pension and insurance contracts for business owners and independent workers',
+        'Extended and refactored an application to manage private pension and insurance contracts for business owners and independent workers.',
       accomplishments: [
-        'Created from scratch an engine for calculating maximum financial benefits for a specific private pension program.',
+        'Created from scratch an engine for calculating the maximum financial benefits for a specific private pension program.',
         'Created a generic import mechanism able to import private pension and insurance contracts from insurance companies.',
-        'Created an application wide parameters framework.',
+        'Created an application-wide parameters framework.',
         'Integrated SQL Server full-text search engine for searching through insurance contracts and customer files based on various fields.',
       ],
       skillsNames: [
@@ -221,7 +221,7 @@ export const loader = () => {
         key: 'netrom',
         name: 'Netrom',
         description:
-          'A nearshore software developer company with more than 400 employees',
+          'A nearshore software development company with more than 400 employees',
         websiteHref: 'https://www.netrom.nl/en/',
       },
       role: 'Software Engineer',
