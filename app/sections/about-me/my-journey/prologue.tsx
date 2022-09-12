@@ -16,7 +16,7 @@ const Prologue = () => {
         <CdnImage
           cdnPath='me.webp'
           alt='Cristian Cună'
-          className='rounded-full md:h-140 md:w-140'
+          className='rounded-full md:w-120'
           width={1378}
           height={1486}
         />
