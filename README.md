@@ -4,8 +4,6 @@ The source code for my website which is hosted at [mccuna.com](https://mccuna.co
 
 ## Running the app locally
 
-### Pre-requisites:
-
 This repo uses `pnpm` as a package manager. If you don't have it installed, check their docs [here](https://pnpm.io/installation).
 
 1. `pnpm install`
@@ -41,6 +39,8 @@ If for some reason you need to debug the server-side part, the `launch.json` fil
   - 😄
 - [Cloudflare images](https://www.cloudflare.com/products/cloudflare-images/)
   - Images CDN
+- [unDraw] (https://undraw.co/)
+  - Cool open-source illustrations
 
 ## Notes
 
