@@ -12,7 +12,7 @@ const Index = () => {
       <HeadingAndIllustration
         title='Mihai Cristian Cună'
         subTitle='Software Developer'
-        altText={`For more than ${experienceYears} years I've been working on improving web applications and developing new ones from scratch using the latest technologies.`}
+        altText={`For more than ${experienceYears} years I've been working on improving existing web applications and developing new ones from scratch using the latest technologies.`}
         illustration={{
           cdnPath: 'illustrations/home.svg',
           width: 786,
