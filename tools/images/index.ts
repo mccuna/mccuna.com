@@ -3,7 +3,7 @@ import { syncImagesDirWithCloudflare } from './upload-to-cloudflare';
 
 dotenv.config();
 
-const imagesDirectoryPath = './public/images';
+const imagesDirectoryPath = './images';
 
 syncImagesDirWithCloudflare({
   dirName: imagesDirectoryPath,
