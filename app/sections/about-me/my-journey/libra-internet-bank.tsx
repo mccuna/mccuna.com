@@ -15,13 +15,12 @@ const LibraInternetBank = () => {
         At Libra, I designed and kickstarted the migration from a SQL-based
         architecture with all the logic in stored procedures to a
         microservices-based architecture. As a fun fact, the company had so many
-        stored procedures that expanding the stored procedures folder without
-        applying a filter was crashing my pc to the point I had to turn it off
-        and on again.
+        stored procedures that expanding their folder without applying a filter
+        was crashing my pc to the point I had to turn it off and on again.
       </p>
 
       <p>
-        During this period I've begun playing with various javascript SPA
+        During this period I've begun playing with various Javascript SPA
         frameworks in my spare time. I've gone from building apps in Angular to
         passing the interview process from{' '}
         <SecondaryLink href={externalLinks.toptal} isExternalLink>

@@ -15,7 +15,7 @@ const Netrom = () => {
       </p>
       <p>
         The nearly 4 years that I've worked on this project saw me evolve from a
-        junior developer that accidentally landed a job to a team leader.
+        junior developer to a team leader.
       </p>
     </ChapterContainer>
   );

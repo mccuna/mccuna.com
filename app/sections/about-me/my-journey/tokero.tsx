@@ -22,7 +22,7 @@ const Tokero = () => {
       <p>
         Tokero is the company I'm currently working for and one thing I enjoy
         here is that being a startup company with its own product I have the
-        chance to be involved in many areas like marketing and accounting
+        chance to be involved in many areas like marketing and accounting,
         besides the development itself.
       </p>
     </ChapterContainer>

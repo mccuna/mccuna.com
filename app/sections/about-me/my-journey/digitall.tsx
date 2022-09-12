@@ -5,11 +5,11 @@ const Digitall = () => {
     <ChapterContainer>
       <h3>Digitall (ex Bulpros Consulting)</h3>
       <p>
-        Being determined to build frontend apps I've made a job change once
-        again and joined Digitall in the summer of 2020 as a frontend developer.
-        In terms of "seniority", even though I had 0 professional experience
-        using React, my overall experience and the job & client qualified me as
-        a "senior developer".
+        Being determined to build frontend apps, once again, I've made a job
+        change and joined Digitall in the summer of 2020 as a frontend
+        developer. In terms of "seniority", even though I had no professional
+        experience using React, my overall experience and the job & client
+        interviews qualified me as a "senior developer".
       </p>
       <p>
         I was assigned to a project composed of a Team Lead and 2 other junior
