@@ -3,5 +3,5 @@ import { getPageTitle } from '~/utils/meta-utils';
 
 export const meta: MetaFunction = () => ({
   title: getPageTitle('Experience'),
-  description: 'See the companies mc cună has worked for',
+  description: 'See the companies Mihai Cristian Cună (mc cună) has worked for',
 });

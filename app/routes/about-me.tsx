@@ -9,7 +9,7 @@ const AboutMe = () => {
     <div>
       <HeadingAndIllustration
         title="Hey, I'm Cristian Cună"
-        subTitle="I'm a full stack developer passionate about building and developing stuff, always eager to learn new things."
+        subTitle="I'm a full stack developer passionate about building and developing stuff, always eager to learn something new."
         illustration={{
           cdnPath: 'illustrations/about-me.svg',
           width: 693,

@@ -3,5 +3,6 @@ import { getPageTitle } from '~/utils/meta-utils';
 
 export const meta: MetaFunction = () => ({
   title: getPageTitle('Skills'),
-  description: "mc cună's main skills. Check what technologies he uses",
+  description:
+    'Main skills of Mihai Cristian Cună (mc cună). Check what technologies he uses',
 });
