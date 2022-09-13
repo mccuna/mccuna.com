@@ -36,8 +36,8 @@ const Prologue = () => {
           At that time, my main activity was playing video games that consisted
           of building/developing things like a nation in a strategy name or a
           character in an RPG one. Even though I wasn't exactly concerned about
-          the future, my gut feeling was that building things on a computer is
-          be my calling.
+          the future, my gut feeling was that building things on a computer was
+          going to be my calling.
         </p>
         <p>
           My programming journey started in high school with C++ algorithms.

@@ -17,11 +17,11 @@ const NetromSoftwareAcademy = () => {
         During the academy I got the chance to see what developing apps in .Net,
         Java, php or Javascript meant and spend a whole day (shadow day)
         alongside a developer while she was doing her usual work. From the
-        technologies presented I've started to really grow into .Net and the
-        fact that I got to stay alongside a developer using this technology
-        during the shadow day cemented my decision to become a .Net developer.
-        At this point, the academy participation met its goal, I've got a
-        technology that "clicked" for me.
+        technologies presented I've started to really grow into .Net. The fact
+        that I got to stay alongside a developer using this technology during
+        the shadow day cemented my decision to become a .Net developer. At this
+        point, the academy participation met its goal, I've got a technology
+        that "clicked" for me.
       </p>
       <p>
         About 1 week after the academy ended, I got an email from the company's
