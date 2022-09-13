@@ -2,7 +2,7 @@ import { HeadersFunction } from '@remix-run/cloudflare';
 import HeadingAndIllustration from '~/components/heading-and-illustration';
 import MyJourney from '~/sections/about-me/my-journey';
 
-export { meta } from './about-me.meta';
+export { meta } from './about-me.my-journey.meta';
 
 const AboutMe = () => {
   return (

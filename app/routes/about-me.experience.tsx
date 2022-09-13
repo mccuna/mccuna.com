@@ -5,10 +5,9 @@ import ExperienceArrowLeft from '~/sections/experience/experience-arrow-left';
 import ExperienceArrowRight from '~/sections/experience/experience-arrow-right';
 import ExperienceEntryCard from '~/sections/experience/experience-entry-card';
 import { ExperienceEntryContextProvider } from '~/sections/experience/experience-entry-context';
+import { loader } from './about-me.experience.loader';
 
-import { loader } from './experience.loader';
-
-export { meta } from './experience.meta';
+export { meta } from './about-me.experience.meta';
 export { loader };
 
 const Experience: FC = () => {

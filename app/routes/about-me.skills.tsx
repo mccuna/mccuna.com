@@ -2,9 +2,9 @@ import { useLoaderData } from '@remix-run/react';
 import HeadingAndIllustration from '~/components/heading-and-illustration';
 import LegacySkillsCard from '~/sections/skills/legacy-skills-card';
 import PrimarySkillsCard from '~/sections/skills/primary-skills-card';
-import { loader } from './skills.loader';
+import { loader } from './about-me.skills.loader';
 
-export { meta } from './skills.meta';
+export { meta } from './about-me.skills.meta';
 export { loader };
 
 const Skills = () => {

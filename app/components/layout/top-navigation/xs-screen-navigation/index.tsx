@@ -59,19 +59,19 @@ const XsScreenNavigation: FC = () => {
                     Home
                   </XsScreenNavigationLink>
                   <XsScreenNavigationLink
-                    to={routeHrefs.skills}
+                    to={routeHrefs.aboutMe.myJourney}
+                    onClick={closeDialog}>
+                    About me
+                  </XsScreenNavigationLink>
+                  <XsScreenNavigationLink
+                    to={routeHrefs.aboutMe.skills}
                     onClick={closeDialog}>
                     Skills
                   </XsScreenNavigationLink>
                   <XsScreenNavigationLink
-                    to={routeHrefs.experience}
+                    to={routeHrefs.aboutMe.experience}
                     onClick={closeDialog}>
                     Experience
-                  </XsScreenNavigationLink>
-                  <XsScreenNavigationLink
-                    to={routeHrefs.aboutMe}
-                    onClick={closeDialog}>
-                    About me
                   </XsScreenNavigationLink>
                   <XsScreenNavigationLink
                     to={routeHrefs.contact}
