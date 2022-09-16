@@ -1,28 +1,16 @@
-import { Disclosure } from '@headlessui/react';
-import { FC, useMemo } from 'react';
-import { ExperienceEntry } from '~/types/experience-entry';
+import { FC } from 'react';
+import { useExperienceEntry } from '../experience-entry-context';
 import EntryBody from './entry-body';
 import EntrySummary from './entry-summary';
-import { ExperienceEntryContext } from './experience-entry-context';
 
-type Props = {
-  experienceEntry: ExperienceEntry;
-};
-
-const ExperienceEntryCard: FC<Props> = ({ experienceEntry }) => {
-  const contextValue = useMemo(() => {
-    return { experienceEntry };
-  }, [experienceEntry]);
+const ExperienceEntryCard: FC = () => {
+  const { isOpened } = useExperienceEntry();
 
   return (
-    <ExperienceEntryContext.Provider value={contextValue}>
-      <div className='group'>
-        <Disclosure>
-          <EntrySummary />
-          <EntryBody />
-        </Disclosure>
-      </div>
-    </ExperienceEntryContext.Provider>
+    <details className='group  cursor-pointer' open={isOpened}>
+      <EntrySummary />
+      <EntryBody />
+    </details>
   );
 };
 

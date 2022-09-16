@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { FC } from 'react';
 import { CdnImage } from '~/components/image/cdn-image';
-import { useExperienceEntry } from '../experience-entry-context';
+import { useExperienceEntry } from '../../experience-entry-context';
 
 const NameRoleAndPeriod: FC = () => {
-  const experienceEntry = useExperienceEntry();
+  const { experienceEntry } = useExperienceEntry();
   return (
     <div className='w-full flex flex-col justify-between gap-x-4 text-slate-200 lg:flex-row xl:flex-col 2xl:flex-row'>
       <div>

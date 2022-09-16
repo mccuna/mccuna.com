@@ -4,6 +4,8 @@ import HeadingAndIllustration from '~/components/heading-and-illustration';
 import ExperienceArrowLeft from '~/sections/experience/experience-arrow-left';
 import ExperienceArrowRight from '~/sections/experience/experience-arrow-right';
 import ExperienceEntryCard from '~/sections/experience/experience-entry-card';
+import { ExperienceEntryContextProvider } from '~/sections/experience/experience-entry-context';
+
 import { loader } from './experience.loader';
 
 export { meta } from './experience.meta';
@@ -24,20 +26,26 @@ const Experience: FC = () => {
         }}
       />
       <div className='flex flex-col gap-y-10'>
-        {experienceEntries.map((experienceEntry) => (
-          <div
-            key={experienceEntry.refId}
-            className='group flex gap-x-10 odd:flex-row even:flex-row-reverse'>
-            <div className='w-full xl:w-1/2'>
-              <ExperienceEntryCard experienceEntry={experienceEntry} />
+        {experienceEntries.map((experienceEntry, index) => (
+          <ExperienceEntryContextProvider
+            experienceEntry={experienceEntry}
+            key={experienceEntry.refId}>
+            <div className='flex gap-x-10 odd:flex-row even:flex-row-reverse '>
+              <div className='w-full xl:w-1/2'>
+                <ExperienceEntryCard />
+              </div>
+              {index % 2 === 0 && index !== experienceEntries.length - 1 && (
+                <div className='hidden w-1/2 xl:flex xl:flex-col xl:justify-end xl:items-start'>
+                  <ExperienceArrowLeft />
+                </div>
+              )}
+              {index % 2 !== 0 && index !== experienceEntries.length - 1 && (
+                <div className='hidden w-1/2 xl:flex xl:flex-col xl:justify-end xl:items-end'>
+                  <ExperienceArrowRight />
+                </div>
+              )}
             </div>
-            <div className='hidden group-last:!hidden group-odd:xl:flex w-1/2 flex-col xl:justify-end xl:items-start'>
-              <ExperienceArrowLeft />
-            </div>
-            <div className='hidden group-last:!hidden group-even:xl:flex w-1/2 flex-col xl:justify-end xl:items-end'>
-              <ExperienceArrowRight />
-            </div>
-          </div>
+          </ExperienceEntryContextProvider>
         ))}
       </div>
     </div>
