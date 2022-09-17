@@ -2,6 +2,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { FC, Fragment, useState } from 'react';
 import { MenuIcon, XIcon } from '~/components/icons';
 import { routeHrefs } from '~/constants/routes-hrefs';
+import XsScreenLinksMenu from './xs-screen-links-menu';
 import XsScreenNavigationLink from './xs-screen-navigation-link';
 
 const XsScreenNavigation: FC = () => {
@@ -52,27 +53,33 @@ const XsScreenNavigation: FC = () => {
               leaveFrom='opacity-100 scale-100'
               leaveTo='opacity-0 scale-95'>
               <Dialog.Panel>
-                <ul className='flex flex-col'>
+                <ul className='flex flex-col gap-y-6 ml-6'>
                   <XsScreenNavigationLink
                     to={routeHrefs.home}
                     onClick={closeDialog}>
                     Home
                   </XsScreenNavigationLink>
-                  <XsScreenNavigationLink
-                    to={routeHrefs.aboutMe.myJourney}
-                    onClick={closeDialog}>
-                    About me
-                  </XsScreenNavigationLink>
-                  <XsScreenNavigationLink
-                    to={routeHrefs.aboutMe.skills}
-                    onClick={closeDialog}>
-                    Skills
-                  </XsScreenNavigationLink>
-                  <XsScreenNavigationLink
-                    to={routeHrefs.aboutMe.experience}
-                    onClick={closeDialog}>
-                    Experience
-                  </XsScreenNavigationLink>
+                  <li className='text-3xl text-slate-700'>
+                    Blog (coming soon)
+                  </li>
+                  <XsScreenLinksMenu
+                    menuName='About me'
+                    links={[
+                      {
+                        text: 'My journey',
+                        to: routeHrefs.aboutMe.myJourney,
+                      },
+                      {
+                        text: 'Skills',
+                        to: routeHrefs.aboutMe.skills,
+                      },
+                      {
+                        text: 'Experience',
+                        to: routeHrefs.aboutMe.experience,
+                      },
+                    ]}
+                    onClick={closeDialog}
+                  />
                   <XsScreenNavigationLink
                     to={routeHrefs.contact}
                     onClick={closeDialog}>
