@@ -1,11 +1,8 @@
 import clsx from 'clsx';
 import { FC } from 'react';
+import { IconProps } from './types';
 
-type Props = {
-  className?: string;
-};
-
-export const GithubIcon: FC<Props> = ({ className }) => {
+export const GithubIcon: FC<IconProps> = ({ className }) => {
   // https://fontawesome.com/icons/github?s=brands
   return (
     <svg

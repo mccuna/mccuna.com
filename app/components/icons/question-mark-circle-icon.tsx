@@ -1,10 +1,7 @@
 import { FC } from 'react';
+import { IconProps } from './types';
 
-type Props = {
-  className?: string;
-};
-
-export const QuestionMarkCircleIcon: FC<Props> = ({ className }) => {
+export const QuestionMarkCircleIcon: FC<IconProps> = ({ className }) => {
   // heroicons/solid/question-mark-circle
   return (
     <svg

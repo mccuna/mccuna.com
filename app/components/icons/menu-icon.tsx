@@ -1,11 +1,8 @@
 import clsx from 'clsx';
 import { FC } from 'react';
+import { IconProps } from './types';
 
-type Props = {
-  className?: string;
-};
-
-export const MenuIcon: FC<Props> = ({ className }) => {
+export const MenuIcon: FC<IconProps> = ({ className }) => {
   // heroicons/outline/menu
   return (
     <svg

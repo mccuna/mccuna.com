@@ -1,10 +1,7 @@
 import { FC } from 'react';
+import { IconProps } from './types';
 
-type Props = {
-  className?: string;
-};
-
-export const XIcon: FC<Props> = ({ className }) => {
+export const XIcon: FC<IconProps> = ({ className }) => {
   // heroicons/solid/x
   return (
     <svg
