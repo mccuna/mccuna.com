@@ -7,6 +7,8 @@ export const loader = () => {
 };
 
 const Skills = () => {
+  // This will never get rendered as the route is just a proxy for the permanent redirect
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   return <></>;
 };
 
