@@ -16,7 +16,7 @@ const NameRoleAndPeriod: FC = () => {
             </abbr>
           )}
         </h3>
-        <p className='text-lg'>
+        <p className='text-xl mt-1'>
           {experienceEntry.role}{' '}
           <span className='xl:block'>
             {experienceEntry.fromYear === experienceEntry.toYear ? (
@@ -30,6 +30,7 @@ const NameRoleAndPeriod: FC = () => {
             )}
           </span>
         </p>
+        <p className='text-md mt-3'>{experienceEntry.description}</p>
       </div>
       <div className='flex justify-center items-center'>
         <CdnImage

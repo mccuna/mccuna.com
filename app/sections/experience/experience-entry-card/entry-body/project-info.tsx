@@ -10,14 +10,6 @@ const ProjectInfo: FC<Props> = ({ experienceEntry }) => {
   return (
     <div className='flex flex-col gap-y-3'>
       <div>
-        <ExperienceEntryLabel>Description</ExperienceEntryLabel>:{' '}
-        {experienceEntry.description}
-      </div>
-      <div>
-        <ExperienceEntryLabel>Role</ExperienceEntryLabel>:{' '}
-        {experienceEntry.role}
-      </div>
-      <div>
         <ExperienceEntryLabel>Dev Team Size</ExperienceEntryLabel>:{' '}
         {experienceEntry.projectSize.devTeamMembers}
       </div>
