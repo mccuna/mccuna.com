@@ -39,7 +39,7 @@ If for some reason you need to debug the server-side part, the `launch.json` fil
   - 😄
 - [Cloudflare images](https://www.cloudflare.com/products/cloudflare-images/)
   - Images CDN
-- [unDraw] (https://undraw.co/)
+- [unDraw](https://undraw.co/)
   - Cool open-source illustrations
 
 ## Notes
