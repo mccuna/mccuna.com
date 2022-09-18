@@ -70,7 +70,7 @@ export const loader = () => {
       fromYear: 2020,
       toYear: 2021,
       description:
-        'Lead the development of an internal application for managing various cloud services.',
+        "Lead the development of a client's internal application for managing various cloud services.",
       accomplishments: [
         'Designed and implemented features able to handle very large amounts of data.',
         'Created and updated unit tests to maintain a coverage rate of at least 90%',
