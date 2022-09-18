@@ -232,7 +232,7 @@ export const loader = () => {
       fromYear: 2016,
       toYear: 2016,
       description:
-        'Redesigned an application to manage apartment and room rentals, focused on matching people looking for a place to stay with people looking for a roommate.',
+        'Redesigned an application to manage apartment and room rentals focused on matching people looking for a place to stay with people looking for a roommate.',
       accomplishments: [
         'Helped redesign the application to a brand new look.',
         'Created SQL Server Integration Services flows for importing data from various sources.',
