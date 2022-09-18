@@ -6,7 +6,7 @@ compatibility_date = "2022-09-01"
 
 [env.development]
 workers_dev = true
-name = "dev-mccuna-com"
+name = "dev"
 
 [env.development.vars]
 HCAPTCHA_SITE_KEY = "10000000-ffff-ffff-ffff-000000000001"
@@ -14,7 +14,7 @@ CLOUDFLARE_ACCOUNT_HASH = "0uj9SUnHui6vrXgyuOODuw"
 
 [env.staging]
 workers_dev = true
-name = "staging-mccuna-com"
+name = "staging"
 
 [env.staging.vars]
 HCAPTCHA_SITE_KEY = "d1d7c3a9-ad03-470c-bc99-0ba9656f5cc0"

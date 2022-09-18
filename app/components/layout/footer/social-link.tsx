@@ -1,8 +1,9 @@
 import { FC } from 'react';
+import { IconProps } from '~/components/icons/types';
 import { SecondaryLink } from '~/components/link';
 
 type Props = {
-  icon: FC<{ className?: string }>;
+  icon: FC<IconProps>;
   href: string;
   ariaLabel: string;
 };

@@ -13,7 +13,7 @@ const XsScreenNavigationLink = forwardRef<
   PropsWithChildren<Props>
 >(({ to, onClick, className, children, ...otherProps }, ref) => {
   return (
-    <li className={clsx('p-6', className)}>
+    <li className={clsx(className)}>
       <ul>
         <NavLink
           to={to}

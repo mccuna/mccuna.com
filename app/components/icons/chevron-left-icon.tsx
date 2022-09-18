@@ -1,10 +1,7 @@
 import { FC } from 'react';
+import { IconProps } from './types';
 
-type Props = {
-  className?: string;
-};
-
-export const ChevronLeftIcon: FC<Props> = ({ className }) => {
+export const ChevronLeftIcon: FC<IconProps> = ({ className }) => {
   // heroicons/solid/chevron-left
   return (
     <svg

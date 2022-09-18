@@ -1,39 +1,15 @@
-import { useLoaderData } from '@remix-run/react';
-import HeadingAndIllustration from '~/components/heading-and-illustration';
-import LegacySkillsCard from '~/sections/skills/legacy-skills-card';
-import PrimarySkillsCard from '~/sections/skills/primary-skills-card';
-import { loader } from './skills.loader';
+import { routeHrefs } from '~/constants';
+import { permanentRedirect } from '~/utils/server-response-shorthand';
 
-export { meta } from './skills.meta';
-export { loader };
+// Permanent redirect handling old routes
+export const loader = () => {
+  return permanentRedirect(routeHrefs.aboutMe.skills);
+};
 
 const Skills = () => {
-  const skillsPerCategory = useLoaderData<typeof loader>();
-
-  return (
-    <div>
-      <HeadingAndIllustration
-        title='What technologies have I worked with?'
-        subTitle='Check below my skills'
-        illustration={{
-          cdnPath: 'illustrations/skills.svg',
-          width: 855,
-          height: 581,
-        }}
-      />
-      <div className='flex flex-col items-center gap-y-10'>
-        <div className='flex flex-col w-full gap-y-10 md:w-2/3 lg:w-full  2xl:w-2/3'>
-          <div className='grid grid-cols-1 gap-8 lg:grid-cols-3'>
-            <PrimarySkillsCard
-              skills={skillsPerCategory.primary}
-              className='lg:col-span-2'
-            />
-            <LegacySkillsCard skills={skillsPerCategory.legacy} />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  // This will never get rendered as the route is just a proxy for the permanent redirect
+  // eslint-disable-next-line react/jsx-no-useless-fragment
+  return <></>;
 };
 
 export default Skills;
