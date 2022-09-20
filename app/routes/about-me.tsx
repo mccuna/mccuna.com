@@ -1,6 +1,8 @@
 import { routeHrefs } from '~/constants';
 import { permanentRedirect } from '~/utils/server-response-shorthand';
 
+export { handle } from './about-me.handle';
+
 // Permanent redirect handling old routes
 export const loader = () => {
   return permanentRedirect(routeHrefs.aboutMe.myJourney);

@@ -1,5 +1,6 @@
 import { EntryContext } from '@remix-run/cloudflare';
 import { EntryRoute } from '@remix-run/react/dist/routes';
+import { handle as rootHandle } from '~/root.handle';
 import { AppRouteHandle } from '~/types';
 import { getRequestOrigin } from '~/utils/request-utils';
 import { CustomRoute } from './types';
@@ -21,17 +22,25 @@ const getSitemapXML = (
   remixContext: EntryContext,
 ): string => {
   const sitemapEntries = Object.values(remixContext.manifest.routes)
-    .filter(
-      (route) =>
-        // root has path=undefined
-        route.path &&
-        // ignore dynamic routes for now
-        // TODO: Handle dynamic routes
-        !route.path?.includes(':') &&
-        // ignore actionOnly routes
-        !(remixContext.routeModules[route.id]?.handle as AppRouteHandle)
-          ?.isActionOnly,
-    )
+    .filter((route) => {
+      const handle = remixContext.routeModules[route.id]
+        ?.handle as AppRouteHandle;
+
+      /* Allow only routes with a path, but make an exception for
+       * the root route in order to index the "/" path
+       */
+      if (!route.path && handle?.id !== rootHandle.id) {
+        return false;
+      }
+
+      // ignore dynamic routes for now
+      // TODO: Handle dynamic routes
+      if (route.path?.includes(':')) {
+        return false;
+      }
+
+      return !handle?.isActionOnly && !handle?.isPermanentRedirect;
+    })
     .map((route) =>
       getSitemapEntry({
         origin: getRequestOrigin(request),
