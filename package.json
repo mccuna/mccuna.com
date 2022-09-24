@@ -1,17 +1,19 @@
 {
   "private": true,
   "sideEffects": false,
+  "main": "./dist/worker.mjs",
   "scripts": {
-    "build": "pnpm clean && pnpm build:css && pnpm build:remix",
+    "build": "pnpm clean && pnpm build:css && pnpm build:remix && pnpm build:worker",
     "build:remix": "remix build",
     "build:css": "tailwindcss -m -i ./app/styles/global.css -o ./app/styles/tailwind.css",
-    "clean": "rimraf build public/build",
+    "build:worker": "cross-env NODE_ENV=production node ./scripts/build-worker.mjs",
+    "clean": "rimraf build public/build dist",
     "deploy-staging": "pnpm build && wrangler publish --env staging",
     "deploy-prod": "pnpm build && wrangler publish --env production",
     "dev": "pnpm build && pnpm concurrently pnpm:dev:* --kill-others-on-fail",
     "dev:css": "tailwindcss -w -i ./app/styles/global.css -o ./app/styles/tailwind.css",
     "dev:remix": "remix watch",
-    "dev:miniflare": "cross-env NODE_ENV=development miniflare ./build/index.js --watch",
+    "dev:miniflare": "miniflare --build-command \"node ./scripts/build-worker.mjs\" --build-watch-path ./worker --build-watch-path ./build/index.js --no-cache --watch --open",
     "lint": "eslint --cache . --ext .ts,.tsx,.js,.jsx",
     "start": "cross-env NODE_ENV=production miniflare ./build/index.js",
     "typecheck": " tsc -b",
@@ -21,6 +23,7 @@
     "pw:show-report": "playwright show-report"
   },
   "dependencies": {
+    "@cloudflare/kv-asset-handler": "^0.2.0",
     "@fontsource/abeezee": "^4.5.9",
     "@hcaptcha/react-hcaptcha": "^1.4.4",
     "@headlessui/react": "^1.7.2",
