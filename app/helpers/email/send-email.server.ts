@@ -1,4 +1,5 @@
 import { logError } from '~/utils/log-error.server';
+import { mailersendAbsoluteApiUrls } from './mailersend-constants';
 import { MailersendMail } from './mailersend-mail';
 
 export type SendMailArgs = {
@@ -13,7 +14,7 @@ export type SendMailArgs = {
 export const sendEmail = async ({ mail, config }: SendMailArgs) => {
   const { mailerSendApiKey, ...faunaConfig } = config;
 
-  const response = await fetch('https://api.mailersend.com/v1/email', {
+  const response = await fetch(mailersendAbsoluteApiUrls.email, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${mailerSendApiKey}`,

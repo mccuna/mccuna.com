@@ -8,4 +8,5 @@ export type Env = {
   FAUNA_SECRET: string;
   FAUNA_DOMAIN: string;
   CLOUDFLARE_ACCOUNT_HASH: string;
+  USE_CUSTOM_DOMAIN_FOR_IMAGES: boolean;
 };

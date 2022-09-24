@@ -25,7 +25,6 @@ import {
 export { meta } from './contact.meta';
 export { action };
 
-// TODO: Add cypress test for happy flow
 const Contact: FC = () => {
   const actionData = useActionData<typeof action>();
   const { ENV } = useRootLoaderData();
@@ -127,7 +126,12 @@ const Contact: FC = () => {
               </Card.Body>
             </Card>
           )}
-          <Form method='post' noValidate ref={formRef} {...formEventHandlers}>
+          <Form
+            method='post'
+            noValidate
+            ref={formRef}
+            {...formEventHandlers}
+            id='contactForm'>
             <FormValidationContext.Provider value={formValidationContextValue}>
               <Card>
                 <Card.Title>Contact</Card.Title>

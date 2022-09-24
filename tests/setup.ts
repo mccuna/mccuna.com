@@ -1,12 +1,13 @@
 import {
-  fixtures,
-  TestingLibraryFixtures,
+  locatorFixtures,
+  LocatorFixtures,
 } from '@playwright-testing-library/test/fixture';
-import { expect, test as base } from '@playwright/test';
+import { test as playwrightTest } from '@playwright/test';
 import { Miniflare } from 'miniflare';
 import { MockAgent, setGlobalDispatcher } from 'undici';
+import { mockDate } from './utils/mock-date';
 
-interface TestFixtures extends TestingLibraryFixtures {
+interface TestFixtures extends LocatorFixtures {
   mockAgent: MockAgent;
 }
 
@@ -15,12 +16,10 @@ interface WorkerFixtures {
   port: number;
 }
 
-export { expect };
+const testingLibraryTest =
+  playwrightTest.extend<LocatorFixtures>(locatorFixtures);
 
-export const test = base.extend<TestFixtures, WorkerFixtures>({
-  // Setup queries from playwright-testing-library
-  ...fixtures,
-
+export const test = testingLibraryTest.extend<TestFixtures, WorkerFixtures>({
   // Assign a unique "port" for each worker process
   port: [
     // eslint-disable-next-line no-empty-pattern
@@ -29,6 +28,11 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
     },
     { scope: 'worker' },
   ],
+
+  // Set baseUrl
+  baseURL: ({ port }, use) => {
+    use(`http://localhost:${port}`);
+  },
 
   // Setup mock client for requests initiated by the Worker
   // eslint-disable-next-line no-empty-pattern
@@ -43,11 +47,17 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
   // Miniflare instance
   mf: [
     async ({ port }, use) => {
+      // mocks Date in the tests
+      mockDate();
+
       const mf = new Miniflare({
+        modules: true,
         wranglerConfigPath: true,
-        buildCommand: undefined,
+        envPath: true,
+        packagePath: true,
         bindings: {},
         port,
+        scriptPath: 'dist/worker.mjs',
       });
 
       // Start the server
@@ -67,3 +77,6 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
     },
   ],
 });
+
+const { expect } = test;
+export { expect };

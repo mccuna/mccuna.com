@@ -9,6 +9,7 @@ export const loader = ({ request, context }: LoaderArgs) => {
     ENV: {
       HCAPTCHA_SITE_KEY: context.env.HCAPTCHA_SITE_KEY,
       CLOUDFLARE_ACCOUNT_HASH: context.env.CLOUDFLARE_ACCOUNT_HASH,
+      USE_CUSTOM_DOMAIN_FOR_IMAGES: context.env.USE_CUSTOM_DOMAIN_FOR_IMAGES,
     },
   });
 };

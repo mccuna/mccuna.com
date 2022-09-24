@@ -1,44 +1,70 @@
-import fsPromises from 'fs/promises';
-import { test } from '../setup';
+import { routeHrefs } from '~/constants';
+import { mailersendApiConfig } from '~/helpers/email/mailersend-constants';
+import { expect, test } from '../setup';
+import { mockDate } from '../utils/mock-date';
 
 test.describe('Contact page should', () => {
+  test.beforeEach(async ({ page }) => {
+    // mocks Date in the app itself
+    await page.addInitScript(mockDate);
+  });
+
   test('send an email when data is valid', async ({
     page,
-    queries,
-    browserName,
+    screen,
+    mockAgent,
   }) => {
-    await page.goto('http://localhost:8787/contact');
+    await page.goto(routeHrefs.contact);
 
-    const nameInput = await queries.findByRole('textbox', { name: /name/i });
+    const nameInput = await screen.findByRole('textbox', { name: /name/i });
     await nameInput.fill('John Doe');
 
-    const emailInput = await queries.findByRole('textbox', { name: /email/i });
+    const emailInput = await screen.findByRole('textbox', { name: /email/i });
     await emailInput.fill('john_doe@gmail.com');
 
-    const subjectInput = await queries.findByRole('textbox', {
+    const subjectInput = await screen.findByRole('textbox', {
       name: /subject/i,
     });
     await subjectInput.type('Dummy email');
 
-    const messageTextbox = await queries.findByRole('textbox', {
+    const messageTextArea = await screen.findByRole('textbox', {
       name: /message/i,
     });
-    await messageTextbox.fill(
+    await messageTextArea.fill(
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      {},
     );
 
-    await page
+    const captchaCheckbox = page
       .frameLocator('iframe[data-hcaptcha-response]')
-      .locator('#checkbox')
-      .click();
+      .locator('div[role="checkbox"]');
 
-    const screenshotBuffer = await page.screenshot({ fullPage: true });
+    await captchaCheckbox.click({ force: true });
+    await expect(captchaCheckbox).toHaveAttribute('aria-checked', 'true');
 
-    await fsPromises.writeFile(
-      `tests/contact/screenshot_${browserName}.png`,
-      screenshotBuffer,
+    const client = mockAgent.get(mailersendApiConfig.baseUrl);
+
+    client
+      .intercept({
+        method: 'POST',
+        path: mailersendApiConfig.endpoints.email,
+      })
+      .reply(202);
+
+    const sendMsgBtn = await screen.findByRole('button', {
+      name: /send message/i,
+    });
+
+    await sendMsgBtn.click();
+
+    const messageSentHeading = await screen.findByRole(
+      'heading',
+      { name: /message sent!/i },
+      { timeout: 3000 },
     );
 
-    // cy.findByRole('button', { name: /send message/i }).click();
+    await expect(messageSentHeading).toBeVisible();
+
+    await expect(page).toHaveScreenshot('final.png');
   });
 });

@@ -40,44 +40,58 @@ const config: PlaywrightTestConfig = {
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    viewport: {
+      height: 1080,
+      width: 1920,
+    },
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
+      name: 'desktop_chrome',
       use: {
         ...devices['Desktop Chrome'],
+        viewport: {
+          width: 1920,
+          height: 1080,
+        },
+      },
+    },
+    {
+      name: 'desktop_firefox',
+      use: {
+        ...devices['Desktop Firefox'],
+        viewport: {
+          width: 1920,
+          height: 1080,
+        },
+      },
+    },
+    {
+      name: 'desktop_safari',
+      use: {
+        ...devices['Desktop Safari'],
+        viewport: {
+          width: 1920,
+          height: 1080,
+        },
       },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: {
-    //     ...devices['Desktop Firefox'],
-    //   },
-    // },
-
-    // {
-    //   name: 'webkit',
-    //   use: {
-    //     ...devices['Desktop Safari'],
-    //   },
-    // },
-
     /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: {
-    //     ...devices['Pixel 5'],
-    //   },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: {
-    //     ...devices['iPhone 12'],
-    //   },
-    // },
+    {
+      name: 'iphone_x',
+      use: {
+        ...devices['iPhone X'],
+      },
+    },
+    {
+      name: 'ipad_pro_11',
+      use: {
+        ...devices['iPad Pro 11'],
+      },
+    },
 
     /* Test against branded browsers. */
     // {
