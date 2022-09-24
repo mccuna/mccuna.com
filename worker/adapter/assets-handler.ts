@@ -5,6 +5,7 @@ import {
   Options as KvAssetHandlerOptions,
 } from '@cloudflare/kv-asset-handler';
 import { ServerBuild } from '@remix-run/cloudflare';
+
 // @ts-expect-error External JSON only available in CF runtime / Miniflare
 import manifest from '__STATIC_CONTENT_MANIFEST';
 
@@ -64,13 +65,14 @@ export const createWorkerAssetHandler = <Env>({
   return async (request, env, ctx) => {
     try {
       const event = {
-        request: request,
+        request,
         waitUntil(promise: Promise<any>) {
           return ctx.waitUntil(promise);
         },
       };
 
       const options: Partial<KvAssetHandlerOptions> = {
+        // eslint-disable-next-line no-underscore-dangle
         ASSET_NAMESPACE: (env as any).__STATIC_CONTENT,
         ASSET_MANIFEST: await getAssetManifest({
           cache: await caches.open('assets'),

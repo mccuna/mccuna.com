@@ -1,4 +1,6 @@
 export type Env = {
+  __STATIC_CONTENT: string;
+  __STATIC_CONTENT_MANIFEST: string;
   VERIFIER_MEETCHOPRA_KEY: string;
   MAILERSEND_API_KEY: string;
   HCAPTCHA_SITE_KEY: string;

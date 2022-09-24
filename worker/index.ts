@@ -4,6 +4,7 @@ import { createFetchHandler } from './adapter';
 
 const handleFetch = createFetchHandler({
   // Remix build files
+  // @ts-expect-error TODO: Properly type this
   build,
   //  Get the load context for each request
   getLoadContext: (request, env, ctx) => {

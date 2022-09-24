@@ -1,3 +1,4 @@
+import fsPromises from 'fs/promises';
 import { test } from '../setup';
 
 test.describe('Contact page should', () => {
@@ -31,12 +32,12 @@ test.describe('Contact page should', () => {
       .locator('#checkbox')
       .click();
 
-    // const screenshotBuffer = await page.screenshot({ fullPage: true });
+    const screenshotBuffer = await page.screenshot({ fullPage: true });
 
-    // await fsPromises.writeFile(
-    //   `tests/contact/screenshot_${browserName}.png`,
-    //   screenshotBuffer,
-    // );
+    await fsPromises.writeFile(
+      `tests/contact/screenshot_${browserName}.png`,
+      screenshotBuffer,
+    );
 
     // cy.findByRole('button', { name: /send message/i }).click();
   });

@@ -55,6 +55,8 @@ export const createFetchHandler = <Env>({
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : error?.toString();
+
+      // eslint-disable-next-line no-console
       console.log('Error caught', errorMessage, error);
 
       if (process.env.NODE_ENV === 'development') {
