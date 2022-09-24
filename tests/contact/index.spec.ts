@@ -3,7 +3,6 @@ import {
   LocatorFixtures as TestingLibraryFixtures,
 } from '@playwright-testing-library/test/fixture';
 import { test as base } from '@playwright/test';
-import fsPromises from 'fs/promises';
 
 const test = base.extend<TestingLibraryFixtures>(fixtures);
 const { expect } = test;
@@ -34,18 +33,17 @@ test.describe('Contact page should', () => {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     );
 
-    const screenshotBuffer = await page.screenshot({ fullPage: true });
+    await page
+      .frameLocator('iframe[data-hcaptcha-response]')
+      .locator('#checkbox')
+      .click();
 
-    await fsPromises.writeFile(
-      `tests/contact/screenshot_${browserName}.png`,
-      screenshotBuffer,
-    );
+    // const screenshotBuffer = await page.screenshot({ fullPage: true });
 
-    //   cy.findByTitle(
-    //     /widget containing checkbox for hcaptcha security challenge/i,
-    //   ).click();
-
-    //   cy.confirmCaptcha();
+    // await fsPromises.writeFile(
+    //   `tests/contact/screenshot_${browserName}.png`,
+    //   screenshotBuffer,
+    // );
 
     // cy.findByRole('button', { name: /send message/i }).click();
   });
