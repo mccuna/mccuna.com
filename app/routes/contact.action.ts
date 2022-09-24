@@ -9,12 +9,16 @@ import {
   getActionDataFields,
 } from '~/helpers/form-validation/form-utils';
 import { ActionData, FieldError, GetFieldsErrors } from '~/types/action-data';
+import { Env } from '~/types/env';
 import { badRequest } from '~/utils/server-response-shorthand';
 
-export const action = async ({ request }: ActionArgs) => {
+export const action = async ({ request, context }: ActionArgs) => {
   const fields = await getActionDataFields<FieldName>(request);
 
-  const fieldErrors = await getFieldsErrors(fields);
+  const fieldErrors = await getFieldsErrors({
+    fields,
+    env: context.env,
+  });
 
   const actionData: FormActionData = {
     fieldErrors,
@@ -37,7 +41,14 @@ export const action = async ({ request }: ActionArgs) => {
     subject: actionData.fields.subject,
   };
 
-  await sendEmail(mail);
+  await sendEmail({
+    mail,
+    config: {
+      mailerSendApiKey: context.env.MAILERSEND_API_KEY,
+      faunaDomain: context.env.FAUNA_DOMAIN,
+      faunaSecret: context.env.FAUNA_SECRET,
+    },
+  });
 
   actionData.payload = {
     messageSentSuccessfullyTs: Date.now(),
@@ -54,18 +65,25 @@ export enum FieldName {
   hCaptchaResponse = 'h-captcha-response',
 }
 
-const getFieldsErrors: GetFieldsErrors<FieldName> = async (fields) => {
+const getFieldsErrors: GetFieldsErrors<FieldName, { env: Env }> = async ({
+  fields,
+  env,
+}) => {
   return {
     email: await getEmailError({
       email: fields.email,
       domainVerificationConfig: {
-        apiKey: VERIFIER_MEETCHOPRA_KEY,
+        apiKey: env.VERIFIER_MEETCHOPRA_KEY,
       },
     }),
     name: getNameError(fields.name),
     subject: getSubjectError(fields.subject),
     message: getMessageError(fields.message),
-    'h-captcha-response': await getHCaptchaError(fields['h-captcha-response']),
+    'h-captcha-response': await getHCaptchaError({
+      hcaptchaResponse: fields['h-captcha-response'],
+      HCAPTCHA_SITE_KEY: env.HCAPTCHA_SITE_KEY,
+      HCAPTCHA_SITE_SECRET: env.HCAPTCHA_SITE_SECRET,
+    }),
   };
 };
 

@@ -13,6 +13,7 @@ import { getEmailClientSideError } from '~/helpers/form-validation/fields-valida
 import { getHCaptchaClientSideError } from '~/helpers/form-validation/fields-validation/hcaptcha-validation';
 import { FormValidationContext } from '~/helpers/form-validation/form-validation-context';
 import { useFormValidation } from '~/helpers/form-validation/use-form-validation';
+import { useRootLoaderData } from '~/utils/use-match-loader-data';
 import {
   action,
   FieldName,
@@ -27,7 +28,7 @@ export { action };
 // TODO: Add cypress test for happy flow
 const Contact: FC = () => {
   const actionData = useActionData<typeof action>();
-  // const { ENV } = useRootLoaderData();
+  const { ENV } = useRootLoaderData();
   const [
     previousMessageSentSuccessfullyTs,
     setPreviousMessageSentSuccessfullyTs,
@@ -173,8 +174,7 @@ const Contact: FC = () => {
                       'scale-75 -translate-x-1/8 sm:scale-100 sm:translate-x-0',
                     )}>
                     <HCaptcha
-                      sitekey='10000000-ffff-ffff-ffff-000000000001'
-                      // sitekey={ENV.HCAPTCHA_SITE_KEY}
+                      sitekey={ENV.HCAPTCHA_SITE_KEY}
                       onVerify={() => {
                         clearError(FieldName.hCaptchaResponse);
                       }}

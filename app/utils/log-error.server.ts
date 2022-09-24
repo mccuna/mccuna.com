@@ -1,11 +1,22 @@
 import { query as q } from 'faunadb';
 import { executeQuery } from '~/helpers/fauna/execute-query';
 
-export const logError = async (errorLog: unknown): Promise<void> => {
+export type LogErrorArgs = {
+  errorLog: unknown;
+  config: {
+    faunaSecret: string;
+    faunaDomain: string;
+  };
+};
+
+export const logError = async ({
+  config,
+  errorLog,
+}: LogErrorArgs): Promise<void> => {
   await executeQuery({
     clientConfig: {
-      secret: FAUNA_SECRET,
-      domain: FAUNA_DOMAIN,
+      secret: config.faunaSecret,
+      domain: config.faunaDomain,
       scheme: 'https',
     },
     query: q.Create(q.Collection('errors'), {

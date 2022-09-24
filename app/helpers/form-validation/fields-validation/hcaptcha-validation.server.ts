@@ -2,20 +2,34 @@ import { externalLinks } from '~/constants/external-links';
 import { FieldError } from '~/types/action-data';
 import { getHCaptchaClientSideError } from './hcaptcha-validation';
 
-export const getHCaptchaError = async (
-  hcaptchaResponse: string,
-): Promise<FieldError> => {
+type GetHCaptchaErrorArgs = {
+  hcaptchaResponse: string;
+  HCAPTCHA_SITE_SECRET: string;
+  HCAPTCHA_SITE_KEY: string;
+};
+
+export const getHCaptchaError = async ({
+  HCAPTCHA_SITE_KEY,
+  HCAPTCHA_SITE_SECRET,
+  hcaptchaResponse,
+}: GetHCaptchaErrorArgs): Promise<FieldError> => {
   const clientSideError = getHCaptchaClientSideError(hcaptchaResponse);
   if (clientSideError) {
     return clientSideError;
   }
 
-  return await verifyHCaptchaResponse(hcaptchaResponse);
+  return await verifyHCaptchaResponse({
+    hcaptchaResponse,
+    HCAPTCHA_SITE_KEY,
+    HCAPTCHA_SITE_SECRET,
+  });
 };
 
-const verifyHCaptchaResponse = async (
-  hcaptchaResponse: string,
-): Promise<FieldError> => {
+const verifyHCaptchaResponse = async ({
+  HCAPTCHA_SITE_KEY,
+  HCAPTCHA_SITE_SECRET,
+  hcaptchaResponse,
+}: GetHCaptchaErrorArgs): Promise<FieldError> => {
   const payload: HCaptchaVerifyPayload = {
     response: hcaptchaResponse,
     secret: HCAPTCHA_SITE_SECRET,
