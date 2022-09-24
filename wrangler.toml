@@ -1,17 +1,11 @@
-main = "./build/index.js"
+main = "./dist/worker.mjs"
 compatibility_date = "2022-09-01"
 
 [site]
   bucket = "./public"
 
 [build]
-command = "pnpm build"
 watch_dir = "./build"
-
-[build.upload]
-format = "modules"
-dir = "./dist"
-main = "./worker.mjs"
 
 [env.development]
 workers_dev = true

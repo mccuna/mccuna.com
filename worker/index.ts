@@ -11,7 +11,6 @@ const handleFetch = createFetchHandler({
     return { env, ctx } as AppLoadContext;
   },
   mode: process.env.NODE_ENV,
-  enableCache: true,
 });
 
 const worker: ExportedHandler = {

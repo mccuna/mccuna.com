@@ -13,7 +13,7 @@
     "dev": "pnpm build && pnpm concurrently pnpm:dev:* --kill-others-on-fail",
     "dev:css": "tailwindcss -w -i ./app/styles/global.css -o ./app/styles/tailwind.css",
     "dev:remix": "remix watch",
-    "dev:miniflare": "miniflare --build-command \"node ./scripts/build-worker.mjs\" --build-watch-path ./worker --build-watch-path ./build/index.js --no-cache --watch --open",
+    "dev:miniflare": "miniflare dist/worker.mjs --build-command \"node ./scripts/build-worker.mjs\" --modules --no-cache --watch --open",
     "lint": "eslint --cache . --ext .ts,.tsx,.js,.jsx",
     "start": "cross-env NODE_ENV=production miniflare ./build/index.js",
     "typecheck": " tsc -b",

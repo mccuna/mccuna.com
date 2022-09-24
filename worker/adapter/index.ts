@@ -7,13 +7,11 @@ type CreateFetchHandlerArgs<Env> = {
   build: ServerBuild;
   getLoadContext: GetLoadContext<Env>;
   mode?: ProcessEnv['NODE_ENV'];
-  enableCache: boolean;
 };
 export const createFetchHandler = <Env>({
   build,
   getLoadContext,
   mode,
-  enableCache,
 }: CreateFetchHandlerArgs<Env>): ExportedHandlerFetchHandler<Env> => {
   const handleRequest = createRequestHandler({ build, getLoadContext, mode });
   const handleAsset = createWorkerAssetHandler({ build, mode });
@@ -34,24 +32,7 @@ export const createFetchHandler = <Env>({
         }
       }
 
-      const cache = enableCache
-        ? await caches.open(build.assets.version)
-        : null;
-
-      if (cache && isHeadOrGetRequest) {
-        const response = await cache.match(request);
-
-        if (response) {
-          return response;
-        }
-      }
-
-      const response = await handleRequest(request, env, ctx);
-      if (cache && isHeadOrGetRequest && response.ok) {
-        ctx.waitUntil(cache.put(request, response.clone()));
-      }
-
-      return response;
+      return await handleRequest(request, env, ctx);
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : error?.toString();
