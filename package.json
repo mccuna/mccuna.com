@@ -17,7 +17,7 @@
     "typecheck": " tsc -b",
     "prepare": "husky install",
     "sync-images-cdn": "node -r esbuild-register ./tools/images/index.ts",
-    "pw:test": "playwright test",
+    "pw:test": "pnpm build && pnpm playwright test",
     "pw:show-report": "playwright show-report"
   },
   "dependencies": {
@@ -66,6 +66,7 @@
     "rimraf": "^3.0.2",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.3",
+    "undici": "^5.10.0",
     "wrangler": "^2.1.4"
   },
   "engines": {
