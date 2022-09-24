@@ -16,7 +16,9 @@
     "start": "cross-env NODE_ENV=production miniflare ./build/index.js",
     "typecheck": " tsc -b",
     "prepare": "husky install",
-    "sync-images-cdn": "node -r esbuild-register ./tools/images/index.ts"
+    "sync-images-cdn": "node -r esbuild-register ./tools/images/index.ts",
+    "pw:test": "playwright test",
+    "pw:show-report": "playwright show-report"
   },
   "dependencies": {
     "@fontsource/abeezee": "^4.5.9",
@@ -35,6 +37,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.16.0",
+    "@playwright/test": "^1.26.0",
     "@remix-run/dev": "^1.7.1",
     "@remix-run/eslint-config": "^1.7.1",
     "@tailwindcss/typography": "^0.5.7",
