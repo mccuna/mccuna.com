@@ -14,7 +14,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": ["./app/*"],
+      "tests/*": ["./tests/*"]
     },
     "types": ["@cloudflare/workers-types"],
     // There are multiple errors in the node_modules
