@@ -1,3 +1,4 @@
+import { getScreenshotName } from 'tests/utils/misc';
 import { routeHrefs } from '~/constants';
 import { mailersendApiConfig } from '~/helpers/email/mailersend-constants';
 import { getPageTitle } from '~/utils/meta-utils';
@@ -10,20 +11,22 @@ test.describe('Contact page should', () => {
     await page.addInitScript(mockDate);
   });
 
-  test('have a valid visual', async ({ page }) => {
+  test('have a valid visual', async ({ page }, testInfo) => {
     await page.goto(routeHrefs.contact);
 
     const title = await page.title();
     expect(title).toBe(getPageTitle('Contact'));
 
-    await expect(page).toHaveScreenshot('final.png');
+    await expect(page).toHaveScreenshot(
+      getScreenshotName({ testInfo, name: 'final.png' }),
+    );
   });
 
   test('send an email when data is valid', async ({
     page,
     screen,
     mockAgent,
-  }) => {
+  }, testInfo) => {
     await page.goto(routeHrefs.contact);
 
     const nameInput = await screen.findByRole('textbox', { name: /name/i });
@@ -75,6 +78,8 @@ test.describe('Contact page should', () => {
 
     await expect(messageSentHeading).toBeVisible();
 
-    await expect(page).toHaveScreenshot('final.png');
+    await expect(page).toHaveScreenshot(
+      getScreenshotName({ testInfo, name: 'final.png' }),
+    );
   });
 });
