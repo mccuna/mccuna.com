@@ -1,5 +1,6 @@
 import { routeHrefs } from '~/constants';
 import { mailersendApiConfig } from '~/helpers/email/mailersend-constants';
+import { getPageTitle } from '~/utils/meta-utils';
 import { expect, test } from '../setup';
 import { mockDate } from '../utils/mock-date';
 
@@ -7,6 +8,15 @@ test.describe('Contact page should', () => {
   test.beforeEach(async ({ page }) => {
     // mocks Date in the app itself
     await page.addInitScript(mockDate);
+  });
+
+  test('have a valid visual', async ({ page }) => {
+    await page.goto(routeHrefs.contact);
+
+    const title = await page.title();
+    expect(title).toBe(getPageTitle('Contact'));
+
+    await expect(page).toHaveScreenshot('final.png');
   });
 
   test('send an email when data is valid', async ({
