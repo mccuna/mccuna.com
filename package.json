@@ -20,7 +20,7 @@
     "prepare": "husky install",
     "sync-images-cdn": "node -r esbuild-register ./tools/images/index.ts",
     "pw:test": "cross-env NODE_OPTIONS=\"--experimental-vm-modules --no-warnings\" playwright test",
-    "pw:show-report": "playwright show-report",
+    "pw:codegen": "cross-env NODE_OPTIONS=\"--experimental-vm-modules --no-warnings\" playwright codegen",
     "test": "pnpm build && pnpm pw:test"
   },
   "dependencies": {
