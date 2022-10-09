@@ -16,8 +16,13 @@ export type ActionDataFields<TFormFieldKey extends string> = Record<
 
 export type FieldError = string | null;
 
-export type GetFieldsErrors<TFormFieldKey extends string> = (
-  fields: ActionDataFields<TFormFieldKey>,
+export type GetFieldsErrors<
+  TFormFieldKey extends string,
+  TOtherArgs = undefined,
+> = (
+  args: {
+    fields: ActionDataFields<TFormFieldKey>;
+  } & TOtherArgs,
 ) => Promise<Errors<TFormFieldKey>>;
 
 export type ValidationStatus = 'valid' | 'invalid';

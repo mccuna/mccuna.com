@@ -11,7 +11,7 @@ export const useImageCdn = () => {
 
   const getImageCdnUrl = ({ cdnPath, variant }: GetImageCdnUrlArgs) => {
     // In production serve the images from the same domain
-    if (process.env.NODE_ENV === 'production') {
+    if (ENV.USE_CUSTOM_DOMAIN_FOR_IMAGES) {
       return `/cdn-cgi/imagedelivery/${ENV.CLOUDFLARE_ACCOUNT_HASH}/${cdnPath}/${variant}`;
     }
 

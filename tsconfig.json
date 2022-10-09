@@ -1,20 +1,23 @@
 {
   "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2021"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
+    "module": "CommonJS",
     "resolveJsonModule": true,
-    "target": "ES2021",
+    "target": "ESNext",
     "strict": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": ["./app/*"],
+      "tests/*": ["./tests/*"]
     },
+    "types": ["@cloudflare/workers-types"],
     // There are multiple errors in the node_modules
     "skipLibCheck": true,
     // Remix takes care of building everything in `remix build`.
