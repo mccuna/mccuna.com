@@ -24,23 +24,22 @@ test.describe('Contact page should', () => {
 
   test('send an email when data is valid', async ({
     page,
-    screen,
     mockAgent,
   }, testInfo) => {
     await page.goto(routeHrefs.contact);
 
-    const nameInput = await screen.findByRole('textbox', { name: /name/i });
+    const nameInput = page.getByRole('textbox', { name: /name/i });
     await nameInput.fill('John Doe');
 
-    const emailInput = await screen.findByRole('textbox', { name: /email/i });
+    const emailInput = page.getByRole('textbox', { name: /email/i });
     await emailInput.fill('john_doe@gmail.com');
 
-    const subjectInput = await screen.findByRole('textbox', {
+    const subjectInput = page.getByRole('textbox', {
       name: /subject/i,
     });
     await subjectInput.type('Dummy email');
 
-    const messageTextArea = await screen.findByRole('textbox', {
+    const messageTextArea = page.getByRole('textbox', {
       name: /message/i,
     });
     await messageTextArea.fill(
@@ -64,17 +63,15 @@ test.describe('Contact page should', () => {
       })
       .reply(202);
 
-    const sendMsgBtn = await screen.findByRole('button', {
+    const sendMsgBtn = page.getByRole('button', {
       name: /send message/i,
     });
 
     await sendMsgBtn.click();
 
-    const messageSentHeading = await screen.findByRole(
-      'heading',
-      { name: /message sent!/i },
-      { timeout: 3000 },
-    );
+    const messageSentHeading = page.getByRole('heading', {
+      name: /message sent!/i,
+    });
 
     await expect(messageSentHeading).toBeVisible();
 

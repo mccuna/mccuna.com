@@ -1,13 +1,9 @@
-import {
-  locatorFixtures,
-  LocatorFixtures,
-} from '@playwright-testing-library/test/fixture';
 import { test as playwrightTest } from '@playwright/test';
 import { Miniflare } from 'miniflare';
 import { MockAgent, setGlobalDispatcher } from 'undici';
 import { mockDate } from './utils/mock-date';
 
-interface TestFixtures extends LocatorFixtures {
+interface TestFixtures {
   mockAgent: MockAgent;
 }
 
@@ -16,10 +12,7 @@ interface WorkerFixtures {
   port: number;
 }
 
-const testingLibraryTest =
-  playwrightTest.extend<LocatorFixtures>(locatorFixtures);
-
-export const test = testingLibraryTest.extend<TestFixtures, WorkerFixtures>({
+export const test = playwrightTest.extend<TestFixtures, WorkerFixtures>({
   // Assign a unique "port" for each worker process
   port: [
     // eslint-disable-next-line no-empty-pattern
