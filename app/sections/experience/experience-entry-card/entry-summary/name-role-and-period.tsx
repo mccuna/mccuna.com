@@ -35,7 +35,7 @@ const NameRoleAndPeriod: FC = () => {
       <div className='flex justify-center items-center'>
         <CdnImage
           cdnPath={`experience/${experienceEntry.image.cdnPath}`}
-          className='brightness-0 invert py-6 w-min lg:py-0 lg:max-h-12 xl:py-4 xl:max-h-16'
+          className='brightness-0 invert py-6 w-min lg:py-0 lg:max-h-12 xl:py-4 xl:max-h-16 2xl:max-h-24'
           alt={`${experienceEntry.name} logo`}
           width={experienceEntry.image.width}
           height={experienceEntry.image.height}
