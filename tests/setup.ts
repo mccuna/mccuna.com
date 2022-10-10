@@ -27,6 +27,15 @@ export const test = playwrightTest.extend<TestFixtures, WorkerFixtures>({
     use(`http://localhost:${port}`);
   },
 
+  // Use prefers-reduced-motion to disable animations
+  page: ({ page }, use) => {
+    page.emulateMedia({
+      reducedMotion: 'reduce',
+    });
+
+    use(page);
+  },
+
   // Setup mock client for requests initiated by the Worker
   // eslint-disable-next-line no-empty-pattern
   mockAgent: async ({}, use) => {
