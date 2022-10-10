@@ -11,7 +11,7 @@ test.describe('About Me -> Skills page should', () => {
     expect(title).toBe(getPageTitle('Skills'));
 
     await expect(page).toHaveScreenshot(
-      getScreenshotName({ testInfo, name: 'final.png' }),
+      getScreenshotName({ testInfo, name: 'final' }),
     );
   });
 });

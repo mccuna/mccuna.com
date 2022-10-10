@@ -11,12 +11,13 @@ const EntrySummary: FC = () => {
 
   return (
     <summary
-      className='text-left w-full inline-block'
+      className='text-left w-full list-none marker:hidden [&::-webkit-details-marker]:hidden'
       onClick={(event) => {
         // https://github.com/facebook/react/issues/15486
         event.preventDefault();
         toggleOpenState();
-      }}>
+      }}
+      data-testid={`${experienceEntry.refId}-summary`}>
       <Card
         variant='primary'
         className={clsx(
@@ -36,13 +37,16 @@ const EntrySummary: FC = () => {
             ))}
           </div>
         </div>
-        <div className='flex justify-center text-slate-200  group-hover:animate-bounce'>
+        <button
+          type='button'
+          aria-label={isOpened ? 'Collapse' : 'Expand'}
+          className='flex justify-center text-slate-200  motion-safe:group-hover:animate-bounce'>
           {!isOpened ? (
             <ChevronDoubleDownIcon className='h-6 w-6' />
           ) : (
             <ChevronDoubleUpIcon className='h-6 w-6' />
           )}
-        </div>
+        </button>
       </Card>
     </summary>
   );
