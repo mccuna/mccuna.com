@@ -18,7 +18,7 @@ test.describe('Contact page should', () => {
     expect(title).toBe(getPageTitle('Contact'));
 
     await expect(page).toHaveScreenshot(
-      getScreenshotName({ testInfo, name: 'final.png' }),
+      getScreenshotName({ testInfo, name: 'final' }),
     );
   });
 
@@ -76,7 +76,7 @@ test.describe('Contact page should', () => {
     await expect(messageSentHeading).toBeVisible();
 
     await expect(page).toHaveScreenshot(
-      getScreenshotName({ testInfo, name: 'final.png' }),
+      getScreenshotName({ testInfo, name: 'final' }),
     );
   });
 });

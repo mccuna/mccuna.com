@@ -11,7 +11,7 @@ test.describe('Home page should', () => {
     expect(title).toBe(getPageTitle(''));
 
     await expect(page).toHaveScreenshot(
-      getScreenshotName({ testInfo, name: 'final.png' }),
+      getScreenshotName({ testInfo, name: 'final' }),
     );
   });
 });

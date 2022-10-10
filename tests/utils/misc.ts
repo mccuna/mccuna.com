@@ -9,6 +9,6 @@ export const getScreenshotName = ({
   name,
   testInfo,
 }: GetScreenshotNameArgs): string[] => {
-  const normalizedTitle = testInfo.title.replace(' ', '_');
+  const normalizedTitle = testInfo.title.replaceAll(' ', '_');
   return [normalizedTitle, `${name}.png`];
 };
