@@ -74,8 +74,6 @@ const config: PlaywrightTestConfig = {
         },
       },
     },
-
-    /* Test against mobile viewports. */
     {
       name: 'iphone_x',
       use: {
@@ -88,20 +86,6 @@ const config: PlaywrightTestConfig = {
         ...devices['iPad Pro 11'],
       },
     },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: {
-    //     channel: 'msedge',
-    //   },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: {
-    //     channel: 'chrome',
-    //   },
-    // },
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */

@@ -30,9 +30,7 @@ const Experience: FC = () => {
             experienceEntry={experienceEntry}
             key={experienceEntry.refId}>
             <div className='flex gap-x-10 odd:flex-row even:flex-row-reverse '>
-              <div className='w-full xl:w-1/2'>
-                <ExperienceEntryCard />
-              </div>
+              <ExperienceEntryCard className='w-full xl:w-1/2' />
               {index % 2 === 0 && index !== experienceEntries.length - 1 && (
                 <div className='hidden w-1/2 xl:flex xl:flex-col xl:justify-end xl:items-start'>
                   <ExperienceArrowLeft />
