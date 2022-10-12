@@ -1,0 +1,32 @@
+main = "./dist/worker.mjs"
+compatibility_date = "2022-09-01"
+
+[site]
+  bucket = "./public"
+
+[build]
+watch_dir = "./build"
+
+[env.development]
+workers_dev = true
+name = "dev"
+
+[env.development.vars]
+HCAPTCHA_SITE_KEY = "10000000-ffff-ffff-ffff-000000000001"
+CLOUDFLARE_ACCOUNT_HASH = "0uj9SUnHui6vrXgyuOODuw"
+USE_CUSTOM_DOMAIN_FOR_IMAGES = false
+### Secrets 
+# Used for email verification: https://verifier.meetchopra.com/
+VERIFIER_MEETCHOPRA_KEY = ""
+# https://www.mailersend.com/
+MAILERSEND_API_KEY = ""
+
+# FaunaDb
+FAUNA_SECRET=""
+FAUNA_DOMAIN=""
+
+# Cloudflare
+CLOUDFLARE_ACCOUNT_HASH=""
+CLOUDFLARE_ACCOUNT_ID=""
+# Read,Edit Images API Token
+CLOUDFLARE_IMAGES_API_TOKEN=""

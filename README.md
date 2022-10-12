@@ -13,6 +13,7 @@ This repo uses `pnpm` as a package manager. If you don't have it installed, chec
      - `pnpm dev:remix` - builds the `remix` app and watches for changes
      - `pnpm dev:miniflare` - starts running the `remix` app using `miniflare`
    - Before starting the above processes it also runs a `pnpm build` to create a production build. This is needed because `miniflare` will throw an error if it finds no app to run
+   - **The `wrangler.toml` file contains only the public env variables. Besides them, the app need some secret env variables too (check `wrangler.example.toml` for the whole list). Unfortunately I cannot include them in this public repo because because, yeah, they're secrets 😄**
 
 If for some reason you need to debug the server-side part, the `launch.json` file is already configured to run `pnpm dev` in debug mode.
 
