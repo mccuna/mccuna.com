@@ -11,7 +11,7 @@ type Props = {
 const PrimarySkillsCard: FC<Props> = ({ skills, className }) => {
   const category: Skill['category'] = 'primary';
 
-  const chunkSize = 4;
+  const chunkSize = 5;
 
   const skillsChunks = skills.reduce((resultArray, skill, index) => {
     const chunkIndex = Math.floor(index / chunkSize);
