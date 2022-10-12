@@ -31,7 +31,9 @@ If for some reason you need to debug the server-side part, the `launch.json` fil
 - [TypeScript](https://www.typescriptlang.org/)
   - Who still uses plain Javascript nowadays? 😅
 - [faunadb](https://fauna.com/)
-  - A serverless database that synergies with cloudflare workers.
+  - A serverless database that synergies with cloudflare workers. Used just for logs at the moment.
+- [playwright](https://playwright.dev/)
+  - Favorite E2E testing library.
 
 ### Services used
 
@@ -41,6 +43,8 @@ If for some reason you need to debug the server-side part, the `launch.json` fil
   - Images CDN
 - [unDraw](https://undraw.co/)
   - Cool open-source illustrations
+- [hCaptcha](https://www.hcaptcha.com/)
+  - Anti-bot service (aka source of funny animals pictures)
 
 ## Notes
 
