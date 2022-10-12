@@ -49,6 +49,8 @@ Run `pnpm test` to run the tests. Most of the tests are visual tests using `play
   - Cool open-source illustrations
 - [hCaptcha](https://www.hcaptcha.com/)
   - Anti-bot service (aka source of funny animals pictures)
+- [mailersend](https://www.mailersend.com/)
+  - Everybody needs a good email service
 
 ## Notes
 
