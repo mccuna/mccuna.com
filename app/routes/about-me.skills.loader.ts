@@ -60,10 +60,17 @@ export const loader = () => {
       imagePath: 'entity_framework.webp',
     },
     {
-      name: 'cypress',
+      name: 'Playwright',
       level: 'intermediate',
       category: 'primary',
       orderIndex: 80,
+      imagePath: 'playwright.webp',
+    },
+    {
+      name: 'cypress',
+      level: 'intermediate',
+      category: 'primary',
+      orderIndex: 90,
       imagePath: 'cypress.webp',
     },
     {
