@@ -13,8 +13,13 @@ This repo uses `pnpm` as a package manager. If you don't have it installed, chec
      - `pnpm dev:remix` - builds the `remix` app and watches for changes
      - `pnpm dev:miniflare` - starts running the `remix` app using `miniflare`
    - Before starting the above processes it also runs a `pnpm build` to create a production build. This is needed because `miniflare` will throw an error if it finds no app to run
+   - **The `wrangler.toml` file contains only the public env variables. Besides them, the app need some secret env variables too (check `wrangler.example.toml` for the whole list). Unfortunately I cannot include them in this public repo because because, yeah, they're secrets 😄**
 
 If for some reason you need to debug the server-side part, the `launch.json` file is already configured to run `pnpm dev` in debug mode.
+
+## Testing
+
+Run `pnpm test` to run the tests. Most of the tests are visual tests using `playwright`.
 
 ## Technical details
 
@@ -31,7 +36,9 @@ If for some reason you need to debug the server-side part, the `launch.json` fil
 - [TypeScript](https://www.typescriptlang.org/)
   - Who still uses plain Javascript nowadays? 😅
 - [faunadb](https://fauna.com/)
-  - A serverless database that synergies with cloudflare workers.
+  - A serverless database that synergies with cloudflare workers. Used just for logs at the moment.
+- [playwright](https://playwright.dev/)
+  - Favorite E2E testing library.
 
 ### Services used
 
@@ -41,6 +48,10 @@ If for some reason you need to debug the server-side part, the `launch.json` fil
   - Images CDN
 - [unDraw](https://undraw.co/)
   - Cool open-source illustrations
+- [hCaptcha](https://www.hcaptcha.com/)
+  - Anti-bot service (aka source of funny animals pictures)
+- [mailersend](https://www.mailersend.com/)
+  - Everybody needs a good email service
 
 ## Notes
 
