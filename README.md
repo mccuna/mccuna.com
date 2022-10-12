@@ -16,6 +16,10 @@ This repo uses `pnpm` as a package manager. If you don't have it installed, chec
 
 If for some reason you need to debug the server-side part, the `launch.json` file is already configured to run `pnpm dev` in debug mode.
 
+## Testing
+
+Run `pnpm test` to run the tests. Most of the tests are visual tests using `playwright`.
+
 ## Technical details
 
 ### Technologies used
