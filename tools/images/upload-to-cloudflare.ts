@@ -1,27 +1,26 @@
 /* eslint-disable no-console */
 import fs, { Dirent } from 'fs';
-import fsPromises from 'fs/promises';
 import path from 'path';
 import invariant from 'tiny-invariant';
 import { CloudflareResponse } from './types/cloudflare-response';
 
-type SyncImagesDirWithCloudflareArgs = {
+type UploadImagesToCloudflareArgs = {
   dirName: string;
   parentPath?: string;
   extensionsToInclude: string[];
   localPathPrefix: string;
 };
 
-export const syncImagesDirWithCloudflare = async ({
+export const uploadImagesToCloudflare = async ({
   dirName,
   parentPath,
   extensionsToInclude,
   localPathPrefix,
-}: SyncImagesDirWithCloudflareArgs) => {
+}: UploadImagesToCloudflareArgs) => {
   const dirPath = path.join(parentPath || '', dirName);
   invariant(fs.existsSync(dirPath), `${dirPath} doesn't exist.`);
 
-  const dirItems = await fsPromises.readdir(dirPath, {
+  const dirItems = await fs.promises.readdir(dirPath, {
     withFileTypes: true,
   });
 
@@ -46,7 +45,7 @@ export const syncImagesDirWithCloudflare = async ({
 
   await Promise.all(
     files.map((file) =>
-      syncImageWithCloudflare({
+      uploadImageToCloudflare({
         fileName: file.name,
         parentPath: dirPath,
         localPathPrefix,
@@ -58,7 +57,7 @@ export const syncImagesDirWithCloudflare = async ({
     /* Go through each folder 1 at a time to prevent sending too 
     many requests to cloudflare */
     // eslint-disable-next-line no-await-in-loop
-    await syncImagesDirWithCloudflare({
+    await uploadImagesToCloudflare({
       dirName: directory.name,
       parentPath: dirPath,
       extensionsToInclude,
@@ -67,17 +66,17 @@ export const syncImagesDirWithCloudflare = async ({
   }
 };
 
-type SyncImageWithCloudflareArgs = {
+type UploadImageToCloudflare = {
   fileName: string;
   parentPath: string;
   localPathPrefix: string;
 };
 
-export const syncImageWithCloudflare = async ({
+export const uploadImageToCloudflare = async ({
   fileName,
   parentPath,
   localPathPrefix,
-}: SyncImageWithCloudflareArgs) => {
+}: UploadImageToCloudflare) => {
   const localFilePath = path.join(parentPath, fileName);
   invariant(fs.existsSync(localFilePath), `${localFilePath} doesn't exist.`);
 
@@ -92,7 +91,7 @@ export const syncImageWithCloudflare = async ({
   let fileContent: Buffer;
 
   try {
-    fileContent = await fsPromises.readFile(localFilePath);
+    fileContent = await fs.promises.readFile(localFilePath);
   } catch (err) {
     console.error(err);
     return;
