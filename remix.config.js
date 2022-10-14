@@ -13,6 +13,15 @@ module.exports = {
     '**/*.links.ts',
     '**/*.handle.ts',
   ],
+  mdx: async () => {
+    const [rehypeHighlight] = await Promise.all([
+      import('rehype-highlight').then((mod) => mod.default),
+    ]);
+
+    return {
+      rehypePlugins: [rehypeHighlight],
+    };
+  },
   // assetsBuildDirectory: 'build',
   // serverBuildPath: 'build',
   // publicPath: '/build/_assets/',

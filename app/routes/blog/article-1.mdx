@@ -1,0 +1,32 @@
+---
+meta:
+  title: Article 1
+  description: Article 1 description
+headers:
+  Cache-Control: no-cache
+---
+
+# Hello content!
+
+```tsx
+export const loader = () => {
+  return permanentRedirect(routeHrefs.aboutMe.myJourney);
+};
+
+const AboutMe = () => {
+  // This will never get rendered as the route is just a proxy for the permanent redirect
+  // eslint-disable-next-line react/jsx-no-useless-fragment
+  return <></>;
+};
+
+export default AboutMe;
+```
+
+export const links = () => {
+  return [
+    {
+      rel: 'stylesheet',
+      href: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github-dark.min.css',
+    },
+  ];
+};
