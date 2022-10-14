@@ -3,6 +3,7 @@
 node_modules
 
 /.cache
+/content/build
 /build
 /dist
 /public/build
