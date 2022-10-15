@@ -64,6 +64,10 @@ export default App;
 export const ErrorBoundary: FC<ErrorBoundaryProps> = ({ error }) => {
   const { pathname, hash, search } = useLocation();
 
+  if (process.env.NODE_ENV === 'development') {
+    console.log(error);
+  }
+
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       fetch('/logs', {
