@@ -65,6 +65,45 @@ const compileMdxFile = async ({ dirPath, outputDirPath, fileDirent }) => {
  * @param {string} args.buildDir
  */
 export const uploadToCloudflareKV = async ({ buildDir }) => {
+  const fileDirentsList = await fs.promises.readdir(buildDir, {
+    withFileTypes: true,
+  });
+  const fileContentsList = await Promise.all(
+    fileDirentsList.map(async (fileDirent) => {
+      const fileContent = await fs.promises.readFile(
+        path.join(buildDir, fileDirent.name),
+        {
+          encoding: 'utf-8',
+        },
+      );
+      return {
+        key: fileDirent.name,
+        value: fileContent,
+      };
+    }),
+  );
+
+  const namespaceId = '5ce840d722e24e149be86d98ac5decf5';
+  const url = `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/storage/kv/namespaces/${namespaceId}/bulk`;
+
+  invariant(
+    process.env.CLOUDFLARE_EDIT_CONTENT_API_TOKEN?.length,
+    'CLOUDFLARE_EDIT_CONTENT_API_TOKEN is required',
+  );
+
+  const body = JSON.stringify(fileContentsList);
+
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${process.env.CLOUDFLARE_EDIT_CONTENT_API_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    method: 'PUT',
+    body,
+  });
+
+  // TODO: Pretty print the response
+  const responseJson = await response.json();
 };
 
 const getContentFiles = async () => {};
