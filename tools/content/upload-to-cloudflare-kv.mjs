@@ -1,5 +1,6 @@
 // @ts-check
-import { compile } from '@mdx-js/mdx';
+import mdx from '@mdx-js/esbuild';
+import esbuild from 'esbuild';
 import fs from 'fs';
 import path from 'path';
 import rehypeHighlight from 'rehype-highlight';
@@ -24,40 +25,23 @@ export const compileMdx = async ({ dirPath, outputDirPath }) => {
     withFileTypes: true,
   });
 
-  const compileMdxPromisesList = dirFiles
-    .filter((file) => file.isFile() && file.name.endsWith('.mdx'))
-    .map((fileDirent) =>
-      compileMdxFile({ dirPath, outputDirPath, fileDirent }),
-    );
-
-  await Promise.all(compileMdxPromisesList);
-};
-
-/**
- * @param {Object} args
- * @param {string} args.dirPath
- * @param {string} args.outputDirPath
- * @param {fs.Dirent} args.fileDirent
- */
-const compileMdxFile = async ({ dirPath, outputDirPath, fileDirent }) => {
-  const filePath = path.join(dirPath, fileDirent.name);
-  const file = await fs.promises.readFile(filePath);
-
-  const compiledFile = await compile(file, {
-    rehypePlugins: [rehypeHighlight],
-    remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
-  });
-
-  if (!fs.existsSync(outputDirPath)) {
-    await fs.promises.mkdir(outputDirPath);
-  }
-
-  const fileNameWithoutExtension = fileDirent.name.replace('.mdx', '');
-  // TODO: minify the content
-  await fs.promises.writeFile(
-    `./content/build/${fileNameWithoutExtension}.js`,
-    compiledFile.value,
+  const mdxFileDirentsList = dirFiles.filter(
+    (file) => file.isFile() && file.name.endsWith('.mdx'),
   );
+
+  await esbuild.build({
+    entryPoints: mdxFileDirentsList.map((fileDirent) =>
+      path.join(dirPath, fileDirent.name),
+    ),
+    outdir: outputDirPath,
+    format: 'esm',
+    plugins: [
+      mdx({
+        rehypePlugins: [rehypeHighlight],
+        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+      }),
+    ],
+  });
 };
 
 /**
@@ -93,6 +77,7 @@ export const uploadToCloudflareKV = async ({ buildDir }) => {
 
   const body = JSON.stringify(fileContentsList);
 
+  // TODO: copy to .mf/kv too
   const response = await fetch(url, {
     headers: {
       Authorization: `Bearer ${process.env.CLOUDFLARE_EDIT_CONTENT_API_TOKEN}`,
