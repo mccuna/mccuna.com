@@ -14,7 +14,7 @@
     "dev": "pnpm build && pnpm concurrently pnpm:dev:* --kill-others-on-fail",
     "dev:css": "tailwindcss -w -i ./app/styles/global.css -o ./app/styles/tailwind.css",
     "dev:remix": "remix watch",
-    "dev:miniflare": "miniflare dist/worker.mjs --build-command \"node ./scripts/build-worker.mjs\" --modules --no-cache --watch --open",
+    "dev:miniflare": "miniflare dist/worker.mjs --build-command \"node ./scripts/build-worker.mjs\" --modules --no-cache --watch",
     "lint": "eslint --cache . --ext .ts,.tsx,.js,.jsx",
     "start": "cross-env NODE_ENV=production miniflare ./build/index.js",
     "typecheck": " tsc -b",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.16.0",
-    "@mdx-js/mdx": "^2.1.5",
+    "@mdx-js/esbuild": "^2.1.5",
     "@playwright/test": "^1.27.0",
     "@remix-run/dev": "^1.7.2",
     "@remix-run/eslint-config": "^1.7.2",

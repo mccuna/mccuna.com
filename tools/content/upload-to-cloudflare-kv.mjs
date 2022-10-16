@@ -3,23 +3,21 @@ import mdx from '@mdx-js/esbuild';
 import esbuild from 'esbuild';
 import fs from 'fs';
 import path from 'path';
+import { renderToString } from 'react-dom/server';
 import rehypeHighlight from 'rehype-highlight';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import invariant from 'tiny-invariant';
+import { fileURLToPath } from 'url';
+
+const tempDirectory = './temp';
 
 /**
  * @param {Object} args
  * @param {string} args.dirPath
- * @param {string} args.outputDirPath
  */
-export const compileMdx = async ({ dirPath, outputDirPath }) => {
+export const compileMdx = async ({ dirPath }) => {
   invariant(fs.existsSync(dirPath), `Directory does not exist: ${dirPath}`);
-  invariant(!!outputDirPath, 'outputDirPath is required');
-  invariant(
-    typeof outputDirPath === 'string',
-    'outputDirPath must be a string',
-  );
 
   const dirFiles = await fs.promises.readdir(dirPath, {
     withFileTypes: true,
@@ -33,8 +31,9 @@ export const compileMdx = async ({ dirPath, outputDirPath }) => {
     entryPoints: mdxFileDirentsList.map((fileDirent) =>
       path.join(dirPath, fileDirent.name),
     ),
-    outdir: outputDirPath,
     format: 'esm',
+    outdir: getTempDirPath(),
+    outExtension: { '.js': '.mjs' },
     plugins: [
       mdx({
         rehypePlugins: [rehypeHighlight],
@@ -42,6 +41,50 @@ export const compileMdx = async ({ dirPath, outputDirPath }) => {
       }),
     ],
   });
+};
+
+/**
+ * @param {Object} args
+ * @param {string} args.outputDirPath
+ */
+export const renderJsxToHtml = async ({ outputDirPath }) => {
+  if (!fs.existsSync(outputDirPath)) {
+    await fs.promises.mkdir(outputDirPath);
+  }
+
+  const compiledFilePathsList = await fs.promises.readdir(getTempDirPath());
+  const tempDirPath = getTempDirPath();
+
+  const renderJsxToHtmlPromises = compiledFilePathsList.map(
+    async (compiledFilePath) => {
+      const filePath = path.join(tempDirPath, compiledFilePath);
+
+      const fileModule = await import(`file:\\\\\\${filePath}`);
+      const { default: Component, meta } = fileModule;
+
+      const componentReactObj = Component();
+
+      const html = renderToString(componentReactObj);
+
+      let newModuleContents = '';
+      newModuleContents += `export const html = ${JSON.stringify(html)};\n`;
+      newModuleContents += `export const meta = {\n`;
+      Object.entries(meta).forEach(([key, value]) => {
+        newModuleContents += `  ${key}: "${value}",\n`;
+      });
+      newModuleContents += `};\n`;
+
+      const transformResult = await esbuild.transform(newModuleContents, {
+        keepNames: true,
+        minify: true,
+      });
+
+      const outputFilePath = path.join(outputDirPath, compiledFilePath);
+      await fs.promises.writeFile(outputFilePath, transformResult.code);
+    },
+  );
+
+  await Promise.all(renderJsxToHtmlPromises);
 };
 
 /**
@@ -89,6 +132,11 @@ export const uploadToCloudflareKV = async ({ buildDir }) => {
 
   // TODO: Pretty print the response
   const responseJson = await response.json();
+};
+
+const getTempDirPath = () => {
+  const __dirname = fileURLToPath(new URL('.', import.meta.url));
+  return path.join(__dirname, tempDirectory);
 };
 
 const getContentFiles = async () => {};
