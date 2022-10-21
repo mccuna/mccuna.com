@@ -47,7 +47,7 @@ export const compileMdx = async ({ dirPath }) => {
  * @param {Object} args
  * @param {string} args.outputDirPath
  */
-export const renderJsxToHtml = async ({ outputDirPath }) => {
+export const compileJsxToJson = async ({ outputDirPath }) => {
   if (!fs.existsSync(outputDirPath)) {
     await fs.promises.mkdir(outputDirPath);
   }
@@ -55,7 +55,7 @@ export const renderJsxToHtml = async ({ outputDirPath }) => {
   const compiledFilePathsList = await fs.promises.readdir(getTempDirPath());
   const tempDirPath = getTempDirPath();
 
-  const renderJsxToHtmlPromises = compiledFilePathsList.map(
+  const compileJsxToJsonPromises = compiledFilePathsList.map(
     async (compiledFilePath) => {
       const filePath = path.join(tempDirPath, compiledFilePath);
 
@@ -66,25 +66,20 @@ export const renderJsxToHtml = async ({ outputDirPath }) => {
 
       const html = renderToString(componentReactObj);
 
-      let newModuleContents = '';
-      newModuleContents += `export const html = ${JSON.stringify(html)};\n`;
-      newModuleContents += `export const meta = {\n`;
-      Object.entries(meta).forEach(([key, value]) => {
-        newModuleContents += `  ${key}: "${value}",\n`;
-      });
-      newModuleContents += `};\n`;
+      const fileContent = JSON.stringify({ meta, html });
 
-      const transformResult = await esbuild.transform(newModuleContents, {
-        keepNames: true,
-        minify: true,
-      });
-
-      const outputFilePath = path.join(outputDirPath, compiledFilePath);
-      await fs.promises.writeFile(outputFilePath, transformResult.code);
+      const fileNameWithoutExt = path.basename(compiledFilePath, '.mjs');
+      const outputFilePath = path.join(
+        outputDirPath,
+        `${fileNameWithoutExt}.json`,
+      );
+      await fs.promises.writeFile(outputFilePath, fileContent);
     },
   );
 
-  await Promise.all(renderJsxToHtmlPromises);
+  await Promise.all(compileJsxToJsonPromises);
+
+  await fs.promises.rmdir(tempDirPath, { recursive: true });
 };
 
 /**
