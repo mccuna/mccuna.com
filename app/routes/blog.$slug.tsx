@@ -12,7 +12,7 @@ const BlogArticle = () => {
     <div className='prose prose-slate dark:prose-invert lg:prose-2xl '>
       <main
         className='[&>pre]:p-0'
-        dangerouslySetInnerHTML={{ __html: loaderData.elementString }}
+        dangerouslySetInnerHTML={{ __html: loaderData.html }}
       />
     </div>
   );
