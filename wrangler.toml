@@ -1,6 +1,11 @@
 main = "./dist/worker.mjs"
 compatibility_date = "2022-09-01"
 
+
+kv_namespaces = [
+  { binding = 'KV_CONTENT', id = '' }
+]
+
 [site]
   bucket = "./public"
 

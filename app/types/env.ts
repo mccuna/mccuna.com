@@ -9,4 +9,5 @@ export type Env = {
   FAUNA_DOMAIN: string;
   CLOUDFLARE_ACCOUNT_HASH: string;
   USE_CUSTOM_DOMAIN_FOR_IMAGES: boolean;
+  KV_CONTENT: KVNamespace;
 };
