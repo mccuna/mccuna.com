@@ -1,21 +1,18 @@
 main = "./dist/worker.mjs"
 compatibility_date = "2022-09-01"
 
-
-kv_namespaces = [
-  { binding = 'KV_CONTENT', id = '' }
-]
-
 [site]
   bucket = "./public"
 
 [build]
 watch_dir = "./build"
 
-[env.development]
-workers_dev = true
-name = "dev"
-
+[miniflare]
+kv_namespaces = [
+  { binding = 'KV_CONTENT', id = '' }
+]
+kv_persist = true # Defaults to ./.mf/kv
+ 
 [env.development.vars]
 HCAPTCHA_SITE_KEY = "10000000-ffff-ffff-ffff-000000000001"
 CLOUDFLARE_ACCOUNT_HASH = "0uj9SUnHui6vrXgyuOODuw"
@@ -24,6 +21,9 @@ USE_CUSTOM_DOMAIN_FOR_IMAGES = false
 [env.staging]
 workers_dev = true
 name = "staging"
+kv_namespaces = [
+  { binding = 'KV_CONTENT', id = 'b8a1012ba4064b0d808e02ce2315a2e2' }
+]
 
 [env.staging.vars]
 HCAPTCHA_SITE_KEY = "d1d7c3a9-ad03-470c-bc99-0ba9656f5cc0"
@@ -33,6 +33,9 @@ USE_CUSTOM_DOMAIN_FOR_IMAGES = false
 [env.production]
 name = "mccuna-com"
 route = { pattern = 'https://mccuna.com/*', zone_id = "0c71b410fbbb650642aa7a7c251aa380" }
+kv_namespaces = [
+  { binding = 'KV_CONTENT', id = '3088b8aa29024c9b9ccffb410c6fe401' }
+]
 
 [env.production.vars]
 HCAPTCHA_SITE_KEY = "d1d7c3a9-ad03-470c-bc99-0ba9656f5cc0"

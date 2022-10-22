@@ -2,6 +2,7 @@
 import mdx from '@mdx-js/esbuild';
 import esbuild from 'esbuild';
 import fs from 'fs';
+import { Miniflare } from 'miniflare';
 import path from 'path';
 import { renderToString } from 'react-dom/server';
 import rehypeHighlight from 'rehype-highlight';
@@ -85,27 +86,11 @@ export const compileJsxToJson = async ({ outputDirPath }) => {
 /**
  * @param {Object} args
  * @param {string} args.buildDir
+ * @param {string} args.namespaceId
  */
-export const uploadToCloudflareKV = async ({ buildDir }) => {
-  const fileDirentsList = await fs.promises.readdir(buildDir, {
-    withFileTypes: true,
-  });
-  const fileContentsList = await Promise.all(
-    fileDirentsList.map(async (fileDirent) => {
-      const fileContent = await fs.promises.readFile(
-        path.join(buildDir, fileDirent.name),
-        {
-          encoding: 'utf-8',
-        },
-      );
-      return {
-        key: fileDirent.name,
-        value: fileContent,
-      };
-    }),
-  );
+export const uploadToCloudflareKV = async ({ buildDir, namespaceId }) => {
+  const kvEntries = await getKvEntries({ buildDir });
 
-  const namespaceId = '5ce840d722e24e149be86d98ac5decf5';
   const url = `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/storage/kv/namespaces/${namespaceId}/bulk`;
 
   invariant(
@@ -113,9 +98,8 @@ export const uploadToCloudflareKV = async ({ buildDir }) => {
     'CLOUDFLARE_EDIT_CONTENT_API_TOKEN is required',
   );
 
-  const body = JSON.stringify(fileContentsList);
+  const body = JSON.stringify(kvEntries);
 
-  // TODO: copy to .mf/kv too
   const response = await fetch(url, {
     headers: {
       Authorization: `Bearer ${process.env.CLOUDFLARE_EDIT_CONTENT_API_TOKEN}`,
@@ -125,8 +109,31 @@ export const uploadToCloudflareKV = async ({ buildDir }) => {
     body,
   });
 
-  // TODO: Pretty print the response
-  const responseJson = await response.json();
+  const responseBody = await response.json();
+  return responseBody?.success;
+};
+
+/**
+ * @param {Object} args
+ * @param {string} args.buildDir
+ */
+export const uploadToMiniflareKV = async ({ buildDir }) => {
+  const mf = new Miniflare({
+    modules: true,
+    wranglerConfigPath: true,
+    envPath: true,
+    packagePath: true,
+    scriptPath: 'dist/worker.mjs',
+  });
+
+  const kvNamespace = await mf.getKVNamespace('KV_CONTENT');
+  const kvEntriesList = await getKvEntries({ buildDir });
+
+  const kvPutPromises = kvEntriesList.map(async (kvEntry) => {
+    await kvNamespace.put(kvEntry.key, kvEntry.value);
+  });
+
+  await Promise.all(kvPutPromises);
 };
 
 const getTempDirPath = () => {
@@ -134,6 +141,25 @@ const getTempDirPath = () => {
   return path.join(__dirname, tempDirectory);
 };
 
-const getContentFiles = async () => {};
+/**
+ * @param {Object} args
+ * @param {string} args.buildDir
+ */
+const getKvEntries = async ({ buildDir }) => {
+  const fileNamesList = await fs.promises.readdir(buildDir);
 
-export {};
+  return await Promise.all(
+    fileNamesList.map(async (fileName) => {
+      const fileContent = await fs.promises.readFile(
+        path.join(buildDir, fileName),
+        {
+          encoding: 'utf-8',
+        },
+      );
+      return {
+        key: fileName,
+        value: fileContent,
+      };
+    }),
+  );
+};
