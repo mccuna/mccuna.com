@@ -9,6 +9,7 @@ module.exports = {
     '**/*.action.ts',
     '**/*.meta.ts',
     '**/*.error-boundary.tsx',
+    '**/*.catch-boundary.tsx',
     '**/*.decision.md',
     '**/*.links.ts',
     '**/*.handle.ts',
