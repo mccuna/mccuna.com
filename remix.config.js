@@ -1,9 +1,10 @@
 /** @type {import('@remix-run/dev').AppConfig} */
+
 module.exports = {
   serverBuildTarget: 'cloudflare-workers',
   devServerBroadcastDelay: 1000,
   ignoredRouteFiles: [
-    '**/.*',
+    process.env.NODE_ENV === 'production' ? '**/__dev-only/**/*' : '',
     '**/*.specs.md',
     '**/*.loader.ts',
     '**/*.action.ts',
