@@ -7,7 +7,6 @@ export type Env = {
   HCAPTCHA_SITE_SECRET: string;
   FAUNA_SECRET: string;
   FAUNA_DOMAIN: string;
-  CLOUDFLARE_ACCOUNT_HASH: string;
   USE_CUSTOM_DOMAIN_FOR_IMAGES: boolean;
   KV_CONTENT: KVNamespace;
 };

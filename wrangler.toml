@@ -15,7 +15,6 @@ kv_persist = true # Defaults to ./.mf/kv
  
 [env.development.vars]
 HCAPTCHA_SITE_KEY = "10000000-ffff-ffff-ffff-000000000001"
-CLOUDFLARE_ACCOUNT_HASH = "0uj9SUnHui6vrXgyuOODuw"
 USE_CUSTOM_DOMAIN_FOR_IMAGES = false
 
 [env.staging]
@@ -27,7 +26,6 @@ kv_namespaces = [
 
 [env.staging.vars]
 HCAPTCHA_SITE_KEY = "d1d7c3a9-ad03-470c-bc99-0ba9656f5cc0"
-CLOUDFLARE_ACCOUNT_HASH = "0uj9SUnHui6vrXgyuOODuw"
 USE_CUSTOM_DOMAIN_FOR_IMAGES = false
 
 [env.production]
@@ -39,5 +37,4 @@ kv_namespaces = [
 
 [env.production.vars]
 HCAPTCHA_SITE_KEY = "d1d7c3a9-ad03-470c-bc99-0ba9656f5cc0"
-CLOUDFLARE_ACCOUNT_HASH = "0uj9SUnHui6vrXgyuOODuw"
 USE_CUSTOM_DOMAIN_FOR_IMAGES = true

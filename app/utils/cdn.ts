@@ -1,4 +1,5 @@
 import { ImageVariant } from '~/components/image/image-variant';
+import { appConfig } from '~/constants/app-config';
 import { useRootLoaderData } from './use-match-loader-data';
 
 type GetImageCdnUrlArgs = {
@@ -7,15 +8,17 @@ type GetImageCdnUrlArgs = {
 };
 
 export const useImageCdn = () => {
-  const { ENV } = useRootLoaderData();
-
+  /* don't destructure as this is going to be undefined when rendering the
+   * root ErrorBoundary and CatchBoundary
+   */
+  const rootLoaderData = useRootLoaderData();
   const getImageCdnUrl = ({ cdnPath, variant }: GetImageCdnUrlArgs) => {
     // In production serve the images from the same domain
-    if (ENV.USE_CUSTOM_DOMAIN_FOR_IMAGES) {
-      return `/cdn-cgi/imagedelivery/${ENV.CLOUDFLARE_ACCOUNT_HASH}/${cdnPath}/${variant}`;
+    if (!rootLoaderData?.ENV.USE_CUSTOM_DOMAIN_FOR_IMAGES) {
+      return `https://imagedelivery.net/${appConfig.cloudflareAccountHash}/${cdnPath}/${variant}`;
     }
 
-    return `https://imagedelivery.net/${ENV.CLOUDFLARE_ACCOUNT_HASH}/${cdnPath}/${variant}`;
+    return `/cdn-cgi/imagedelivery/${appConfig.cloudflareAccountHash}/${cdnPath}/${variant}`;
   };
 
   return { getImageCdnUrl };
