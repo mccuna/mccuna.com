@@ -1,10 +1,9 @@
-import { Links, Scripts, useCatch, useLocation } from '@remix-run/react';
+import { Links, Meta, Scripts, useCatch, useLocation } from '@remix-run/react';
 import { CatchBoundaryComponent } from '@remix-run/react/dist/routeModules';
 import HeadingAndIllustration from './components/heading-and-illustration';
 import Layout from './components/layout';
 import { PrimaryButtonLink, PrimaryLink } from './components/link';
 import { routeHrefs } from './constants';
-import { getPageTitle } from './utils/meta-utils';
 
 export const CatchBoundary: CatchBoundaryComponent = () => {
   const caught = useCatch();
@@ -18,8 +17,8 @@ export const CatchBoundary: CatchBoundaryComponent = () => {
   return (
     <html>
       <head>
-        <title>{getPageTitle('Not found')}</title>
         <Links />
+        <Meta />
       </head>
       <body className='bg-slate-900'>
         <Layout>
@@ -46,8 +45,8 @@ export const CatchBoundary: CatchBoundaryComponent = () => {
               </PrimaryButtonLink>
             }
           />
-          <Scripts />
         </Layout>
+        <Scripts />
       </body>
     </html>
   );

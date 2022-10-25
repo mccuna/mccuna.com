@@ -1,17 +1,16 @@
 import { ErrorBoundaryComponent } from '@remix-run/cloudflare';
-import { Links, Scripts, useLocation } from '@remix-run/react';
+import { Links, Meta, Scripts, useLocation } from '@remix-run/react';
 import { useEffect } from 'react';
 import HeadingAndIllustration from './components/heading-and-illustration';
 import { PrimaryButtonLink } from './components/link';
 import { routeHrefs } from './constants';
 import { ErrorLog } from './types';
-import { getPageTitle } from './utils/meta-utils';
 
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
   const { pathname, hash, search } = useLocation();
 
   if (process.env.NODE_ENV === 'development') {
-    console.log(error);
+    console.error(error);
   }
 
   useEffect(() => {
@@ -32,7 +31,7 @@ export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
   return (
     <html>
       <head>
-        <title>{getPageTitle('Error')}</title>
+        <Meta />
         <Links />
       </head>
       <body className='bg-slate-900'>
