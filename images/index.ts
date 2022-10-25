@@ -1,11 +1,11 @@
 import * as dotenv from 'dotenv';
-import { syncImagesDirWithCloudflare } from './upload-to-cloudflare';
+import { uploadImagesToCloudflare } from '../tools/images/upload-to-cloudflare';
 
 dotenv.config();
 
 const imagesDirectoryPath = './images';
 
-syncImagesDirWithCloudflare({
+uploadImagesToCloudflare({
   dirName: imagesDirectoryPath,
   extensionsToInclude: ['.webp', '.png', '.svg'],
   localPathPrefix: `${imagesDirectoryPath}/`,

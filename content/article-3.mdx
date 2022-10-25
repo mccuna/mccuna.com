@@ -1,0 +1,21 @@
+---
+meta:
+  title: Article 3
+  description: Article 3 description
+---
+
+# Hello content!
+
+```tsx
+export const loader = () => {
+  return permanentRedirect(routeHrefs.aboutMe.myJourney);
+};
+
+const AboutMe = () => {
+  // This will never get rendered as the route is just a proxy for the permanent redirect
+  // eslint-disable-next-line react/jsx-no-useless-fragment
+  return <></>;
+};
+
+export default AboutMe;
+```

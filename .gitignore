@@ -3,6 +3,7 @@
 node_modules
 
 /.cache
+/content/build
 /build
 /dist
 /public/build
@@ -12,3 +13,4 @@ node_modules
 /test-results/
 /playwright-report/
 /playwright/.cache/
+/tools/content/temp
