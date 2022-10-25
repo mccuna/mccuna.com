@@ -6,4 +6,7 @@ export const routeHrefs = {
     experience: '/about-me/experience',
   },
   contact: '/contact',
+  devOnly: {
+    trigger500Error: '/trigger-500-error',
+  },
 };
