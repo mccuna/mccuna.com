@@ -47,4 +47,6 @@ Check it here: ${externalLinks.githubRepo}`,
   );
 };
 
+const x = 'Upadte wrangler.example.toml based on wrangler.toml';
+
 export default App;
