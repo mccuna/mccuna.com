@@ -2,6 +2,8 @@ import { json, LoaderArgs } from '@remix-run/cloudflare';
 import { getRequestOrigin } from './utils/request-utils';
 
 export const loader = ({ request, context }: LoaderArgs) => {
+  console.log('context', JSON.stringify(context, null, 2));
+
   const data = {
     requestDetails: {
       origin: getRequestOrigin(request),

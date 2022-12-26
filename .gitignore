@@ -2,6 +2,10 @@
 
 node_modules
 
+/functions/\[\[path\]\].js
+/functions/\[\[path\]\].js.map
+/public/build
+
 wrangler.toml
 
 /.cache
