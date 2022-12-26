@@ -2,6 +2,8 @@
 
 node_modules
 
+wrangler.toml
+
 /.cache
 /content/build
 /build
