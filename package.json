@@ -37,7 +37,6 @@
     "clsx": "^1.2.1",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
-    "faunadb": "4.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rehype-highlight": "^6.0.0",
@@ -82,10 +81,5 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "pnpm@7.10.0",
-  "pnpm": {
-    "patchedDependencies": {
-      "faunadb@4.7.0": "patches/faunadb@4.7.0.patch"
-    }
-  }
+  "packageManager": "pnpm@7.10.0"
 }
