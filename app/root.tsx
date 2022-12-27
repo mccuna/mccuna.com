@@ -5,6 +5,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from '@remix-run/react';
 import { StrictMode, useEffect } from 'react';
 import Layout from './components/layout';
@@ -19,6 +20,8 @@ export { meta } from './root.meta';
 export { loader };
 
 const App = () => {
+  const data = useLoaderData<typeof loader>();
+
   useEffect(() => {
     // eslint-disable-next-line no-console
     console.log(
@@ -27,6 +30,7 @@ Check it here: ${externalLinks.githubRepo}`,
       'color:#6366f1;font-size:1.2rem;font-family:ABeeZee',
     );
   }, []);
+
   return (
     <StrictMode>
       <html lang='en' className='scroll-smooth antialiased'>
@@ -39,6 +43,11 @@ Check it here: ${externalLinks.githubRepo}`,
             <Outlet />
           </Layout>
           <ScrollRestoration />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
+            }}
+          />
           <Scripts />
           <LiveReload />
         </body>
@@ -46,7 +55,5 @@ Check it here: ${externalLinks.githubRepo}`,
     </StrictMode>
   );
 };
-
-const x = 'Upadte wrangler.example.toml based on wrangler.toml';
 
 export default App;

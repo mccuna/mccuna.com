@@ -1,32 +1,13 @@
 import { ErrorBoundaryComponent } from '@remix-run/cloudflare';
-import { Links, Meta, Scripts, useLocation } from '@remix-run/react';
-import { useEffect } from 'react';
+import { Links, Meta, Scripts } from '@remix-run/react';
+import * as Sentry from '@sentry/react';
 import HeadingAndIllustration from './components/heading-and-illustration';
 import { PrimaryButtonLink } from './components/link';
 import { routeHrefs } from './constants';
-import { ErrorLog } from './types';
 
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
-  const { pathname, hash, search } = useLocation();
-
-  if (process.env.NODE_ENV === 'development') {
-    console.error(error);
-  }
-
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      fetch('/logs', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: error.name,
-          message: error.message,
-          pathname,
-          hash,
-          search,
-        } as ErrorLog),
-      });
-    }
-  }, [error, hash, pathname, search]);
+  console.error(error);
+  Sentry.captureException(error);
 
   return (
     <html>
