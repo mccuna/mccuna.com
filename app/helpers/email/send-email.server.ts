@@ -1,4 +1,4 @@
-import { logError } from '~/utils/log-error.server';
+import { Toucan } from 'toucan-js';
 import { mailersendAbsoluteApiUrls } from './mailersend-constants';
 import { MailersendMail } from './mailersend-mail';
 
@@ -6,13 +6,12 @@ export type SendMailArgs = {
   mail: MailersendMail;
   config: {
     mailerSendApiKey: string;
-    faunaDomain: string;
-    faunaSecret: string;
   };
+  sentry: Toucan;
 };
 
-export const sendEmail = async ({ mail, config }: SendMailArgs) => {
-  const { mailerSendApiKey, ...faunaConfig } = config;
+export const sendEmail = async ({ mail, config, sentry }: SendMailArgs) => {
+  const { mailerSendApiKey } = config;
 
   const response = await fetch(mailersendAbsoluteApiUrls.email, {
     method: 'POST',
@@ -24,12 +23,10 @@ export const sendEmail = async ({ mail, config }: SendMailArgs) => {
   });
 
   if (response.status !== 202) {
-    await logError({
-      errorLog: {
-        statusCode: response.status,
-        message: await response.text(),
-      },
-      config: faunaConfig,
-    });
+    const sentryPayload = {
+      statusCode: response.status,
+      message: await response.text(),
+    };
+    sentry.captureMessage(JSON.stringify(sentryPayload));
   }
 };

@@ -45,9 +45,8 @@ export const action = async ({ request, context }: ActionArgs) => {
     mail,
     config: {
       mailerSendApiKey: context.env.MAILERSEND_API_KEY,
-      faunaDomain: context.env.FAUNA_DOMAIN,
-      faunaSecret: context.env.FAUNA_SECRET,
     },
+    sentry: context.data.sentry,
   });
 
   actionData.payload = {
