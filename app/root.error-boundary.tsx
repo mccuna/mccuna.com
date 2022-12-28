@@ -6,11 +6,12 @@ import { PrimaryButtonLink } from './components/link';
 import { routeHrefs } from './constants';
 
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
+  // eslint-disable-next-line no-console
   console.error(error);
   Sentry.captureException(error);
 
   return (
-    <html>
+    <html lang='en'>
       <head>
         <Meta />
         <Links />

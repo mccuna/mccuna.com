@@ -2,6 +2,7 @@ compatibility_date = "2022-12-26"
 
 [vars]
 HCAPTCHA_SITE_KEY = "10000000-ffff-ffff-ffff-000000000001"
+HCAPTCHA_SITE_SECRET = "0x0000000000000000000000000000000000000000"
 USE_CUSTOM_DOMAIN_FOR_IMAGES = false
 
 # Used for email verification: https://verifier.meetchopra.com/
