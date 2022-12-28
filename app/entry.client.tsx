@@ -11,7 +11,6 @@ Sentry.init({
   // for finer control
   tracesSampleRate: 0.1,
   tunnel: '/sentry',
-  environment: process.env.NODE_ENV,
 });
 
 hydrate(<RemixBrowser />, document);
