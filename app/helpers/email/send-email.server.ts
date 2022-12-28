@@ -23,11 +23,11 @@ export const sendEmail = async ({ mail, config, sentry }: SendMailArgs) => {
   });
 
   if (response.status !== 202) {
-    const sentryPayload = {
+    const sentryRequestPayload = {
       statusCode: response.status,
       responseText: await response.text(),
-      mail,
     };
-    sentry.captureMessage(JSON.stringify(sentryPayload));
+    sentry.captureMessage(JSON.stringify(sentryRequestPayload));
+    sentry.captureMessage(JSON.stringify(mail));
   }
 };
