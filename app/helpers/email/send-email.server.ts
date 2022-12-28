@@ -25,7 +25,8 @@ export const sendEmail = async ({ mail, config, sentry }: SendMailArgs) => {
   if (response.status !== 202) {
     const sentryPayload = {
       statusCode: response.status,
-      message: await response.text(),
+      responseText: await response.text(),
+      mail,
     };
     sentry.captureMessage(JSON.stringify(sentryPayload));
   }
