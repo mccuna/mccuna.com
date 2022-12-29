@@ -43,9 +43,7 @@ export const action = async ({ request, context }: ActionArgs) => {
 
   await sendEmail({
     mail,
-    config: {
-      mailerSendApiKey: context.env.MAILERSEND_API_KEY,
-    },
+    env: context.env,
     sentry: context.data.sentry,
   });
 

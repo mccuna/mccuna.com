@@ -1,22 +1,23 @@
 import { Toucan } from 'toucan-js';
+import { Env } from '~/types/env';
 import { mailersendAbsoluteApiUrls } from './mailersend-constants';
 import { MailersendMail } from './mailersend-mail';
 
 export type SendMailArgs = {
   mail: MailersendMail;
-  config: {
-    mailerSendApiKey: string;
-  };
+  env: Env;
   sentry: Toucan;
 };
 
-export const sendEmail = async ({ mail, config, sentry }: SendMailArgs) => {
-  const { mailerSendApiKey } = config;
+export const sendEmail = async ({ mail, env, sentry }: SendMailArgs) => {
+  if (env.SHOULD_SKIP_SENDING_MAILS) {
+    return;
+  }
 
   const response = await fetch(mailersendAbsoluteApiUrls.email, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${mailerSendApiKey}`,
+      Authorization: `Bearer ${env.MAILERSEND_API_KEY}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(mail),

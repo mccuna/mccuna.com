@@ -20,6 +20,10 @@ const config: PlaywrightTestConfig = {
      * For example in `await expect(locator).toHaveText();`
      */
     timeout: 5000,
+    toHaveScreenshot: {
+      // 0.1 causes some false negatives
+      maxDiffPixelRatio: 0.11,
+    },
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -40,6 +44,10 @@ const config: PlaywrightTestConfig = {
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+  },
+  webServer: {
+    command: 'pnpm dev:pages',
+    port: 8788,
   },
 
   /* Configure projects for major browsers */
@@ -87,15 +95,6 @@ const config: PlaywrightTestConfig = {
       },
     },
   ],
-
-  /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  // outputDir: 'test-results/',
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   port: 3000,
-  // },
 };
 
 export default config;

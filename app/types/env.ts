@@ -4,6 +4,7 @@ export type Env = {
 
   VERIFIER_MEETCHOPRA_KEY: string;
 
+  SHOULD_SKIP_SENDING_MAILS: boolean;
   MAILERSEND_API_KEY: string;
 
   HCAPTCHA_SITE_KEY: string;
