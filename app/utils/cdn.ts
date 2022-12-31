@@ -14,7 +14,7 @@ export const useImageCdn = () => {
   const rootLoaderData = useRootLoaderData();
   const getImageCdnUrl = ({ cdnPath, variant }: GetImageCdnUrlArgs) => {
     // In production serve the images from the same domain
-    if (!rootLoaderData?.ENV.USE_CUSTOM_DOMAIN_FOR_IMAGES) {
+    if (rootLoaderData?.ENV.USE_CUSTOM_DOMAIN_FOR_IMAGES !== 'true') {
       return `https://imagedelivery.net/${appConfig.cloudflareAccountHash}/${cdnPath}/${variant}`;
     }
 

@@ -10,9 +10,12 @@ export type SendMailArgs = {
 };
 
 export const sendEmail = async ({ mail, env, sentry }: SendMailArgs) => {
-  if (env.SHOULD_SKIP_SENDING_MAILS) {
+  console.log(env.SHOULD_SKIP_SENDING_MAILS);
+  if (env.SHOULD_SKIP_SENDING_MAILS === 'true') {
     return;
   }
+
+  console.log('Hit');
 
   const response = await fetch(mailersendAbsoluteApiUrls.email, {
     method: 'POST',
