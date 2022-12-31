@@ -1,12 +1,10 @@
 {
   "configurations": [
     {
-      "name": "Miniflare (npm)",
+      "name": "Attach to Process",
       "type": "node",
-      "request": "launch",
-      "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["run", "dev"],
-      "skipFiles": ["<node_internals>/**"]
+      "request": "attach",
+      "port": 50861
     }
   ]
 }
