@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@cloudflare/kv-asset-handler': ^0.3.0
   '@cloudflare/pages-plugin-sentry': ^1.1.0
   '@cloudflare/workers-types': ^3.18
   '@fontsource/abeezee': ^4.5.10
@@ -54,7 +53,6 @@ specifiers:
   wrangler: ^2.6.2
 
 dependencies:
-  '@cloudflare/kv-asset-handler': 0.3.0
   '@cloudflare/pages-plugin-sentry': 1.1.0
   '@fontsource/abeezee': 4.5.10
   '@hcaptcha/react-hcaptcha': 1.4.4_biqbaboplfbrettd7655fr4n2y
@@ -1445,12 +1443,6 @@ packages:
     dependencies:
       mime: 3.0.0
     dev: true
-
-  /@cloudflare/kv-asset-handler/0.3.0:
-    resolution: {integrity: sha512-9CB/MKf/wdvbfkUdfrj+OkEwZ5b7rws0eogJ4293h+7b6KX5toPwym+VQKmILafNB9YiehqY0DlNrDcDhdWHSQ==}
-    dependencies:
-      mime: 3.0.0
-    dev: false
 
   /@cloudflare/pages-plugin-sentry/1.1.0:
     resolution: {integrity: sha512-HWX7M+lQxKcAZyexfWlCXrqpNk1IHaz2Cbpt8QiioSkW0rGGDitoECvAHh9w7M25mo38SNKRnf8Aq0RuyB9DFg==}
