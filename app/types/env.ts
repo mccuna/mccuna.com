@@ -1,12 +1,16 @@
 export type Env = {
   __STATIC_CONTENT: string;
   __STATIC_CONTENT_MANIFEST: string;
+
   VERIFIER_MEETCHOPRA_KEY: string;
+
+  SHOULD_SKIP_SENDING_MAILS: string;
   MAILERSEND_API_KEY: string;
+
   HCAPTCHA_SITE_KEY: string;
   HCAPTCHA_SITE_SECRET: string;
-  FAUNA_SECRET: string;
-  FAUNA_DOMAIN: string;
-  USE_CUSTOM_DOMAIN_FOR_IMAGES: boolean;
+
+  USE_CUSTOM_DOMAIN_FOR_IMAGES: string;
+
   KV_CONTENT: KVNamespace;
 };

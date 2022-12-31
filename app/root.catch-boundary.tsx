@@ -15,7 +15,7 @@ export const CatchBoundary: CatchBoundaryComponent = () => {
   const { pathname, search, hash } = useLocation();
 
   return (
-    <html>
+    <html lang='en'>
       <head>
         <Links />
         <Meta />

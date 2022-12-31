@@ -1,9 +1,17 @@
 import { EntryContext } from '@remix-run/cloudflare';
 import { RemixServer } from '@remix-run/react';
+import * as Sentry from '@sentry/remix';
 import { renderToString } from 'react-dom/server';
+import { appConfig } from './constants/app-config';
 import { customRoutes } from './custom-routes';
 import { removeTrailingSlash } from './utils/meta-utils';
 import { permanentRedirect } from './utils/server-response-shorthand';
+
+Sentry.init({
+  dsn: appConfig.sentryDSN,
+  tracesSampleRate: 0.1,
+  integrations: [],
+});
 
 export default function handleRequest(
   request: Request,

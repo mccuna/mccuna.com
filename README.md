@@ -7,15 +7,13 @@ The source code for my website which is hosted at [mccuna.com](https://mccuna.co
 This repo uses `pnpm` as a package manager. If you don't have it installed, check their docs [here](https://pnpm.io/installation).
 
 1. `pnpm install`
-2. `pnpm dev`.
+2. `pnpm dev` - runs the app on http://localhost:8788/.
    - This starts multiple processes behind the scenes:
      - `pnpm dev:css` - builds the `tailwindcss` classes and watches for changes
      - `pnpm dev:remix` - builds the `remix` app and watches for changes
-     - `pnpm dev:miniflare` - starts running the `remix` app using `miniflare`
-   - Before starting the above processes it also runs a `pnpm build` to create a production build. This is needed because `miniflare` will throw an error if it finds no app to run
-   - **The `wrangler.toml` file contains only the public env variables. Besides them, the app need some secret env variables too (check `wrangler.example.toml` for the whole list). Unfortunately I cannot include them in this public repo because because, yeah, they're secrets 😄**
-
-If for some reason you need to debug the server-side part, the `launch.json` file is already configured to run `pnpm dev` in debug mode.
+     - `pnpm dev:pages` - starts running the `remix` app `wrangler pages`
+   - Before starting the above processes it also runs a `pnpm build` to create a production build. This is needed because `wrangler pages` will throw an error if it finds no app to run
+   - For the environment variables required to run the app, check `wrangler.example.toml`.
 
 ## Testing
 
@@ -29,20 +27,18 @@ Run `pnpm test` to run the tests. Most of the tests are visual tests using `play
   - My favorite Javascript library for building user interfaces.
 - [Remix](https://remix.run/)
   - Full-stack framework using React. I love it because it aims to use web standards as much as possible and brings a great deal of simplicity to building web apps.
-- [Cloudflare workers](https://workers.cloudflare.com/)
+- [Cloudflare pages](https://pages.cloudflare.com/)
   - Web standards + edge computing? I want 2 please!
 - [Tailwind CSS](https://tailwindcss.com/)
   - The easiest and fastest way to style an app at the moment.
 - [TypeScript](https://www.typescriptlang.org/)
   - Who still uses plain Javascript nowadays? 😅
-- [faunadb](https://fauna.com/)
-  - A serverless database that synergies with cloudflare workers. Used just for logs at the moment.
 - [playwright](https://playwright.dev/)
   - Favorite E2E testing library.
 
 ### Services used
 
-- [Cloudflare workers](https://workers.cloudflare.com/)
+- [Cloudflare pages](https://pages.cloudflare.com/)
   - 😄
 - [Cloudflare images](https://www.cloudflare.com/products/cloudflare-images/)
   - Images CDN

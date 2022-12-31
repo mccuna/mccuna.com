@@ -43,11 +43,8 @@ export const action = async ({ request, context }: ActionArgs) => {
 
   await sendEmail({
     mail,
-    config: {
-      mailerSendApiKey: context.env.MAILERSEND_API_KEY,
-      faunaDomain: context.env.FAUNA_DOMAIN,
-      faunaSecret: context.env.FAUNA_SECRET,
-    },
+    env: context.env,
+    sentry: context.data.sentry,
   });
 
   actionData.payload = {

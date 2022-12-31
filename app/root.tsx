@@ -27,6 +27,7 @@ Check it here: ${externalLinks.githubRepo}`,
       'color:#6366f1;font-size:1.2rem;font-family:ABeeZee',
     );
   }, []);
+
   return (
     <StrictMode>
       <html lang='en' className='scroll-smooth antialiased'>

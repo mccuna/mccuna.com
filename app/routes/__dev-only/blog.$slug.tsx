@@ -12,6 +12,7 @@ const BlogArticle = () => {
     <div className='prose prose-slate dark:prose-invert lg:prose-2xl '>
       <main
         className='[&>pre]:p-0'
+        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: loaderData.html }}
       />
     </div>
