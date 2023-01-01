@@ -21,3 +21,6 @@ jobs:
 
       - name: 📦 Install packages
         run: pnpm install --frozen-lockfile
+
+      - name: 📝 Typescript
+        uses: pnpm typecheck
