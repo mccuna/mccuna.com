@@ -1,0 +1,14 @@
+name: Node.js CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/prepare-code.yml
+      - name: 📝 Typescript
+        uses: pnpm typecheck
