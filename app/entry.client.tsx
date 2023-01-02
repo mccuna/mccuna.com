@@ -5,7 +5,9 @@ import { hydrate } from 'react-dom';
 import { appConfig } from './constants/app-config';
 
 Sentry.init({
-  dsn: appConfig.sentryDSN,
+  // Don't send errors to Sentry in development
+  dsn: process.env.NODE_ENV === 'production' ? appConfig.sentryDSN : '',
+  // TODO: check the Remix browser tracer
   integrations: [new BrowserTracing()],
   // We recommend adjusting this value in production, or using tracesSampler
   // for finer control

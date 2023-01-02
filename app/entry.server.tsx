@@ -8,7 +8,8 @@ import { removeTrailingSlash } from './utils/meta-utils';
 import { permanentRedirect } from './utils/server-response-shorthand';
 
 Sentry.init({
-  dsn: appConfig.sentryDSN,
+  // Don't send errors to Sentry in development
+  dsn: process.env.NODE_ENV === 'production' ? appConfig.sentryDSN : '',
   tracesSampleRate: 0.1,
   integrations: [],
 });
