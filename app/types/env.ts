@@ -12,5 +12,7 @@ export type Env = {
 
   USE_CUSTOM_DOMAIN_FOR_IMAGES: string;
 
+  CLOUDFLARE_ACCOUNT_HASH: string;
+
   KV_CONTENT: KVNamespace;
 };
