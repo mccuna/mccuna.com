@@ -1,4 +1,4 @@
-import HCaptcha from '@hcaptcha/react-hcaptcha';
+import { Turnstile } from '@marsidev/react-turnstile';
 import { Form, useActionData, useTransition } from '@remix-run/react';
 import clsx from 'clsx';
 import { FC, useEffect, useRef, useState } from 'react';
@@ -10,7 +10,7 @@ import HeadingAndIllustration from '~/components/heading-and-illustration';
 import LocalTime from '~/components/local-time';
 import { personalConstants } from '~/constants/personal-constants';
 import { getEmailClientSideError } from '~/helpers/form-validation/fields-validation';
-import { getHCaptchaClientSideError } from '~/helpers/form-validation/fields-validation/hcaptcha-validation';
+import { getTurnstileClientSideError } from '~/helpers/form-validation/fields-validation/turnstile-validation';
 import { FormValidationContext } from '~/helpers/form-validation/form-validation-context';
 import { useFormValidation } from '~/helpers/form-validation/use-form-validation';
 import { useRootLoaderData } from '~/utils/use-match-loader-data';
@@ -46,12 +46,11 @@ const Contact: FC = () => {
       name: getNameError,
       subject: getSubjectError,
       message: getMessageError,
-      'h-captcha-response': getHCaptchaClientSideError,
+      'cf-turnstile-response': getTurnstileClientSideError,
     },
   });
 
   const formRef = useRef<HTMLFormElement>(null);
-  const captchaRef = useRef<HCaptcha>(null);
   const messageSentCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -78,7 +77,6 @@ const Contact: FC = () => {
       reset(formRef.current);
     }
 
-    captchaRef.current?.resetCaptcha();
     setPreviousMessageSentSuccessfullyTs(
       actionData?.payload?.messageSentSuccessfullyTs,
     );
@@ -173,20 +171,21 @@ const Contact: FC = () => {
                   />
                   <div
                     className={clsx(
-                      errors['h-captcha-response'] &&
+                      errors['cf-turnstile-response'] &&
                         'border-2 border-red-500 rounded-md w-fit',
                       'scale-75 -translate-x-1/8 sm:scale-100 sm:translate-x-0',
                     )}>
-                    <HCaptcha
-                      sitekey={ENV.HCAPTCHA_SITE_KEY}
-                      onVerify={() => {
-                        clearError(FieldName.hCaptchaResponse);
+                    <Turnstile
+                      siteKey={ENV.TURNSTILE_SITE_KEY}
+                      onSuccess={() => {
+                        clearError(FieldName.cfTurnstileResponse);
                       }}
-                      ref={captchaRef}
                     />
                   </div>
-                  {errors['h-captcha-response'] && (
-                    <ErrorMessage errorMessage={errors['h-captcha-response']} />
+                  {errors['cf-turnstile-response'] && (
+                    <ErrorMessage
+                      errorMessage={errors['cf-turnstile-response']}
+                    />
                   )}
                 </Card.Body>
                 <Card.Actions>

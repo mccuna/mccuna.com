@@ -1,9 +1,10 @@
 import { ActionArgs, json } from '@remix-run/cloudflare';
+import invariant from 'tiny-invariant';
 import { emailConstants } from '~/constants/email-constants';
 import { sendEmail } from '~/helpers/email';
 import { MailersendMail } from '~/helpers/email/mailersend-mail';
 import { getEmailError } from '~/helpers/form-validation/fields-validation/email-validation.server';
-import { getHCaptchaError } from '~/helpers/form-validation/fields-validation/hcaptcha-validation.server';
+import { getTurnstileError } from '~/helpers/form-validation/fields-validation/turnstile-validation.server';
 import {
   areFieldsValid,
   getActionDataFields,
@@ -15,9 +16,13 @@ import { badRequest } from '~/utils/server-response-shorthand';
 export const action = async ({ request, context }: ActionArgs) => {
   const fields = await getActionDataFields<FieldName>(request);
 
+  const ipAddress = request.headers.get('CF-Connecting-IP');
+  invariant(ipAddress, 'ipAddress is required');
+
   const fieldErrors = await getFieldsErrors({
     fields,
     env: context.env,
+    ipAddress,
   });
 
   const actionData: FormActionData = {
@@ -59,13 +64,13 @@ export enum FieldName {
   email = 'email',
   subject = 'subject',
   message = 'message',
-  hCaptchaResponse = 'h-captcha-response',
+  cfTurnstileResponse = 'cf-turnstile-response',
 }
 
-const getFieldsErrors: GetFieldsErrors<FieldName, { env: Env }> = async ({
-  fields,
-  env,
-}) => {
+const getFieldsErrors: GetFieldsErrors<
+  FieldName,
+  { env: Env; ipAddress: string }
+> = async ({ fields, env, ipAddress }) => {
   return {
     email: await getEmailError({
       email: fields.email,
@@ -76,10 +81,10 @@ const getFieldsErrors: GetFieldsErrors<FieldName, { env: Env }> = async ({
     name: getNameError(fields.name),
     subject: getSubjectError(fields.subject),
     message: getMessageError(fields.message),
-    'h-captcha-response': await getHCaptchaError({
-      hcaptchaResponse: fields['h-captcha-response'],
-      HCAPTCHA_SITE_KEY: env.HCAPTCHA_SITE_KEY,
-      HCAPTCHA_SITE_SECRET: env.HCAPTCHA_SITE_SECRET,
+    'cf-turnstile-response': await getTurnstileError({
+      turnstileResponse: fields['cf-turnstile-response'],
+      TURNSTILE_SECRET_KEY: env.TURNSTILE_SECRET_KEY,
+      ipAddress,
     }),
   };
 };
@@ -137,7 +142,7 @@ type FormFields = {
   [FieldName.email]: string;
   [FieldName.subject]: string;
   [FieldName.message]: string;
-  [FieldName.hCaptchaResponse]: string;
+  [FieldName.cfTurnstileResponse]: string;
 };
 
 export type FormActionData = ActionData<FieldName, Payload>;

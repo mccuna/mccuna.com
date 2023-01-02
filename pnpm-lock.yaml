@@ -4,8 +4,8 @@ specifiers:
   '@cloudflare/pages-plugin-sentry': ^1.1.0
   '@cloudflare/workers-types': ^3.18
   '@fontsource/abeezee': ^4.5.10
-  '@hcaptcha/react-hcaptcha': ^1.4.4
   '@headlessui/react': ^1.7.7
+  '@marsidev/react-turnstile': ^0.0.5
   '@mdx-js/esbuild': ^2.2.1
   '@playwright/test': ^1.29.1
   '@remix-run/cloudflare': ^1.9.0
@@ -55,8 +55,8 @@ specifiers:
 dependencies:
   '@cloudflare/pages-plugin-sentry': 1.1.0
   '@fontsource/abeezee': 4.5.10
-  '@hcaptcha/react-hcaptcha': 1.4.4_biqbaboplfbrettd7655fr4n2y
   '@headlessui/react': 1.7.7_biqbaboplfbrettd7655fr4n2y
+  '@marsidev/react-turnstile': 0.0.5_biqbaboplfbrettd7655fr4n2y
   '@remix-run/cloudflare': 1.9.0_dp7lsxfcjoxmh2gy56a7syibgu
   '@remix-run/cloudflare-pages': 1.9.0_dp7lsxfcjoxmh2gy56a7syibgu
   '@remix-run/react': 1.9.0_biqbaboplfbrettd7655fr4n2y
@@ -1395,6 +1395,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
+    dev: true
 
   /@babel/template/7.20.7:
     resolution: {integrity: sha512-8SegXApWe6VoNw0r9JHpSteLKTpTiLZ4rMlGIm9JQ18KiCtyQiAMEazujAHrUS5flrcqYZa75ukev3P6QmUwUw==}
@@ -1902,17 +1903,6 @@ packages:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: true
 
-  /@hcaptcha/react-hcaptcha/1.4.4_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-Aen217LDnf5ywbPSwBG5CsoqBLIHIAS9lhj3zQjXJuO13doQ6/ubkCWNuY8jmwYLefoFt3V3MrZmCdKDaFoTuQ==}
-    peerDependencies:
-      react: '>= 16.3.0'
-      react-dom: '>= 16.3.0'
-    dependencies:
-      '@babel/runtime': 7.20.7
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
   /@headlessui/react/1.7.7_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-BqDOd/tB9u2tA0T3Z0fn18ktw+KbVwMnkxxsGPIH2hzssrQhKB5n/6StZOyvLYP/FsYtvuXfi9I0YowKPv2c1w==}
     engines: {node: '>=10'}
@@ -1986,6 +1976,16 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@marsidev/react-turnstile/0.0.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-5lirdhUEd53+DBMX6Vng7Y8U5dJus4YPP/FqM2NxL5bRdgc2b9xiiKO9nGnimmmrAE/1Tbfk/7lAU5veRIOcfw==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /@mdx-js/esbuild/2.2.1_esbuild@0.16.10:
     resolution: {integrity: sha512-Jf6TJ0VwFO51+cULHtByv+Sz+hoGpsmkbwzgPyMbmK9OvnXCkljinHQdbF9Dt7MuDPFxPRVyf5JMeo+WAEZtMw==}
@@ -8113,6 +8113,7 @@ packages:
 
   /regenerator-runtime/0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+    dev: true
 
   /regenerator-transform/0.15.1:
     resolution: {integrity: sha512-knzmNAcuyxV+gQCufkYcvOqX/qIIfHLv0u5x79kRxuGojfYVky1f15TzZEu2Avte8QGepvUNTnLskf8E6X6Vyg==}
