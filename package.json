@@ -10,8 +10,9 @@
     "dev:css": "tailwindcss -w -i ./app/styles/global.css -o ./app/styles/tailwind.css",
     "dev:remix": "remix watch",
     "dev:pages": "cross-env NODE_ENV=development pnpm wrangler pages dev ./public",
-    "lint": "eslint --cache . --ext .ts,.tsx,.js,.jsx --max-warnings 0",
-    "typecheck": " tsc -b",
+    "cq": "pnpm concurrently pnpm:cq:*",
+    "cq:lint": "eslint --cache . --ext .ts,.tsx,.js,.jsx --max-warnings 0",
+    "cq:typecheck": " tsc -b",
     "mdx:compile": "node --experimental-vm-modules ./content/compile.mjs",
     "mdx:upload": "node --experimental-vm-modules ./content/upload.mjs",
     "upload-images": "node -r esbuild-register ./images/index.ts",
@@ -22,8 +23,8 @@
   "dependencies": {
     "@cloudflare/pages-plugin-sentry": "^1.1.0",
     "@fontsource/abeezee": "^4.5.10",
-    "@hcaptcha/react-hcaptcha": "^1.4.4",
     "@headlessui/react": "^1.7.7",
+    "@marsidev/react-turnstile": "^0.0.5",
     "@remix-run/cloudflare": "^1.9.0",
     "@remix-run/cloudflare-pages": "^1.9.0",
     "@remix-run/react": "^1.9.0",
@@ -76,5 +77,5 @@
   "engines": {
     "node": ">=16"
   },
-  "packageManager": "pnpm@7.10.0"
+  "packageManager": "pnpm@7.21.0"
 }

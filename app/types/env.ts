@@ -7,10 +7,12 @@ export type Env = {
   SHOULD_SKIP_SENDING_MAILS: string;
   MAILERSEND_API_KEY: string;
 
-  HCAPTCHA_SITE_KEY: string;
-  HCAPTCHA_SITE_SECRET: string;
+  TURNSTILE_SITE_KEY: string;
+  TURNSTILE_SECRET_KEY: string;
 
   USE_CUSTOM_DOMAIN_FOR_IMAGES: string;
+
+  CLOUDFLARE_ACCOUNT_HASH: string;
 
   KV_CONTENT: KVNamespace;
 };

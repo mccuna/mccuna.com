@@ -7,8 +7,9 @@ export const loader = ({ request, context }: LoaderArgs) => {
       origin: getRequestOrigin(request),
     },
     ENV: {
-      HCAPTCHA_SITE_KEY: context.env.HCAPTCHA_SITE_KEY,
+      TURNSTILE_SITE_KEY: context.env.TURNSTILE_SITE_KEY,
       USE_CUSTOM_DOMAIN_FOR_IMAGES: context.env.USE_CUSTOM_DOMAIN_FOR_IMAGES,
+      CLOUDFLARE_ACCOUNT_HASH: context.env.CLOUDFLARE_ACCOUNT_HASH,
     },
   };
 
