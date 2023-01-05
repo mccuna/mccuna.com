@@ -32,13 +32,6 @@ export const loader = () => {
       imagePath: 'tailwindcss.webp',
     },
     {
-      name: 'faunadb',
-      level: 'intermediate',
-      category: 'primary',
-      orderIndex: 70,
-      imagePath: 'faunadb.webp',
-    },
-    {
       name: '.Net Core',
       level: 'expert',
       category: 'legacy',

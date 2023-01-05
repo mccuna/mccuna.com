@@ -44,8 +44,8 @@ Run `pnpm test` to run the tests. Most of the tests are visual tests using `play
   - Images CDN
 - [unDraw](https://undraw.co/)
   - Cool open-source illustrations
-- [hCaptcha](https://www.hcaptcha.com/)
-  - Anti-bot service (aka source of funny animals pictures)
+- [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/)
+  - "A friendly, free CAPTCHA replacement"
 - [mailersend](https://www.mailersend.com/)
   - Everybody needs a good email service
 
