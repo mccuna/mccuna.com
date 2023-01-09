@@ -53,6 +53,13 @@ export const loader = () => {
       imagePath: 'entity_framework.webp',
     },
     {
+      name: 'SQL Server',
+      level: 'expert',
+      category: 'legacy',
+      orderIndex: 30,
+      imagePath: 'sql-server.webp',
+    },
+    {
       name: 'Playwright',
       level: 'intermediate',
       category: 'primary',
