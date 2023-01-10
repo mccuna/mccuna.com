@@ -47,12 +47,13 @@ test.describe('Contact page should', () => {
       {},
     );
 
-    const captchaCheckbox = page
-      .frameLocator('iframe[data-hcaptcha-response]')
-      .locator('div[role="checkbox"]');
+    const turnstileSuccessMessage = page
+      .frameLocator('iframe[id^="cf-chl-widget"]')
+      .locator('span', {
+        hasText: 'Success!',
+      });
 
-    await captchaCheckbox.click({ force: true });
-    await expect(captchaCheckbox).toHaveAttribute('aria-checked', 'true');
+    await expect(turnstileSuccessMessage).toBeVisible();
 
     const client = mockAgent.get(mailersendApiConfig.baseUrl);
 
