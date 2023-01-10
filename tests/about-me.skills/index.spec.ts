@@ -10,6 +10,9 @@ test.describe('About Me -> Skills page should', () => {
     const title = await page.title();
     expect(title).toBe(getPageTitle('Skills'));
 
+    // Wait for the progress bar animation to finish
+    page.waitForTimeout(1000);
+
     await expect(page).toHaveScreenshot(
       getScreenshotName({ testInfo, name: 'final' }),
     );
