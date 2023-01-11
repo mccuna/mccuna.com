@@ -5,7 +5,7 @@ specifiers:
   '@cloudflare/workers-types': ^3.18
   '@fontsource/abeezee': ^4.5.10
   '@headlessui/react': ^1.7.7
-  '@marsidev/react-turnstile': ^0.0.5
+  '@marsidev/react-turnstile': ^0.0.6
   '@mdx-js/esbuild': ^2.2.1
   '@playwright/test': ^1.29.1
   '@remix-run/cloudflare': ^1.9.0
@@ -56,7 +56,7 @@ dependencies:
   '@cloudflare/pages-plugin-sentry': 1.1.0
   '@fontsource/abeezee': 4.5.10
   '@headlessui/react': 1.7.7_biqbaboplfbrettd7655fr4n2y
-  '@marsidev/react-turnstile': 0.0.5_biqbaboplfbrettd7655fr4n2y
+  '@marsidev/react-turnstile': 0.0.6_biqbaboplfbrettd7655fr4n2y
   '@remix-run/cloudflare': 1.9.0_dp7lsxfcjoxmh2gy56a7syibgu
   '@remix-run/cloudflare-pages': 1.9.0_dp7lsxfcjoxmh2gy56a7syibgu
   '@remix-run/react': 1.9.0_biqbaboplfbrettd7655fr4n2y
@@ -1977,8 +1977,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@marsidev/react-turnstile/0.0.5_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-5lirdhUEd53+DBMX6Vng7Y8U5dJus4YPP/FqM2NxL5bRdgc2b9xiiKO9nGnimmmrAE/1Tbfk/7lAU5veRIOcfw==}
+  /@marsidev/react-turnstile/0.0.6_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-p526QbNHLiTbYQypzenXYQjezqHBfCiFp1BPI8zHmiDj5Ar8yCONyxRSQE9FLZ/9aGKhDu4NkExWOaf64D5dLg==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
