@@ -41,7 +41,7 @@
     "toucan-js": "^3.1.0"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^3.18",
+    "@cloudflare/workers-types": "^4.20221111",
     "@mdx-js/esbuild": "^2.2.1",
     "@playwright/test": "^1.29.1",
     "@remix-run/dev": "^1.9.0",
