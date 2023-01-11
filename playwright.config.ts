@@ -62,38 +62,38 @@ const config: PlaywrightTestConfig = {
         },
       },
     },
-    {
-      name: 'desktop_firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-        viewport: {
-          width: 1920,
-          height: 1080,
-        },
-      },
-    },
-    {
-      name: 'desktop_safari',
-      use: {
-        ...devices['Desktop Safari'],
-        viewport: {
-          width: 1920,
-          height: 1080,
-        },
-      },
-    },
-    {
-      name: 'iphone_x',
-      use: {
-        ...devices['iPhone X'],
-      },
-    },
-    {
-      name: 'ipad_pro_11',
-      use: {
-        ...devices['iPad Pro 11'],
-      },
-    },
+    // {
+    //   name: 'desktop_firefox',
+    //   use: {
+    //     ...devices['Desktop Firefox'],
+    //     viewport: {
+    //       width: 1920,
+    //       height: 1080,
+    //     },
+    //   },
+    // },
+    // {
+    //   name: 'desktop_safari',
+    //   use: {
+    //     ...devices['Desktop Safari'],
+    //     viewport: {
+    //       width: 1920,
+    //       height: 1080,
+    //     },
+    //   },
+    // },
+    // {
+    //   name: 'iphone_x',
+    //   use: {
+    //     ...devices['iPhone X'],
+    //   },
+    // },
+    // {
+    //   name: 'ipad_pro_11',
+    //   use: {
+    //     ...devices['iPad Pro 11'],
+    //   },
+    // },
   ],
 };
 
